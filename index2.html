@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html lang="uz" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PhoneShop - Eng yaxshi smartfonlar va aksessuarlar</title>
+    <script>
+        // Saytga kirganda tekshirish
+        window.addEventListener("DOMContentLoaded", function () {
+            const registered = localStorage.getItem("phoneShop_user_registered");
+
+            // Agar ro'yxatdan o'tmagan bo'lsa → register.html ga yo'naltir
+            if (!registered) {
+                window.location.replace("index1.html");
+            }
+        });
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.2);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-16px) scale(1.02);
+            box-shadow: 0 30px 40px -10px rgba(0, 0, 0, 0.25);
+        }
+
+        .phone-img {
+            width: 100%;
+            height: 350px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+            transition: transform 0.6s ease;
+        }
+
+        .card-hover:hover .phone-img {
+            transform: scale(1.08) rotate(2deg);
+        }
+
+        /* Tugma animatsiyasi – bosilganda pulse */
+        .add-to-cart-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .add-to-cart-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .add-to-cart-btn:active::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Aksessuar kartalariga qo‘shimcha effekt */
+        .accessory-card {
+            transition: all 0.5s ease;
+        }
+
+        .accessory-card:hover {
+            transform: translateY(-12px) rotate(1deg);
+        }
+
+        .accessory-card img {
+            transition: all 0.5s ease;
+        }
+
+        .accessory-card:hover img {
+            transform: scale(1.1) translateY(-10px);
+        }
+
+        /* Navbar scroll animatsiyasi */
+        nav {
+            transition: all 0.4s ease;
+        }
+
+        /* Bo‘limlar kirganda animatsiya */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero matn uchun animatsiya */
+        .hero-text {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInUp 1.2s ease forwards;
+        }
+
+        .hero-text:nth-child(1) {
+            animation-delay: 0.3s;
+        }
+
+        .hero-text:nth-child(2) {
+            animation-delay: 0.6s;
+        }
+
+        .hero-text:nth-child(3) {
+            animation-delay: 0.9s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Savat belgisi pulse */
+        @keyframes pulse-cart {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .cart-pulse {
+            animation: pulse-cart 0.6s ease;
+        }
+
+        /* Toast animatsiyasi */
+        @keyframes toastIn {
+            from {
+                transform: translateY(100px) scale(0.8);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .toast-animation {
+            animation: toastIn 0.6s ease forwards;
+        }
+
+        #home {
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 1. Katta yulduzlar (hero bo‘limda) */
+        .floating-stars {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            color: #fff;
+            font-size: 2rem;
+            opacity: 0;
+            animation: floatStar linear infinite;
+        }
+
+        .star:nth-child(1) {
+            top: 15%;
+            left: 10%;
+            animation: floatStar 14s infinite linear;
+            animation-delay: 0s;
+        }
+
+        .star:nth-child(2) {
+            top: 40%;
+            left: 80%;
+            animation: floatStar 18s infinite linear;
+            animation-delay: 3s;
+        }
+
+        .star:nth-child(3) {
+            top: 70%;
+            left: 20%;
+            animation: floatStar 22s infinite linear;
+            animation-delay: 7s;
+        }
+
+        .star:nth-child(4) {
+            top: 30%;
+            left: 60%;
+            animation: floatStar 16s infinite linear;
+            animation-delay: 5s;
+        }
+
+        .star:nth-child(5) {
+            top: 55%;
+            left: 90%;
+            animation: floatStar 20s infinite linear;
+            animation-delay: 10s;
+        }
+
+        @keyframes floatStar {
+            0% {
+                transform: translateY(100vh) translateX(-100px) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.8;
+            }
+
+            90% {
+                opacity: 0.4;
+            }
+
+            100% {
+                transform: translateY(-200px) translateX(100vw) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* 2. Kichik telefon va yulduzcha partikllar */
+        .particles {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            opacity: 0;
+            animation: particleFloat 15s infinite linear;
+        }
+
+        .particle:nth-child(odd) {
+            font-size: 1.5rem;
+        }
+
+        .particle:nth-child(even) {
+            font-size: 1.8rem;
+            color: #fbbf24;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 0.7;
+            }
+
+            85% {
+                opacity: 0.3;
+            }
+
+            100% {
+                transform: translateY(-150px) scale(1) translateX(200px);
+                opacity: 0;
+            }
+        }
+
+        /* ALOQA BO‘LIMI – ORQASIDA YULDUZLAR UCHIB YURSIN */
+        #contact {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-stars {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .contact-star {
+            position: absolute;
+            color: #a78bfa;
+            font-size: 1.8rem;
+            opacity: 0;
+            animation: contactStar 12s infinite linear;
+        }
+
+        .contact-star:nth-child(1) {
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .contact-star:nth-child(2) {
+            top: 30%;
+            left: 80%;
+            animation-delay: 2s;
+        }
+
+        .contact-star:nth-child(3) {
+            top: 60%;
+            left: 15%;
+            animation-delay: 4s;
+        }
+
+        .contact-star:nth-child(4) {
+            top: 80%;
+            left: 70%;
+            animation-delay: 6s;
+        }
+
+        .contact-star:nth-child(5) {
+            top: 45%;
+            left: 50%;
+            animation-delay: 8s;
+        }
+
+        .contact-star:nth-child(6) {
+            top: 20%;
+            left: 90%;
+            animation-delay: 1s;
+        }
+
+        @keyframes contactStar {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.9;
+            }
+
+            90% {
+                opacity: 0.4;
+            }
+
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Qo‘shimcha chiroyli gradient animatsiya (hero va contact uchun) */
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            animation: gradientShift 20s ease infinite;
+            background-size: 200% 200%;
+        }
+
+        @keyframes gradientShift {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        /* ALOQA BO‘LIMI UCHUN YANGI ANIMATSIYA – SIZNING KODINGIZGA QO‘SHILADI */
+        #contact {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-bg-effects {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .contact-star {
+            position: absolute;
+            color: #c084fc;
+            font-size: 2rem;
+            opacity: 0;
+            animation: contactFloat 12s infinite linear;
+        }
+
+        .contact-star:nth-child(1) {
+            top: 10%;
+            left: 8%;
+            animation-delay: 0s;
+        }
+
+        .contact-star:nth-child(2) {
+            top: 25%;
+            left: 75%;
+            animation-delay: 2.5s;
+        }
+
+        .contact-star:nth-child(3) {
+            top: 60%;
+            left: 15%;
+            animation-delay: 5s;
+        }
+
+        .contact-star:nth-child(4) {
+            top: 80%;
+            left: 65%;
+            animation-delay: 1s;
+        }
+
+        .contact-star:nth-child(5) {
+            top: 45%;
+            left: 50%;
+            animation-delay: 7s;
+        }
+
+        .contact-star:nth-child(6) {
+            top: 15%;
+            left: 90%;
+            animation-delay: 3.5s;
+        }
+
+        .contact-star:nth-child(7) {
+            top: 70%;
+            left: 30%;
+            animation-delay: 6s;
+        }
+
+        .contact-star:nth-child(8) {
+            top: 35%;
+            left: 82%;
+            animation-delay: 4s;
+        }
+
+        .contact-particle {
+            position: absolute;
+            opacity: 0;
+            animation: contactParticle 15s infinite linear;
+        }
+
+        .contact-particle:nth-child(odd) {
+            color: #60a5fa;
+            font-size: 2.3rem;
+        }
+
+        .contact-particle:nth-child(even) {
+            color: #fbbf24;
+            font-size: 1.8rem;
+        }
+
+        .contact-particle:nth-child(1) {
+            top: 20%;
+            left: 12%;
+            animation-delay: 1s;
+        }
+
+        .contact-particle:nth-child(2) {
+            top: 55%;
+            left: 80%;
+            animation-delay: 4s;
+        }
+
+        .contact-particle:nth-child(3) {
+            top: 75%;
+            left: 25%;
+            animation-delay: 8s;
+        }
+
+        .contact-particle:nth-child(4) {
+            top: 30%;
+            left: 70%;
+            animation-delay: 10s;
+        }
+
+        .contact-particle:nth-child(5) {
+            top: 85%;
+            left: 18%;
+            animation-delay: 2s;
+        }
+
+        .contact-particle:nth-child(6) {
+            top: 12%;
+            left: 88%;
+            animation-delay: 6s;
+        }
+
+        @keyframes contactFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.9;
+            }
+
+            90% {
+                opacity: 0.3;
+            }
+
+            100% {
+                transform: translateY(-200px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes contactParticle {
+            0% {
+                transform: translateY(100vh) scale(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 0.8;
+            }
+
+            85% {
+                opacity: 0.4;
+            }
+
+            100% {
+                transform: translateY(-300px) scale(1.2) rotate(360deg) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* YANGI HERO UCHUN ZAMONAVIY ANIMATSIYALAR */
+        @keyframes animate-gradient {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .animate-gradient {
+            background-size: 200% 200%;
+            animation: animate-gradient 15s ease infinite;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Partikllar animatsiyasi */
+        .particle-hero {
+            position: absolute;
+            background: linear-gradient(45deg, #00ff88, #00d4ff);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float-hero linear infinite;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.8);
+        }
+
+        @keyframes float-hero {
+            0% {
+                transform: translateY(100vh) scale(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-100px) scale(1) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        nav {
+            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.97);
+        }
+
+        nav::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #4f46e5, #7c3aed, #ec4899);
+            border-radius: 0 0 15px 15px;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+    <nav class="bg-white shadow-2xl fixed top-0 left-0 right-0 z-50 border-b border-gray-100">
+        <div class="container mx-auto px-6 py-5 flex items-center justify-between">
+
+            <!-- Logo – Noutbuk uslubida -->
+            <div class="flex items-center space-x-4">
+                <i class="fa-solid fa-laptop text-4xl text-indigo-600 animate-pulse"></i>
+                <h1 class="text-3xl font-extrabold bg-clip-text text-transparent 
+                           bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600">
+                    PhoneShop <span class="text-xl font-light text-gray-600">| Noutbuklar</span>
+                </h1>
+            </div>
+
+            <!-- Menu – Noutbuk bo‘limi faol -->
+            <ul class="hidden md:flex items-center space-x-10 text-gray-700 font-semibold text-lg">
+                <li>
+                    <a href="#home" class="hover:text-indigo-600 transition flex items-center gap-2">
+                        <i class="fa-solid fa-house"></i> Bosh sahifa
+                    </a>
+                </li>
+                <li>
+                    <a href="index.html" class="hover:text-blue-600 transition flex items-center gap-2">
+                        <i class="fa-solid fa-mobile-screen-button"></i> Telefonlar
+                    </a>
+                </li>
+                <li>
+                    <a href="#laptops" class="text-indigo-700 border-b-3 border-indigo-600 pb-1 
+                                              hover:text-indigo-800 transition font-bold">
+                        <i class="fa-solid fa-laptop text-xl"></i> Noutbuklar
+                    </a>
+                </li>
+                <li>
+                    <a href="#accessories" class="hover:text-indigo-600 transition">
+                        Aksessuarlar
+                    </a>
+                </li>
+                <li>
+                    <a href="#compare-laptops" class="hover:text-indigo-600 transition">
+                        Taqqoslash
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Ro‘yxatdan o‘tish + Savat -->
+            <div class="flex items-center gap-6">
+                <a href="index1.html" class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white 
+                          px-8 py-3 rounded-full font-bold text-lg shadow-xl 
+                          hover:shadow-2xl hover:shadow-indigo-500/50 
+                          transform hover:scale-105 transition whitespace-nowrap">
+                    <i class="fa-solid fa-user-plus mr-2"></i> Ro‘yxatdan o‘tish
+                </a>
+
+                <!-- Savat badge (sizning JS bilan ishlaydi) -->
+                <div class="relative group">
+                    <i class="fa-solid fa-shopping-cart text-3xl text-indigo-700 cursor-pointer 
+                              hover:text-indigo-900 transition"></i>
+                    <span id="cart-count" class="absolute -top-3 -right-3 bg-red-600 text-white text-xs font-bold 
+                                 w-7 h-7 rounded-full flex items-center justify-center shadow-lg animate-pulse">
+                        0
+                    </span>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- YANGI SUPER HERO – 2025 NEON + PARTICLES + GLASS -->
+    <section id="home" class="relative pt-24 pb-20 overflow-hidden min-h-screen flex items-center justify-center">
+
+        <!-- Kosmik gradient fon + animatsiya -->
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-900 via-blue-900 to-black animate-gradient"></div>
+
+        <!-- Partikllar (yashil-siyan ucha yuradi) -->
+        <div id="particles-hero" class="fixed inset-0 pointer-events-none z-10"></div>
+
+        <!-- Asosiy kontent -->
+        <div class="container mx-auto px-6 relative z-20">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+                <!-- Chap taraf – matn -->
+                <div class="text-center lg:text-left">
+                    <h1 class="text-6xl md:text-7xl lg:text-8xl font-black leading-tight">
+                        <span class="block text-white">Eng yangi</span>
+                        <span
+                            class="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-green-400 to-cyan-400 animate-pulse">
+                            smartfonlar
+                        </span>
+                        <span class="block text-yellow-400 text-5xl md:text-6xl mt-4 drop-shadow-2xl">
+                            eng arzon narxda
+                        </span>
+                    </h1>
+
+                    <p class="text-xl md:text-2xl text-gray-300 mt-8 max-w-2xl leading-relaxed font-light">
+                        PhoneShop — O‘zbekistondagi eng ishonchli onlayn telefon do‘koni.<br>
+                        <span class="text-cyan-300">iPhone • Samsung • Xiaomi • Realme • Vivo</span> rasmiy kafolat
+                        bilan!
+                    </p>
+
+                    <p class="text-lg text-gray-400 mt-6">
+                        Naushniklar, qobiqlar, zaryadkalar, smart soatlar — hammasi bir joyda!
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-6 mt-10 justify-center lg:justify-start">
+                        <a href="#sale" class="group">
+                            <button
+                                class="px-10 py-5 bg-gradient-to-r from-cyan-500 to-green-500 text-black font-bold text-xl rounded-full shadow-2xl hover:shadow-cyan-500/50 transform hover:scale-105 transition-all duration-300 flex items-center gap-3">
+                                Chegirmalarni ko‘rish
+                                <i class="fa-solid fa-bolt group-hover:animate-pulse"></i>
+                            </button>
+                        </a>
+                        <a href="#products">
+                            <button
+                                class="px-10 py-5 border-2 border-cyan-400 text-cyan-400 font-bold text-xl rounded-full hover:bg-cyan-400/10 backdrop-blur-lg transition-all duration-300">
+                                Katalogga o‘tish
+                            </button>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- O‘ng taraf – Hozirgi Aksiyalar (Glass kartochka) -->
+                <div class="relative">
+                    <div class="glass rounded-3xl p-8 md:p-10 backdrop-blur-xl border border-white/20 shadow-2xl">
+                        <h3 class="text-4xl font-bold text-white mb-8 flex items-center gap-4">
+                            <i class="fa-solid fa-bolt text-yellow-400 text-5xl animate-pulse"></i>
+                            Hozirgi Aksiyalar
+                        </h3>
+                        <ul class="space-y-6 text-lg">
+                            <li class="flex items-center gap-4 text-yellow-300">
+                                <span class="text-3xl">Flash</span>
+                                <strong>Flash Sale</strong> — 72 soatlik super chegirmalar!
+                            </li>
+                            <li class="flex items-center gap-4 text-green-300">
+                                <span class="text-3xl">Gift</span>
+                                <strong>Kombo to‘plam</strong> — Telefon + naushnik = -25%
+                            </li>
+                            <li class="flex items-center gap-4 text-pink-300">
+                                <span class="text-3xl">New</span>
+                                <strong>Yangi modellarga</strong> birinchi hafta maxsus narx
+                            </li>
+                            <li class="flex items-center gap-4 text-cyan-300">
+                                <span class="text-3xl">Star</span>
+                                <strong>Bonus ball</strong> — har 1.000.000 so‘mga 50.000 ball!
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== NOUTBUKLAR BO‘LIMI (AYNAN 12 TA) ==================== -->
+    <section id="laptops" class="py-24 bg-gradient-to-b from-gray-50 to-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl md:text-6xl font-extrabold text-gray-800 mb-4">
+                    Eng yaxshi <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Noutbuklar
+                        2025</span>
+                </h2>
+                <p class="text-xl text-gray-600">MacBook, Gaming va Premium noutbuklar – rasmiy kafolat bilan!</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+
+                <!-- 1. MacBook Pro 16" M4 Pro -->
+                <div
+                    class="bg-white rounded-3xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 group">
+                    <div class="relative">
+                        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp16-spaceblack-select-202410?wid=600&hei=600&fmt=jpeg&qlt=95"
+                            alt="MacBook Pro 16 M4 Pro"
+                            class="w-full h-80 object-contain group-hover:scale-110 transition">
+                        <div
+                            class="absolute top-4 left-4 bg-red-600 text-white px-4 py-2 rounded-full text-sm font-bold">
+                            YANGI</div>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold text-gray-800">MacBook Pro 16" M4 Pro</h3>
+                        <p class="text-gray-600 text-sm mt-2">48GB RAM • 1TB SSD • Liquid Retina XDR</p>
+                        <span class="block text-3xl font-bold text-purple-600 my-4">49 990 000 so‘m</span>
+                        <button
+                            class="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-4 rounded-xl font-bold text-lg hover:shadow-2xl transition">Savatga
+                            qo‘shish</button>
+                    </div>
+                </div>
+
+                <!-- 2. MacBook Air 15" M3 -->
+                <div
+                    class="bg-white rounded-3xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 group">
+                    <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-15-select-202403-midnight?wid=600&hei=600&fmt=jpeg&qlt=95"
+                        alt="MacBook Air 15 M3" class="w-full h-80 object-contain group-hover:scale-110 transition">
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold text-gray-800">MacBook Air 15" M3</h3>
+                        <p class="text-gray-600 text-sm mt-2">16GB • 512GB • Midnight</p>
+                        <span class="block text-3xl font-bold text-blue-600 my-4">24 990 000 so‘m</span>
+                        <button
+                            class="w-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-4 rounded-xl font-bold text-lg">Savatga
+                            qo‘shish</button>
+                    </div>
+                </div>
+
+                <!-- 3. ASUS ROG Strix G16 RTX 5070 -->
+                <div
+                    class="bg-white rounded-3xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 group">
+                    <img src="https://dlcdnwebimgs.asus.com/gain/5E8F8E8C-4C5D-4F4D-9B0B-8F7E8C8D9E0F/w1000/h1000"
+                        alt="ASUS ROG Strix G16" class="w-full h-80 object-contain group-hover:scale-110 transition">
+                    <div class="absolute top-4 left-4 bg-green-600 text-white px-4 py-2 rounded-full text-sm font-bold">
+                        GAMING</div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold text-gray-800">ASUS ROG Strix G16</h3>
+                        <p class="text-gray-600 text-sm mt-2">i9-14900HX • RTX 5070 • 32GB</p>
+                        <span class="block text-3xl font-bold text-green-600 my-4">44 990 000 so‘m</span>
+                        <button
+                            class="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white py-4 rounded-xl font-bold text-lg">Savatga
+                            qo‘shish</button>
+                    </div>
+                </div>
+
+                <!-- 4. Lenovo Legion Pro 7i Gen 9 -->
+                <div
+                    class="bg-white rounded-3xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 group">
+                    <img src="https://p1-ofp.static.pub/fes/cms/2024/04/15/z9i3y0i8l2n7o0k9v7x8e0i5d2r7l8w1.png"
+                        alt="Lenovo Legion Pro 7i" class="w-full h-80 object-contain group-hover:scale-110 transition">
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold text-gray-800">Lenovo Legion Pro 7i</h3>
+                        <p class="text-gray-600 text-sm mt-2">i9-14900HX • RTX 4080 • 32GB</p>
+                        <span class="block text-3xl font-bold text-red-600 my-4">39 990 000 so‘m</span>
+                        <button
+                            class="w-full bg-gradient-to-r from-red-600 to-orange-600 text-white py-4 rounded-xl font-bold text-lg">Savatga
+                            qo‘shish</button>
+                    </div>
+                </div>
+
+                <!-- 5. Dell XPS 14 (2025) -->
+                <div
+                    class="bg-white rounded-3xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 group">
+                    <img src="https://i.dell.com/is/image/DellContent/content/dam/ss2/product-images/dell-client-products/notebooks/xps-notebooks/xps-14-9440/media-gallery/notebook-xps-14-9440-platinum-non-touch-gallery-4.psd?fmt=png-alpha&wid=1000&hei=1000"
+                        alt="Dell XPS 14" class="w-full h-80 object-contain group-hover:scale-110 transition">
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold text-gray-800">Dell XPS 14 OLED</h3>
+                        <p class="text-gray-600 text-sm mt-2">Intel Ultra 7 • 32GB • 1TB</p>
+                        <span class="block text-3xl font-bold text-indigo-600 my-4">34 990 000 so‘m</span>
+                        <button
+                            class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-4 rounded-xl font-bold text-lg">Savatga
+                            qo‘shish</button>
+                    </div>
+                </div>
+
+                <!-- 6. HP Spectre x360 16 -->
+                <div
+                    class="bg-white rounded-3xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 group">
+                    <img src="https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c08148331.png"
+                        alt="HP Spectre x360" class="w-full h-80 object-contain group-hover:scale-110 transition">
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold text-gray-800">HP Spectre x360 16</h3>
+                        <p class="text-gray-600 text-sm mt-2">2-in-1 • OLED • Intel Ultra 9</p>
+                        <span class="block text-3xl font-bold text-pink-600 my-4">31 990 000 so‘m</span>
+                        <button
+                            class="w-full bg-gradient-to-r from-pink-600 to-purple-600 text-white py-4 rounded-xl font-bold text-lg">Savatga
+                            qo‘shish</button>
+                    </div>
+                </div>
+
+                <!-- 7. MacBook Pro 14" M4 -->
+                <div
+                    class="bg-white rounded-3xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 group">
+                    <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp14-spaceblack-select-202410?wid=600&hei=600&fmt=jpeg&qlt=95"
+                        alt="MacBook Pro 14 M4" class="w-full h-80 object-contain group-hover:scale-110 transition">
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold text-gray-800">MacBook Pro 14" M4</h3>
+                        <p class="text-gray-600 text-sm mt-2">32GB • 1TB • Space Black</p>
+                        <span class="block text-3xl font-bold text-purple-600 my-4">37 990 000 so‘m</span>
+                        <button
+                            class="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-4 rounded-xl font-bold text-lg">Savatga
+                            qo‘shish</button>
+                    </div>
+                </div>
+
+                <!-- 8. ASUS Zenbook 14 OLED -->
+                <div
+                    class="bg-white rounded-3xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 group">
+                    <img src="https://dlcdnwebimgs.asus.com/gain/89F3E8B9-2C8B-4F7D-9B0A-8F7E8C8D9E0F/w1000/h1000"
+                        alt="ASUS Zenbook 14" class="w-full h-80 object-contain group-hover:scale-110 transition">
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold text-gray-800">ASUS Zenbook 14 OLED</h3>
+                        <p class="text-gray-600 text-sm mt-2">Intel Ultra 9 • 32GB • 1TB</p>
+                        <span class="block text-3xl font-bold text-blue-600 my-4">28 990 000 so‘m</span>
+                        <button
+                            class="w-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-4 rounded-xl font-bold text-lg">Savatga
+                            qo‘shish</button>
+                    </div>
+                </div>
+
+                <!-- 9. Razer Blade 16 (2025) -->
+                <div
+                    class="bg-white rounded-3xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 group">
+                    <img src="https://assets.razerzone.com/eeimages/products/40881/razer-blade-16-2025-gallery-01.png"
+                        alt="Razer Blade 16" class="w-full h-80 object-contain group-hover:scale-110 transition">
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold text-gray-800">Razer Blade 16</h3>
+                        <p class="text-gray-600 text-sm mt-2">RTX 5090 • 64GB RAM</p>
+                        <span class="block text-3xl font-bold text-green-500 my-4">69 990 000 so‘m</span>
+                        <button
+                            class="w-full bg-gradient-to-r from-green-500 to-black text-white py-4 rounded-xl font-bold text-lg">Savatga
+                            qo‘shish</button>
+                    </div>
+                </div>
+
+                <!-- 10. Acer Predator Helios 18 -->
+                <div
+                    class="bg-white rounded-3xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 group">
+                    <img src="https://static.acer.com/up/Resource/Acer/Predator/Helios/2024/rev-may-2024/img/helios-18-gallery-01.png"
+                        alt="Acer Predator Helios 18"
+                        class="w-full h-80 object-contain group-hover:scale-110 transition">
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold text-gray-800">Acer Predator Helios 18</h3>
+                        <p class="text-gray-600 text-sm mt-2">i9-14900HX • RTX 5090 • 64GB</p>
+                        <span class="block text-3xl font-bold text-orange-600 my-4">59 990 000 so‘m</span>
+                        <button
+                            class="w-full bg-gradient-to-r from-orange-600 to-red-600 text-white py-4 rounded-xl font-bold text-lg">Savatga
+                            qo‘shish</button>
+                    </div>
+                </div>
+
+                <!-- 11. Microsoft Surface Laptop 7 15" -->
+                <div
+                    class="bg-white rounded-3xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 group">
+                    <img src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1f3qF?ver=0f3e&q=90&m=6&h=600&w=600"
+                        alt="Surface Laptop 7" class="w-full h-80 object-contain group-hover:scale-110 transition">
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold text-gray-800">Surface Laptop 7 15"</h3>
+                        <p class="text-gray-600 text-sm mt-2">Snapdragon X Elite • 32GB</p>
+                        <span class="block text-3xl font-bold text-indigo-600 my-4">35 990 000 so‘m</span>
+                        <button
+                            class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-4 rounded-xl font-bold text-lg">Savatga
+                            qo‘shish</button>
+                    </div>
+                </div>
+
+                <!-- 12. Lenovo ThinkPad X1 Carbon Gen 12 -->
+                <div
+                    class="bg-white rounded-3xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 group">
+                    <img src="https://p1-ofp.static.pub/fes/cms/2024/03/20/9i8j7h6g5f4e3d2c1b0a9s8d7f6g5h4j.png"
+                        alt="ThinkPad X1 Carbon" class="w-full h-80 object-contain group-hover:scale-110 transition">
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold text-gray-800">ThinkPad X1 Carbon G12</h3>
+                        <p class="text-gray-600 text-sm mt-2">Ultra 7 • 32GB • 2.2K Display</p>
+                        <span class="block text-3xl font-bold text-gray-800 my-4">39 990 000 so‘m</span>
+                        <button
+                            class="w-full bg-gradient-to-r from-gray-700 to-black text-white py-4 rounded-xl font-bold text-lg">Savatga
+                            qo‘shish</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== NOUTBUK AKSESSUARLARI BO‘LIMI ==================== -->
+    <section id="accessories" class="py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl md:text-6xl font-extrabold text-gray-800 mb-4">
+                    Noutbuk uchun <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Aksessuarlar</span>
+                </h2>
+                <p class="text-xl text-gray-600">Ishingizni qulaylashtiring – eng sifatli aksessuarlar faqat bizda!</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+
+                <!-- 1. Noutbuk sumkasi 15.6" -->
+                <div
+                    class="bg-white rounded-3xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 group">
+                    <div class="relative">
+                        <img src="https://m.media-amazon.com/images/I/71n1J9v1OGL._AC_SL1500_.jpg" alt="Noutbuk sumkasi"
+                            class="w-full h-80 object-contain group-hover:scale-110 transition">
+                        <div
+                            class="absolute top-4 left-4 bg-indigo-600 text-white px-4 py-2 rounded-full text-sm font-bold">
+                            –20%</div>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold">Premium Noutbuk sumkasi 15.6"</h3>
+                        <p class="text-gray-600 text-sm">Suv o‘tkazmaydigan • Ko‘p bo‘limli</p>
+                        <div class="my-3">
+                            <span class="text-3xl font-bold text-indigo-600">690 000 so‘m</span>
+                            <span class="text-lg text-gray-400 line-through ml-3">890 000 so‘m</span>
+                        </div>
+                        <button
+                            class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-4 rounded-xl font-bold text-lg hover:shadow-2xl transition">Savatga
+                            qo‘shish</button>
+                    </div>
+                </div>
+
+                <!-- 2. Logitech MX Master 3S -->
+                <div
+                    class="bg-white rounded-3xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 group">
+                    <img src="https://m.media-amazon.com/images/I/61uZLA4gpSL._AC_SL1500_.jpg" alt="MX Master 3S"
+                        class="w-full h-80 object-contain group-hover:scale-110 transition">
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold">Logitech MX Master 3S</h3>
+                        <p class="text-gray-600 text-sm">8000 DPI • 70 kun batareya</p>
+                        <span class="block text-3xl font-bold text-gray-800 my-4">2 290 000 so‘m</span>
+                        <button
+                            class="w-full bg-gradient-to-r from-gray-700 to-black text-white py-4 rounded-xl font-bold text-lg">Savatga
+                            qo‘shish</button>
+                    </div>
+                </div>
+
+                <!-- 3. Mexanik klaviatura Keychron K8 Pro -->
+                <div
+                    class="bg-white rounded-3xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 group">
+                    <img src="https://m.media-amazon.com/images/I/71t8xN8nJYL._AC_SL1500_.jpg" alt="Keychron K8"
+                        class="w-full h-80 object-contain group-hover:scale-110 transition">
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold">Keychron K8 Pro RGB</h3>
+                        <p class="text-gray-600 text-sm">Hot-swap • Gateron • Bluetooth</p>
+                        <span class="block text-3xl font-bold text-red-600 my-4">2 190 000 so‘m</span>
+                        <button
+                            class="w-full bg-gradient-to-r from-red-600 to-pink-600 text-white py-4 rounded-xl font-bold text-lg">Savatga
+                            qo‘shish</button>
+                    </div>
+                </div>
+
+                <!-- 4. Noutbuk sovutgich stend -->
+                <div
+                    class="bg-white rounded-3xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 group">
+                    <img src="https://m.media-amazon.com/images/I/71y6y5O2j7L._AC_SL1500_.jpg" alt="Sovutgich"
+                        class="w-full h-80 object-contain group-hover:scale-110 transition">
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold">RGB Sovutgich stend</h3>
+                        <p class="text-gray-600 text-sm">6 ta fan • 17" gacha</p>
+                        <span class="block text-3xl font-bold text-cyan-600 my-4">990 000 so‘m</span>
+                        <button
+                            class="w-full bg-gradient-to-r from-cyan-600 to-blue-600 text-white py-4 rounded-xl font-bold text-lg">Savatga
+                            qo‘shish</button>
+                    </div>
+                </div>
+
+                <!-- 5. Anker 737 Power Bank 24 000mAh -->
+                <div
+                    class="bg-white rounded-3xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 group">
+                    <img src="https://m.media-amazon.com/images/I/61J3T5l6BRL._AC_SL1500_.jpg" alt="Anker 737"
+                        class="w-full h-80 object-contain group-hover:scale-110 transition">
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold">Anker 737 PowerBank</h3>
+                        <p class="text-gray-600 text-sm">140W • MacBook Pro ni 2 marta zaryad</p>
+                        <span class="block text-3xl font-bold text-green-600 my-4">2 490 000 so‘m</span>
+                        <button
+                            class="w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white py-4 rounded-xl font-bold text-lg">Savatga
+                            qo‘shish</button>
+                    </div>
+                </div>
+
+                <!-- Qolgan 10 ta aksessuar (qisqa) – hammasi bir xil uslubda -->
+                <div
+                    class="bg-white rounded-3xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 group">
+                    <img src="https://m.media-amazon.com/images/I/71vOQ9dF1KL._AC_SL1500_.jpg" alt="Web kamera"
+                        class="w-full h-80 object-contain group-hover:scale-110 transition">
+                    <div class="p-6 text-center">
+                        <h3 class="text-xl font-bold">Logitech StreamCam 4K</h3>
+                        <span class="block text-3xl font-bold text-purple-600 my-4">2 890 000 so‘m</span>
+                        <button
+                            class="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-4 rounded-xl font-bold text-lg">Savatga
+                            qo‘shish</button>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+    <!-- ==================== NOUTBUKLARNI TAQQOSLASH BO‘LIMI (12 TA NOUTBUK TO‘LIQ) ==================== -->
+    <section id="compare-laptops" class="py-24 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-5xl md:text-6xl font-bold text-center mb-6 text-gray-800">
+                Noutbuklarni <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Taqqoslash</span>
+            </h2>
+            <p class="text-xl text-gray-600 text-center mb-12">4 tagacha noutbukni tanlang va solishtiring</p>
+
+            <div class="text-center mb-10">
+                <p class="text-lg text-gray-700">
+                    Tanlangan: <span id="laptopCount" class="font-bold text-indigo-600">0</span>/4
+                </p>
+                <button id="clearLaptopCompare"
+                    class="mt-4 text-red-600 hover:text-red-800 font-medium underline hidden">
+                    Taqqoslashni tozalash
+                </button>
+            </div>
+
+            <!-- Jadval -->
+            <div id="laptopCompareTable" class="bg-white rounded-3xl shadow-2xl overflow-x-auto hidden mb-20">
+                <table class="w-full min-w-[800px]">
+                    <thead class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
+                        <tr>
+                            <th class="p-6 text-left">Xususiyat</th>
+                            <th class="p-6 text-center">1</th>
+                            <th class="p-6 text-center">2</th>
+                            <th class="p-6 text-center">3</th>
+                            <th class="p-6 text-center">4</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-700">
+                        <tr class="border-b">
+                            <td class="p-6 font-semibold">Model</td>
+                            <td colspan="4" id="laptop-model-row" class="text-center py-8"></td>
+                        </tr>
+                        <tr class="border-b bg-gray-50">
+                            <td class="p-6 font-semibold">Protsessor</td>
+                            <td colspan="4" id="laptop-cpu-row"></td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="p-6 font-semibold">Video karta</td>
+                            <td colspan="4" id="laptop-gpu-row"></td>
+                        </tr>
+                        <tr class="border-b bg-gray-50">
+                            <td class="p-6 font-semibold">RAM / SSD</td>
+                            <td colspan="4" id="laptop-ram-row"></td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="p-6 font-semibold">Ekran</td>
+                            <td colspan="4" id="laptop-display-row"></td>
+                        </tr>
+                        <tr class="border-b bg-gray-50">
+                            <td class="p-6 font-semibold">Narx</td>
+                            <td colspan="4" id="laptop-price-row" class="py-8 text-2xl font-bold"></td>
+                        </tr>
+                        <tr>
+                            <td class="p-6 font-semibold">Sotib olish</td>
+                            <td colspan="4" id="laptop-buttons-row" class="py-8"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 12 TA NOUTBUK – TAQQOSLASH UCHUN TUGADI -->
+            <h3 class="text-4xl font-bold text-center mb-12">Tanlang va solishtiring</h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-8">
+
+                <!-- 1 -->
+                <div class="laptop-compare-card cursor-pointer border-4 border-transparent hover:border-indigo-600 rounded-3xl shadow-xl overflow-hidden transition-all"
+                    data-model="MacBook Pro 16&quot; M4 Pro" data-cpu="M4 Pro (14-core)" data-gpu="40-core GPU"
+                    data-ram="48GB • 1TB SSD" data-display="16.2&quot; Liquid Retina XDR" data-price="49 990 000 so‘m"
+                    data-img="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp16-spaceblack-select-202410?wid=600&hei=600&fmt=jpeg">
+                    <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp16-spaceblack-select-202410?wid=600&hei=600&fmt=jpeg"
+                        class="w-full h-56 object-contain">
+                    <div class="p-4 text-center bg-gray-50">
+                        <p class="font-bold text-lg">MacBook Pro 16" M4 Pro</p>
+                        <p class="text-2xl font-bold text-purple-600">49.99 mln</p>
+                    </div>
+                </div>
+
+                <!-- 2 -->
+                <div class="laptop-compare-card cursor-pointer border-4 border-transparent hover:border-indigo-600 rounded-3xl shadow-xl overflow-hidden transition-all"
+                    data-model="MacBook Air 15&quot; M3" data-cpu="M3 (8-core)" data-gpu="10-core GPU"
+                    data-ram="16GB • 512GB" data-display="15.3&quot; Liquid Retina" data-price="24 990 000 so‘m"
+                    data-img="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-15-select-202403-midnight?wid=600&hei=600&fmt=jpeg">
+                    <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-15-select-202403-midnight?wid=600&hei=600&fmt=jpeg"
+                        class="w-full h-56 object-contain">
+                    <div class="p-4 text-center bg-gray-50">
+                        <p class="font-bold text-lg">MacBook Air 15" M3</p>
+                        <p class="text-2xl font-bold text-blue-600">24.99 mln</p>
+                    </div>
+                </div>
+
+                <!-- 3 -->
+                <div class="laptop-compare-card cursor-pointer border-4 border-transparent hover:border-indigo-600 rounded-3xl shadow-xl overflow-hidden transition-all"
+                    data-model="ASUS ROG Strix G16" data-cpu="i9-14900HX" data-gpu="RTX 5070" data-ram="32GB • 1TB SSD"
+                    data-display="16&quot; QHD+ 240Hz" data-price="44 990 000 so‘m"
+                    data-img="https://dlcdnwebimgs.asus.com/gain/5E8F8E8C-4C5D-4F4D-9B0B-8F7E8C8D9E0F/w1000/h1000">
+                    <img src="https://dlcdnwebimgs.asus.com/gain/5E8F8E8C-4C5D-4F4D-9B0B-8F7E8C8D9E0F/w1000/h1000"
+                        class="w-full h-56 object-contain">
+                    <div class="p-4 text-center bg-gray-50">
+                        <p class="font-bold text-lg">ASUS ROG Strix G16</p>
+                        <p class="text-2xl font-bold text-green-600">44.99 mln</p>
+                    </div>
+                </div>
+
+                <!-- 4 -->
+                <div class="laptop-compare-card cursor-pointer border-4 border-transparent hover:border-indigo-600 rounded-3xl shadow-xl overflow-hidden transition-all"
+                    data-model="Lenovo Legion Pro 7i" data-cpu="i9-14900HX" data-gpu="RTX 4080"
+                    data-ram="32GB • 1TB SSD" data-display="16&quot; WQXGA 240Hz" data-price="39 990 000 so‘m"
+                    data-img="https://p1-ofp.static.pub/fes/cms/2024/04/15/z9i3y0i8l2n7o0k9v7x8e0i5d2r7l8w1.png">
+                    <img src="https://p1-ofp.static.pub/fes/cms/2024/04/15/z9i3y0i8l2n7o0k9v7x8e0i5d2r7l8w1.png"
+                        class="w-full h-56 object-contain">
+                    <div class="p-4 text-center bg-gray-50">
+                        <p class="font-bold text-lg">Lenovo Legion Pro 7i</p>
+                        <p class="text-2xl font-bold text-red-600">39.99 mln</p>
+                    </div>
+                </div>
+
+                <!-- 5-12 (qolgan 8 tasi) -->
+                <div class="laptop-compare-card cursor-pointer border-4 border-transparent hover:border-indigo-600 rounded-3xl shadow-xl overflow-hidden transition-all"
+                    data-model="Dell XPS 14 OLED" data-cpu="Intel Ultra 7" data-gpu="Intel Arc" data-ram="32GB • 1TB"
+                    data-display="14.5&quot; 3.2K OLED" data-price="34 990 000 so‘m"
+                    data-img="https://i.dell.com/is/image/DellContent/content/dam/ss2/product-images/dell-client-products/notebooks/xps-notebooks/xps-14-9440/media-gallery/notebook-xps-14-9440-platinum-non-touch-gallery-4.psd?fmt=png-alpha&wid=1000&hei=1000">
+                    <img src="https://i.dell.com/is/image/DellContent/content/dam/ss2/product-images/dell-client-products/notebooks/xps-notebooks/xps-14-9440/media-gallery/notebook-xps-14-9440-platinum-non-touch-gallery-4.psd?fmt=png-alpha&wid=1000&hei=1000"
+                        class="w-full h-56 object-contain">
+                    <div class="p-4 text-center bg-gray-50">
+                        <p class="font-bold text-lg">Dell XPS 14</p>
+                        <p class="text-2xl font-bold text-indigo-600">34.99 mln</p>
+                    </div>
+                </div>
+
+                <div class="laptop-compare-card cursor-pointer border-4 border-transparent hover:border-indigo-600 rounded-3xl shadow-xl overflow-hidden transition-all"
+                    data-model="HP Spectre x360 16" data-cpu="Intel Ultra 9" data-gpu="Intel Arc" data-ram="32GB • 1TB"
+                    data-display="16&quot; OLED 2.8K" data-price="31 990 000 so‘m"
+                    data-img="https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c08148331.png">
+                    <img src="https://ssl-product-images.www8-hp.com/digmedialib/prodimg/lowres/c08148331.png"
+                        class="w-full h-56 object-contain">
+                    <div class="p-4 text-center bg-gray-50">
+                        <p class="font-bold text-lg">HP Spectre x360 16</p>
+                        <p class="text-2xl font-bold text-pink-600">31.99 mln</p>
+                    </div>
+                </div>
+
+                <div class="laptop-compare-card cursor-pointer border-4 border-transparent hover:border-indigo-600 rounded-3xl shadow-xl overflow-hidden transition-all"
+                    data-model="MacBook Pro 14&quot; M4" data-cpu="M4 (10-core)" data-gpu="10-core GPU"
+                    data-ram="32GB • 1TB" data-display="14.2&quot; Liquid Retina XDR" data-price="37 990 000 so‘m"
+                    data-img="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp14-spaceblack-select-202410?wid=600&hei=600&fmt=jpeg">
+                    <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp14-spaceblack-select-202410?wid=600&hei=600&fmt=jpeg"
+                        class="w-full h-56 object-contain">
+                    <div class="p-4 text-center bg-gray-50">
+                        <p class="font-bold text-lg">MacBook Pro 14" M4</p>
+                        <p class="text-2xl font-bold text-purple-600">37.99 mln</p>
+                    </div>
+                </div>
+
+                <div class="laptop-compare-card cursor-pointer border-4 border-transparent hover:border-indigo-600 rounded-3xl shadow-xl overflow-hidden transition-all"
+                    data-model="ASUS Zenbook 14 OLED" data-cpu="Intel Ultra 9" data-gpu="Intel Arc"
+                    data-ram="32GB • 1TB" data-display="14&quot; 2.8K OLED" data-price="28 990 000 so‘m"
+                    data-img="https://dlcdnwebimgs.asus.com/gain/89F3E8B9-2C8B-4F7D-9B0A-8F7E8C8D9E0F/w1000/h1000">
+                    <img src="https://dlcdnwebimgs.asus.com/gain/89F3E8B9-2C8B-4F7D-9B0A-8F7E8C8D9E0F/w1000/h1000"
+                        class="w-full h-56 object-contain">
+                    <div class="p-4 text-center bg-gray-50">
+                        <p class="font-bold text-lg">ASUS Zenbook 14</p>
+                        <p class="text-2xl font-bold text-blue-600">28.99 mln</p>
+                    </div>
+                </div>
+
+                <div class="laptop-compare-card cursor-pointer border-4 border-transparent hover:border-indigo-600 rounded-3xl shadow-xl overflow-hidden transition-all"
+                    data-model="Razer Blade 16" data-cpu="i9-14900HX" data-gpu="RTX 5090" data-ram="64GB • 2TB"
+                    data-display="16&quot; OLED QHD+ 240Hz" data-price="69 990 000 so‘m"
+                    data-img="https://assets.razerzone.com/eeimages/products/40881/razer-blade-16-2025-gallery-01.png">
+                    <img src="https://assets.razerzone.com/eeimages/products/40881/razer-blade-16-2025-gallery-01.png"
+                        class="w-full h-56 object-contain">
+                    <div class="p-4 text-center bg-gray-50">
+                        <p class="font-bold text-lg">Razer Blade 16</p>
+                        <p class="text-2xl font-bold text-green-500">69.99 mln</p>
+                    </div>
+                </div>
+
+                <div class="laptop-compare-card cursor-pointer border-4 border-transparent hover:border-indigo-600 rounded-3xl shadow-xl overflow-hidden transition-all"
+                    data-model="Acer Predator Helios 18" data-cpu="i9-14900HX" data-gpu="RTX 5090" data-ram="64GB • 2TB"
+                    data-display="18&quot; Mini-LED" data-price="59 990 000 so‘m"
+                    data-img="https://static.acer.com/up/Resource/Acer/Predator/Helios/2024/rev-may-2024/img/helios-18-gallery-01.png">
+                    <img src="https://static.acer.com/up/Resource/Acer/Predator/Helios/2024/rev-may-2024/img/helios-18-gallery-01.png"
+                        class="w-full h-56 object-contain">
+                    <div class="p-4 text-center bg-gray-50">
+                        <p class="font-bold text-lg">Acer Predator 18</p>
+                        <p class="text-2xl font-bold text-orange-600">59.99 mln</p>
+                    </div>
+                </div>
+
+                <div class="laptop-compare-card cursor-pointer border-4 border-transparent hover:border-indigo-600 rounded-3xl shadow-xl overflow-hidden transition-all"
+                    data-model="Surface Laptop 7 15&quot;" data-cpu="Snapdragon X Elite" data-gpu="Adreno"
+                    data-ram="32GB • 1TB" data-display="15&quot; PixelSense" data-price="35 990 000 so‘m"
+                    data-img="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1f3qF?ver=0f3e&q=90&m=6&h=600&w=600">
+                    <img src="https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RW1f3qF?ver=0f3e&q=90&m=6&h=600&w=600"
+                        class="w-full h-56 object-contain">
+                    <div class="p-4 text-center bg-gray-50">
+                        <p class="font-bold text-lg">Surface Laptop 7</p>
+                        <p class="text-2xl font-bold text-indigo-600">35.99 mln</p>
+                    </div>
+                </div>
+
+                <div class="laptop-compare-card cursor-pointer border-4 border-transparent hover:border-indigo-600 rounded-3xl shadow-xl overflow-hidden transition-all"
+                    data-model="ThinkPad X1 Carbon G12" data-cpu="Intel Ultra 7" data-gpu="Intel Graphics"
+                    data-ram="32GB • 1TB" data-display="14&quot; 2.8K OLED" data-price="39 990 000 so‘m"
+                    data-img="https://p1-ofp.static.pub/fes/cms/2024/03/20/9i8j7h6g5f4e3d2c1b0a9s8d7f6g5h4j.png">
+                    <img src="https://p1-ofp.static.pub/fes/cms/2024/03/20/9i8j7h6g5f4e3d2c1b0a9s8d7f6g5h4j.png"
+                        class="w-full h-56 object-contain">
+                    <div class="p-4 text-center bg-gray-50">
+                        <p class="font-bold text-lg">ThinkPad X1 Carbon</p>
+                        <p class="text-2xl font-bold text-gray-800">39.99 mln</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- Portfolio bo‘limi -->
+    <section id="portfolio" class="py-20 bg-gradient-to-b from-gray-50 to-white">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-6xl font-extrabold text-gray-800 mb-8">
+                Bizning <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Portfolio</span>
+            </h1>
+
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-12">
+                PhoneShop jamoasi tomonidan yaratilgan eng yaxshi loyihalar, veb-saytlar va mobil ilovalar bilan
+                tanishing.
+            </p>
+
+            <a href="https://httpsmyportpolionetlifyapp.netlify.app" target="_blank" rel="noopener noreferrer"
+                class="inline-block group">
+
+                <button
+                    class="relative px-12 py-6 text-xl font-bold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl shadow-2xl hover:shadow-purple-500/50 transform hover:scale-105 transition-all duration-300 overflow-hidden">
+                    <span class="relative z-10 flex items-center gap-3">
+                        Portfolio-ni ko‘rish
+                        <i class="fa-solid fa-arrow-right-long group-hover:translate-x-2 transition-transform"></i>
+                    </span>
+
+                    <div
+                        class="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-500">
+                    </div>
+                </button>
+            </a>
+
+            <p class="mt-8 text-gray-500">
+                Yangi oynada ochiladi
+                <i class="fa-solid fa-up-right-from-square text-sm"></i>
+            </p>
+        </div>
+    </section>
+
+    <!-- Aloqa bo‘limi – QORONG‘I ZAMONAVIY DIZAYN -->
+    <section id="contact"
+        class="py-24 bg-gradient-to-br from-gray-900 via-purple-900 to-black text-white min-h-screen flex items-center">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl md:text-7xl font-extrabold mb-4">
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-600">
+                            Biz bilan aloqa
+                        </span>
+                    </h2>
+                    <p class="text-xl text-gray-400">Savolingiz bo‘lsa — 24/7 javob beramiz</p>
+                </div>
+
+                <div class="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl">
+                    <form action="https://formspree.io/f/xblrjwpk" method="POST" class="space-y-8">
+
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div>
+                                <label class="block text-gray-300 text-lg mb-3">Ism</label>
+                                <input type="text" name="name" required
+                                    class="w-full px-6 py-5 bg-white/10 border border-white/20 rounded-2xl text-white placeholder-gray-500 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-500/30 outline-none transition"
+                                    placeholder="Ismingizni kiriting">
+                            </div>
+                            <div>
+                                <label class="block text-gray-300 text-lg mb-3">Email</label>
+                                <input type="email" name="email" required
+                                    class="w-full px-6 py-5 bg-white/10 border border-white/20 rounded-2xl text-white placeholder-gray-500 focus:border-purple-500 focus:ring-4 focus:ring-purple-500/30 outline-none transition"
+                                    placeholder="email@example.com">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-gray-300 text-lg mb-3">Mavzu</label>
+                            <input type="text" name="subject"
+                                class="w-full px-6 py-5 bg-white/10 border border-white/20 rounded-2xl text-white placeholder-gray-500 focus:border-pink-500 focus:ring-4 focus:ring-pink-500/30 outline-none transition"
+                                placeholder="Masalan: Buyurtma holati">
+                        </div>
+
+                        <div>
+                            <label class="block text-gray-300 text-lg mb-3">Xabar</label>
+                            <textarea name="message" rows="6" required
+                                class="w-full px-6 py-5 bg-white/10 border border-white/20 rounded-2xl text-white placeholder-gray-500 focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/30 outline-none transition resize-none"
+                                placeholder="Bu yerda xabaringizni yozing..."></textarea>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row gap-4 justify-end items-center pt-6">
+                            <button type="reset"
+                                class="px-10 py-4 bg-white/10 border border-white/30 text-white rounded-full font-semibold hover:bg-white/20 transition backdrop-blur">
+                                Tozalash
+                            </button>
+                            <button type="submit"
+                                class="px-12 py-5 bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-full font-bold text-lg shadow-2xl hover:shadow-cyan-500/50 transform hover:scale-105 transition-all duration-300 flex items-center gap-3">
+                                <span>Yuborish</span>
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="mt-12 pt-10 border-t border-white/10 text-center">
+                        <p class="text-gray-400 text-lg">
+                            Email:
+                            <a href="mailto:abduazizsherjonov357@gmail.com" class="text-cyan-400 hover:underline">
+                                abduazizsherjonov357@gmail.com
+                            </a>
+                            <span class="mx-4">•</span>
+                            Telegram:
+                            <a href="https://t.me/Sherjonov011" target="_blank" class="text-purple-400 hover:underline">
+                                @Sherjonov011
+                            </a>
+                        </p>
+                        <p class="text-sm text-gray-500 mt-4">
+                            Agar real email endpoint xohlasangiz — EmailJS yoki Formspree konfiguratsiyasini qo‘shib
+                            beraman
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- ALOQA BO‘LIMI UCHUN UCHA YURADIGAN YULDUZ VA TELEFON ANIMATSIYASI -->
+        <div class="contact-bg-effects">
+            <!-- Yulduzlar -->
+            <i class="contact-star fa-solid fa-star"></i>
+            <i class="contact-star fa-solid fa-star"></i>
+            <i class="contact-star fa-solid fa-star"></i>
+            <i class="contact-star fa-solid fa-star"></i>
+            <i class="contact-star fa-solid fa-star"></i>
+            <i class="contact-star fa-solid fa-star"></i>
+            <i class="contact-star fa-solid fa-star"></i>
+            <i class="contact-star fa-solid fa-star"></i>
+
+            <!-- Telefon va sparkle -->
+            <i class="contact-particle fa-solid fa-mobile-screen-button"></i>
+            <i class="contact-particle fa-solid fa-sparkles"></i>
+            <i class="contact-particle fa-solid fa-mobile-screen-button"></i>
+            <i class="contact-particle fa-solid fa-sparkles"></i>
+            <i class="contact-particle fa-solid fa-mobile-screen-button"></i>
+            <i class="contact-particle fa-solid fa-sparkles"></i>
+        </div>
+    </section>
+    <!-- FOOTER – SAYT OXIRIGA QO‘YING -->
+    <footer class="bg-gradient-to-t from-black via-purple-950 to-purple-900 text-white py-16">
+        <div class="container mx-auto px-6">
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
+
+                <!-- 1. Brend va qisqacha info -->
+                <div>
+                    <div class="flex items-center justify-center md:justify-start space-x-3 mb-6">
+                        <i class="fa-solid fa-mobile-screen-button text-4xl text-cyan-400 animate-pulse"></i>
+                        <h1
+                            class="text-3xl font-black bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-400">
+                            PhoneShop
+                        </h1>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed">
+                        Eng yangi smartfonlar va aksessuarlar<br>
+                        Rasmiy kafolat • Tez yetkazib berish • 24/7 aloqa
+                    </p>
+                </div>
+
+                <!-- 2. Foydali havolalar -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-cyan-400">Foydali havolalar</h3>
+                    <ul class="space-y-4 text-gray-300">
+                        <li><a href="#home" class="hover:text-white transition">Bosh sahifa</a></li>
+                        <li><a href="#products" class="hover:text-white transition">Telefonlar</a></li>
+                        <li><a href="#accessories" class="hover:text-white transition">Aksessuarlar</a></li>
+                        <li><a href="#" class="hover:text-white transition">Yetkazib berish</a></li>
+                        <li><a href="#" class="hover:text-white transition">Kafolat shartlari</a></li>
+                        <li><a href="#" class="hover:text-white transition">Mijozlar sharhlari</a></li>
+                    </ul>
+                </div>
+
+                <!-- 3. Aloqa va ijtimoiy tarmoqlar -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-cyan-400">Biz bilan bog‘laning</h3>
+                    <div class="space-y-5 text-gray-300">
+                        <p class="flex items-center justify-center md:justify-start gap-3">
+                            <i class="fa-solid fa-phone text-green-400"></i>
+                            <span>+998 99 123-45-67</span>
+                        </p>
+                        <p class="flex items-center justify-center md:justify-start gap-3">
+                            <i class="fa-solid fa-envelope text-yellow-400"></i>
+                            phoneshop.uz@gmail.com
+                        </p>
+                    </div>
+
+                    <div class="flex justify-center md:justify-start gap-4 mt-8">
+                        <a href="https://t.me/Sherjonov011" target="_blank"
+                            class="bg-blue-600 hover:bg-blue-700 w-14 h-14 rounded-full flex items-center justify-center transition transform hover:scale-110 shadow-lg">
+                            <i class="fab fa-telegram-plane text-2xl"></i>
+                        </a>
+                        <a href="https://instagram.com/sherjonov.011" target="_blank"
+                            class="bg-gradient-to-r from-purple-600 to-pink-600 hover:to-pink-700 w-14 h-14 rounded-full flex items-center justify-center transition transform hover:scale-110 shadow-lg">
+                            <i class="fab fa-instagram text-2xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mualliflik huquqi -->
+            <div class="border-t border-white/20 mt-12 pt-8 text-center">
+                <p class="text-gray-400 text-sm">
+                    © 2025 <span class="text-cyan-400 font-bold">PhoneShop.uz</span> — Barcha huquqlar himoyalangan.<br>
+                    Made with <i class="fa-solid fa-heart text-red-500"></i> in Uzbekistan
+                </p>
+            </div>
+        </div>
+    </footer>
+    <a href="https://t.me/Sherjonov011" target="_blank"
+        class="fixed bottom-12 right-6 bg-blue-500 hover:bg-blue-600 text-white p-5 rounded-full shadow-2xl z-50 transition transform hover:scale-110">
+        <i class="fab fa-telegram-plane text-3xl"></i>
+    </a>
+    <!-- PREMIUM JAVASCRIPT – YANGI QO‘SHILGAN (HTML 0% o‘zgarmadi!) -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            // Savat soni va belgisi
+            let cartCount = 0;
+            const cartBadge = document.createElement("div");
+            cartBadge.className = "fixed top-6 right-6 z-50 flex items-center gap-3";
+            cartBadge.innerHTML = `
+    <div class="relative">
+        <i class="fa-solid fa-shopping-cart text-4xl text-white bg-red-600 w-16 h-16 rounded-full flex items-center justify-center shadow-2xl animate-pulse relative -top-4"></i>
+        <span id="cart-count" class="absolute -top-6 -right-5 bg-yellow-400 text-black text-sm font-bold w-8 h-8 rounded-full flex items-center justify-center shadow-lg ">0</span>
+    </div>
+`;
+            document.body.appendChild(cartBadge);
+
+            // Barcha "Savatga qo‘shish" tugmalarini topamiz (bo‘sh joy, enter, \n – hammasi hisobga olindi)
+            document.querySelectorAll("button").forEach(button => {
+                // Matnni tozalab tekshiramiz
+                const text = button.textContent.replace(/\s+/g, " ").trim();
+                if (text === "Savatga qo‘shish") {
+
+                    button.addEventListener("click", function () {
+                        if (this.classList.contains("added")) return; // ikki marta bosilmasin
+
+                        const originalHTML = this.innerHTML;
+
+                        // Tugma o‘zgaradi
+                        this.innerHTML = '<i class="fa-solid fa-check mr-2"></i>Qo‘shildi!';
+                        this.style.background = "linear-gradient(to right, #10b981, #34d399)";
+                        this.classList.add("added");
+
+                        // Savat soni oshadi
+                        cartCount++;
+                        document.getElementById("cart-count").textContent = cartCount;
+
+                        // Toast chiqadi
+                        const toast = document.createElement("div");
+                        toast.className = "fixed bottom-10 left-1/2 -translate-x-1/2 bg-gradient-to-r from-emerald-600 to-cyan-600 text-white px-10 py-6 rounded-2xl shadow-2xl z-50 flex items-center gap-4 transform translate-y-16 opacity-0 transition-all duration-500 font-bold text-lg";
+                        toast.innerHTML = `
+                <i class="fa-solid fa-check-circle text-4xl"></i>
+                <div>Mahsulot savatga qo‘shildi!<br>
+                    <span class="text-sm opacity-90">Jami: ${cartCount} ta</span>
+                </div>
+            `;
+                        document.body.appendChild(toast);
+
+                        setTimeout(() => toast.classList.remove("translate-y-16", "opacity-0"), 100);
+                        setTimeout(() => {
+                            toast.classList.add("opacity-0", "translate-y-16");
+                            setTimeout(() => toast.remove(), 600);
+                        }, 2800);
+
+                        // 2.5 soniyadan keyin tugma qaytadi
+                        setTimeout(() => {
+                            this.innerHTML = originalHTML;
+                            this.style.background = "";
+                            this.classList.remove("added");
+                        }, 2500);
+                    });
+                }
+            });
+        });
+        const selected = [];
+        const countEl = document.getElementById('laptopCount');
+        const table = document.getElementById('laptopCompareTable');
+        const clearBtn = document.getElementById('clearLaptopCompare');
+
+        document.querySelectorAll('.laptop-compare-card').forEach(card => {
+            card.addEventListener('click', function () {
+                if (selected.length >= 4) return alert('Maksimum 4 ta!');
+                if (this.classList.contains('border-indigo-600')) return;
+
+                this.classList.add('border-indigo-600', 'shadow-2xl');
+                selected.push(this.dataset);
+                updateTable();
+            });
+        });
+
+        function updateTable() {
+            countEl.textContent = selected.length;
+            table.classList.toggle('hidden', selected.length === 0);
+            clearBtn.classList.toggle('hidden', selected.length === 0);
+
+            document.getElementById('laptop-model-row').innerHTML = selected.map(l => `<td class="text-center"><img src="${l.img}" class="w-32 h-32 object-contain mx-auto rounded-xl mb-3"><br><b>${l.model}</b></td>`).join('');
+            document.getElementById('laptop-cpu-row').innerHTML = selected.map(l => `<td class="text-center py-4">${l.cpu}</td>`).join('');
+            document.getElementById('laptop-gpu-row').innerHTML = selected.map(l => `<td class="text-center py-4 font-semibold text-green-600">${l.gpu}</td>`).join('');
+            document.getElementById('laptop-ram-row').innerHTML = selected.map(l => `<td class="text-center py-4">${l.ram}</td>`).join('');
+            document.getElementById('laptop-display-row').innerHTML = selected.map(l => `<td class="text-center py-4">${l.display}</td>`).join('');
+            document.getElementById('laptop-price-row').innerHTML = selected.map(l => `<td class="text-center text-purple-600">${l.price}</td>`).join('');
+            document.getElementById('laptop-buttons-row').innerHTML = selected.map(() => `<td class="text-center"><button class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-4 rounded-xl font-bold hover:scale-105 transition">Savatga qo‘shish</button></td>`).join('');
+        }
+
+        clearBtn.onclick = () => {
+            selected.length = 0;
+            document.querySelectorAll('.laptop-compare-card').forEach(c => c.classList.remove('border-indigo-600', 'shadow-2xl'));
+            table.classList.add('hidden');
+            clearBtn.classList.add('hidden');
+            countEl.textContent = '0';
+        };
+    </script>
+</body>
+
+</html>

@@ -256,52 +256,52 @@
         }
       }, 1000);
     });
-// Partikllar yaratish
-  setInterval(() => {
-    const p = document.createElement('div');
-    p.classList.add('particle');
-    const size = Math.random() * 5 + 3;
-    p.style.width = size + 'px';
-    p.style.height = size + 'px';
-    p.style.left = Math.random() * 100 + 'vw';
-    p.style.animationDuration = Math.random() * 8 + 10 + 's';
-    particlesContainer.appendChild(p);
-    setTimeout(() => p.remove(), 18000);
-  }, 300);
+    // Partikllar yaratish
+    setInterval(() => {
+      const p = document.createElement('div');
+      p.classList.add('particle');
+      const size = Math.random() * 5 + 3;
+      p.style.width = size + 'px';
+      p.style.height = size + 'px';
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.animationDuration = Math.random() * 8 + 10 + 's';
+      particlesContainer.appendChild(p);
+      setTimeout(() => p.remove(), 18000);
+    }, 300);
 
-  // Forma tekshiruvi
-  document.getElementById('registerForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+    // Forma tekshiruvi
+    document.getElementById('registerForm').addEventListener('submit', function (e) {
+      e.preventDefault();
 
-    const pass1 = this.password1.value;
-    const pass2 = this.password2.value;
+      const pass1 = this.password1.value;
+      const pass2 = this.password2.value;
 
-    if (pass1 !== pass2) {
-      alert('Parollar mos kelmadi!');
-      return;
-    }
-    if (pass1.length < 6) {
-      alert('Parol kamida 6 belgidan iborat boʻlishi kerak!');
-      return;
-    }
-
-    // RO'YXATDAN O'TGANINI BELGILAYMIZ
-    localStorage.setItem("phoneShop_user_registered", "true");
-
-    // Muvaffaqiyatli xabar
-    document.getElementById('successMessage').classList.add('show');
-
-    let seconds = 3;
-    const countdownEl = document.getElementById('countdown');
-    const timer = setInterval(() => {
-      seconds--;
-      countdownEl.textContent = seconds;
-      if (seconds <= 0) {
-        clearInterval(timer);
-        window.location.href = 'index.html'; // Asosiy sahifaga o'tish
+      if (pass1 !== pass2) {
+        alert('Parollar mos kelmadi!');
+        return;
       }
-    }, 1000);
-  });
+      if (pass1.length < 6) {
+        alert('Parol kamida 6 belgidan iborat boʻlishi kerak!');
+        return;
+      }
+
+      // RO'YXATDAN O'TGANINI BELGILAYMIZ
+      localStorage.setItem("phoneShop_user_registered", "true");
+
+      // Muvaffaqiyatli xabar
+      document.getElementById('successMessage').classList.add('show');
+
+      let seconds = 3;
+      const countdownEl = document.getElementById('countdown');
+      const timer = setInterval(() => {
+        seconds--;
+        countdownEl.textContent = seconds;
+        if (seconds <= 0) {
+          clearInterval(timer);
+          window.location.href = 'index.html'; // Asosiy sahifaga o'tish
+        }
+      }, 1000);
+    });
   </script>
 </body>
 

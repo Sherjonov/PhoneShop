@@ -602,17 +602,22 @@
                 opacity: 0;
             }
         }
+
         nav {
-        backdrop-filter: blur(12px);
-        background: rgba(255, 255, 255, 0.95);
-    }
-    nav::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; right: 0; height: 4px;
-        background: linear-gradient(90deg, #a855f7, #ec4899, #3b82f6);
-        border-radius: 0 0 10px 10px;
-    }
+            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        nav::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #a855f7, #ec4899, #3b82f6);
+            border-radius: 0 0 10px 10px;
+        }
     </style>
 </head>
 
@@ -620,7 +625,7 @@
 
     <nav class="bg-white shadow-2xl fixed top-0 left-0 right-0 z-50 border-b border-gray-100">
         <div class="container mx-auto px-6 py-5 flex items-center justify-between">
-    
+
             <!-- Logo -->
             <div class="flex items-center space-x-4">
                 <i class="fa-solid fa-tablet-screen-button text-4xl text-purple-600 animate-pulse"></i>
@@ -629,7 +634,7 @@
                     PhoneShop <span class="text-xl font-light text-gray-600">| iPad</span>
                 </h1>
             </div>
-    
+
             <!-- Menu -->
             <ul class="hidden md:flex items-center space-x-10 text-gray-700 font-semibold text-lg">
                 <li>
@@ -659,7 +664,7 @@
                     </a>
                 </li>
             </ul>
-    
+
             <!-- Tugma + Savat -->
             <div class="flex items-center gap-6">
                 <a href="index1.html" class="bg-gradient-to-r from-purple-600 to-pink-600 
@@ -668,7 +673,7 @@
                     transition whitespace-nowrap">
                     <i class="fa-solid fa-user-plus mr-2"></i> Ro‘yxatdan o‘tish
                 </a>
-    
+
                 <!-- Savat badge (sizning oldingi JS bilan ishlaydi) -->
                 <div class="relative">
                     <i class="fa-solid fa-shopping-cart text-3xl text-purple-700 cursor-pointer 
@@ -1099,210 +1104,246 @@
         </div>
     </section>
     <!-- ==================== iPAD TAQQOSLASH BO‘LIMI ==================== -->
-<section id="compare" class="py-24 bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50">
-    <div class="container mx-auto px-6">
-      <h2 class="text-5xl md:text-6xl font-bold text-center mb-6 text-gray-800">
-        iPad'larni <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">Taqqoslash</span>
-      </h2>
-      <p class="text-xl text-gray-600 text-center mb-16 max-w-3xl mx-auto">
-        O‘zingizga eng mos iPad ni tanlang — displey, protsessor, narx va boshqa xususiyatlar bo‘yicha solishtiring
-      </p>
-  
-      <!-- Tanlangan iPad'lar soni -->
-      <div class="text-center mb-10">
-        <p class="text-lg text-gray-700">
-          Tanlangan: <span id="selectedCount" class="font-bold text-purple-600">0</span> ta iPad 
-          <span class="text-sm text-gray-500">(maksimal 4 ta)</span>
-        </p>
-        <button id="clearCompare" class="mt-4 text-red-600 hover:text-red-800 font-medium underline hidden">
-          Taqqoslashni tozalash
-        </button>
-      </div>
-  
-      <!-- Taqqoslash jadvali (dastlab yashirin) -->
-      <div id="compareTable" class="bg-white rounded-3xl shadow-2xl overflow-hidden hidden">
-        <div class="overflow-x-auto">
-          <table class="w-full text-left">
-            <thead>
-              <tr class="bg-gradient-to-r from-purple-600 to-pink-600 text-white">
-                <th class="p-6 text-lg font-bold">Xususiyat</th>
-                <th class="p-6 text-center" v-for="i in 4" :key="i">
-                  <div id={`slot-${i}`} class="w-56 h-64 mx-auto bg-gray-100 rounded-2xl border-4 border-dashed border-gray-300 flex items-center justify-center flex-col">
-                    <i class="fa-solid fa-tablet-alt text-6xl text-gray-400 mb-4"></i>
-                    <p class="text-gray-500 font-medium">iPad tanlang</p>
-                  </div>
-                </th>
-              </tr>
-            </thead>
-            <tbody class="text-gray-700">
-              <tr class="border-b"><td class="p-6 font-semibold">Model</td><td colspan="4" class="text-center py-8" id="models-row"></td></tr>
-              <tr class="border-b bg-gray-50"><td class="p-6 font-semibold">Displey</td><td colspan="4" class="text-center py-6" id="display-row"></td></tr>
-              <tr class="border-b"><td class="p-6 font-semibold">Chip</td><td colspan="4" class="text-center py-6" id="chip-row"></td></tr>
-              <tr class="border-b bg-gray-50"><td class="p-6 font-semibold">Kamera</td><td colspan="4" class="text-center py-6" id="camera-row"></td></tr>
-              <tr class="border-b"><td class="p-6 font-semibold">Hajm</td><td colspan="4" class="text-center py-6" id="storage-row"></td></tr>
-              <tr class="border-b bg-gray-50"><td class="p-6 font-semibold">Narx</td><td colspan="4" class="text-center py-8 text-2xl font-bold" id="price-row"></td></tr>
-              <tr>
-                <td class="p-6 font-semibold">Sotib olish</td>
-                <td colspan="4" class="text-center py-8 space-x-4" id="buttons-row"></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-  
-      <!-- iPad'larni tanlash uchun kartalar (qisqartirilgan versiya) -->
-      <div class="mt-20">
-        <h3 class="text-3xl font-bold text-center mb-12 text-gray-800">Taqqoslash uchun tanlang</h3>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
-          <!-- Har bir iPad kartasiga data-* qo‘shilgan -->
-          <div class="compare-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer border-4 border-transparent hover:border-purple-500 transition-all" 
-               data-model="iPad Pro 13&quot; M4" 
-               data-display="13.0&quot; Tandem OLED" 
-               data-chip="M4" 
-               data-camera="12MP Ultra Wide + LiDAR" 
-               data-storage="256GB dan boshlab" 
-               data-price="27 990 000 so‘m"
-               data-img="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-202405?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1713849100000">
-            <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-202405?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1713849100000" class="w-full h-64 object-contain">
-            <div class="p-5 text-center">
-              <h4 class="font-bold text-lg">iPad Pro 13" M4</h4>
-              <p class="text-2xl font-bold text-purple-600 mt-2">27.99 mln</p>
-              <span class="block mt-3 text-sm text-green-600 font-bold">Tanlash</span>
+    <section id="compare" class="py-24 bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-5xl md:text-6xl font-bold text-center mb-6 text-gray-800">
+                iPad'larni <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">Taqqoslash</span>
+            </h2>
+            <p class="text-xl text-gray-600 text-center mb-16 max-w-3xl mx-auto">
+                O‘zingizga eng mos iPad ni tanlang — displey, protsessor, narx va boshqa xususiyatlar bo‘yicha
+                solishtiring
+            </p>
+
+            <!-- Tanlangan iPad'lar soni -->
+            <div class="text-center mb-10">
+                <p class="text-lg text-gray-700">
+                    Tanlangan: <span id="selectedCount" class="font-bold text-purple-600">0</span> ta iPad
+                    <span class="text-sm text-gray-500">(maksimal 4 ta)</span>
+                </p>
+                <button id="clearCompare" class="mt-4 text-red-600 hover:text-red-800 font-medium underline hidden">
+                    Taqqoslashni tozalash
+                </button>
             </div>
-          </div>
-          <!-- QO‘SHIMCHA 11 TA iPAD (TAQQOSLASH UCHUN) -->
 
-          <div class="compare-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer border-4 border-transparent hover:border-purple-500 transition-all" 
-          data-model="iPad Pro 11&quot; M4" 
-          data-display="11.0&quot; Tandem OLED" 
-          data-chip="M4" 
-          data-camera="12MP Ultra Wide + LiDAR" 
-          data-storage="256GB dan" 
-          data-price="21 990 000 so‘m"
-          data-img="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-11-select-202405?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1713849100000">
-       <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-11-select-202405?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1713849100000" class="w-full h-64 object-contain">
-       <div class="p-5 text-center">
-         <h4 class="font-bold text-lg">iPad Pro 11" M4</h4>
-         <p class="text-2xl font-bold text-purple-600 mt-2">21.99 mln</p>
-         <span class="block mt-3 text-sm text-green-600 font-bold">Tanlash</span>
-       </div>
-     </div>
+            <!-- Taqqoslash jadvali (dastlab yashirin) -->
+            <div id="compareTable" class="bg-white rounded-3xl shadow-2xl overflow-hidden hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+                                <th class="p-6 text-lg font-bold">Xususiyat</th>
+                                <th class="p-6 text-center" v-for="i in 4" :key="i">
+                                    <div id={`slot-${i}`}
+                                        class="w-56 h-64 mx-auto bg-gray-100 rounded-2xl border-4 border-dashed border-gray-300 flex items-center justify-center flex-col">
+                                        <i class="fa-solid fa-tablet-alt text-6xl text-gray-400 mb-4"></i>
+                                        <p class="text-gray-500 font-medium">iPad tanlang</p>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-700">
+                            <tr class="border-b">
+                                <td class="p-6 font-semibold">Model</td>
+                                <td colspan="4" class="text-center py-8" id="models-row"></td>
+                            </tr>
+                            <tr class="border-b bg-gray-50">
+                                <td class="p-6 font-semibold">Displey</td>
+                                <td colspan="4" class="text-center py-6" id="display-row"></td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="p-6 font-semibold">Chip</td>
+                                <td colspan="4" class="text-center py-6" id="chip-row"></td>
+                            </tr>
+                            <tr class="border-b bg-gray-50">
+                                <td class="p-6 font-semibold">Kamera</td>
+                                <td colspan="4" class="text-center py-6" id="camera-row"></td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="p-6 font-semibold">Hajm</td>
+                                <td colspan="4" class="text-center py-6" id="storage-row"></td>
+                            </tr>
+                            <tr class="border-b bg-gray-50">
+                                <td class="p-6 font-semibold">Narx</td>
+                                <td colspan="4" class="text-center py-8 text-2xl font-bold" id="price-row"></td>
+                            </tr>
+                            <tr>
+                                <td class="p-6 font-semibold">Sotib olish</td>
+                                <td colspan="4" class="text-center py-8 space-x-4" id="buttons-row"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
-     <div class="compare-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer border-4 border-transparent hover:border-purple-500 transition-all" 
-          data-model="iPad Air 13&quot; M2" data-display="13.0&quot; Liquid Retina" data-chip="M2" data-camera="12MP" data-storage="128GB dan" data-price="15 990 000 so‘m"
-          data-img="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-air-13-select-202405?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1713849100000">
-       <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-air-13-select-202405?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1713849100000" class="w-full h-64 object-contain">
-       <div class="p-5 text-center">
-         <h4 class="font-bold text-lg">iPad Air 13" M2</h4>
-         <p class="text-2xl font-bold text-blue-600 mt-2">15.99 mln</p>
-         <span class="block mt-3 text-sm text-green-600 font-bold">Tanlash</span>
-       </div>
-     </div>
+            <!-- iPad'larni tanlash uchun kartalar (qisqartirilgan versiya) -->
+            <div class="mt-20">
+                <h3 class="text-3xl font-bold text-center mb-12 text-gray-800">Taqqoslash uchun tanlang</h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
+                    <!-- Har bir iPad kartasiga data-* qo‘shilgan -->
+                    <div class="compare-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer border-4 border-transparent hover:border-purple-500 transition-all"
+                        data-model="iPad Pro 13&quot; M4" data-display="13.0&quot; Tandem OLED" data-chip="M4"
+                        data-camera="12MP Ultra Wide + LiDAR" data-storage="256GB dan boshlab"
+                        data-price="27 990 000 so‘m"
+                        data-img="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-202405?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1713849100000">
+                        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-202405?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1713849100000"
+                            class="w-full h-64 object-contain">
+                        <div class="p-5 text-center">
+                            <h4 class="font-bold text-lg">iPad Pro 13" M4</h4>
+                            <p class="text-2xl font-bold text-purple-600 mt-2">27.99 mln</p>
+                            <span class="block mt-3 text-sm text-green-600 font-bold">Tanlash</span>
+                        </div>
+                    </div>
+                    <!-- QO‘SHIMCHA 11 TA iPAD (TAQQOSLASH UCHUN) -->
 
-     <div class="compare-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer border-4 border-transparent hover:border-purple-500 transition-all" 
-          data-model="iPad Air 11&quot; M2" data-display="11.0&quot; Liquid Retina" data-chip="M2" data-camera="12MP" data-storage="128GB dan" data-price="12 990 000 so‘m"
-          data-img="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-air-11-select-202405?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1713849100000">
-       <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-air-11-select-202405?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1713849100000" class="w-full h-64 object-contain">
-       <div class="p-5 text-center">
-         <h4 class="font-bold text-lg">iPad Air 11" M2</h4>
-         <p class="text-2xl font-bold text-blue-600 mt-2">12.99 mln</p>
-         <span class="block mt-3 text-sm text-green-600 font-bold">Tanlash</span>
-       </div>
-     </div>
+                    <div class="compare-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer border-4 border-transparent hover:border-purple-500 transition-all"
+                        data-model="iPad Pro 11&quot; M4" data-display="11.0&quot; Tandem OLED" data-chip="M4"
+                        data-camera="12MP Ultra Wide + LiDAR" data-storage="256GB dan" data-price="21 990 000 so‘m"
+                        data-img="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-11-select-202405?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1713849100000">
+                        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-11-select-202405?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1713849100000"
+                            class="w-full h-64 object-contain">
+                        <div class="p-5 text-center">
+                            <h4 class="font-bold text-lg">iPad Pro 11" M4</h4>
+                            <p class="text-2xl font-bold text-purple-600 mt-2">21.99 mln</p>
+                            <span class="block mt-3 text-sm text-green-600 font-bold">Tanlash</span>
+                        </div>
+                    </div>
 
-     <div class="compare-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer border-4 border-transparent hover:border-purple-500 transition-all" 
-          data-model="iPad 10-avlod" data-display="10.9&quot; Liquid Retina" data-chip="A14 Bionic" data-camera="12MP" data-storage="64/256GB" data-price="7 490 000 so‘m"
-          data-img="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-10th-gen-finish-select-202212-pink-wifi?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1672259271885">
-       <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-10th-gen-finish-select-202212-pink-wifi?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1672259271885" class="w-full h-64 object-contain">
-       <div class="p-5 text-center">
-         <h4 class="font-bold text-lg">iPad 10-avlod</h4>
-         <p class="text-2xl font-bold text-green-600 mt-2">7.49 mln</p>
-         <span class="block mt-3 text-sm text-green-600 font-bold">Tanlash</span>
-       </div>
-     </div>
+                    <div class="compare-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer border-4 border-transparent hover:border-purple-500 transition-all"
+                        data-model="iPad Air 13&quot; M2" data-display="13.0&quot; Liquid Retina" data-chip="M2"
+                        data-camera="12MP" data-storage="128GB dan" data-price="15 990 000 so‘m"
+                        data-img="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-air-13-select-202405?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1713849100000">
+                        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-air-13-select-202405?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1713849100000"
+                            class="w-full h-64 object-contain">
+                        <div class="p-5 text-center">
+                            <h4 class="font-bold text-lg">iPad Air 13" M2</h4>
+                            <p class="text-2xl font-bold text-blue-600 mt-2">15.99 mln</p>
+                            <span class="block mt-3 text-sm text-green-600 font-bold">Tanlash</span>
+                        </div>
+                    </div>
 
-     <div class="compare-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer border-4 border-transparent hover:border-purple-500 transition-all" 
-          data-model="iPad Mini 7 (2024)" data-display="8.3&quot; Liquid Retina" data-chip="A17 Pro" data-camera="12MP" data-storage="128GB dan" data-price="9 990 000 so‘m"
-          data-img="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-mini-finish-select-202410-starlight-wifi?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1727484156716">
-       <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-mini-finish-select-202410-starlight-wifi?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1727484156716" class="w-full h-64 object-contain">
-       <div class="p-5 text-center">
-         <h4 class="font-bold text-lg">iPad Mini 7</h4>
-         <p class="text-2xl font-bold text-orange-600 mt-2">9.99 mln</p>
-         <span class="block mt-3 text-sm text-green-600 font-bold">Tanlash</span>
-       </div>
-     </div>
+                    <div class="compare-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer border-4 border-transparent hover:border-purple-500 transition-all"
+                        data-model="iPad Air 11&quot; M2" data-display="11.0&quot; Liquid Retina" data-chip="M2"
+                        data-camera="12MP" data-storage="128GB dan" data-price="12 990 000 so‘m"
+                        data-img="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-air-11-select-202405?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1713849100000">
+                        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-air-11-select-202405?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1713849100000"
+                            class="w-full h-64 object-contain">
+                        <div class="p-5 text-center">
+                            <h4 class="font-bold text-lg">iPad Air 11" M2</h4>
+                            <p class="text-2xl font-bold text-blue-600 mt-2">12.99 mln</p>
+                            <span class="block mt-3 text-sm text-green-600 font-bold">Tanlash</span>
+                        </div>
+                    </div>
 
-     <div class="compare-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer border-4 border-transparent hover:border-purple-500 transition-all" 
-          data-model="iPad Pro 12.9&quot; M2" data-display="12.9&quot; mini-LED" data-chip="M2" data-camera="12MP + LiDAR" data-storage="128GB dan" data-price="19 990 000 so‘m"
-          data-img="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-202211?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1667590330821">
-       <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-202211?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1667590330821" class="w-full h-64 object-contain">
-       <div class="p-5 text-center">
-         <h4 class="font-bold text-lg">iPad Pro 12.9" M2</h4>
-         <p class="text-2xl font-bold text-purple-600 mt-2">19.99 mln</p>
-         <span class="block mt-3 text-sm text-green-600 font-bold">Tanlash</span>
-       </div>
-     </div>
+                    <div class="compare-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer border-4 border-transparent hover:border-purple-500 transition-all"
+                        data-model="iPad 10-avlod" data-display="10.9&quot; Liquid Retina" data-chip="A14 Bionic"
+                        data-camera="12MP" data-storage="64/256GB" data-price="7 490 000 so‘m"
+                        data-img="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-10th-gen-finish-select-202212-pink-wifi?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1672259271885">
+                        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-10th-gen-finish-select-202212-pink-wifi?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1672259271885"
+                            class="w-full h-64 object-contain">
+                        <div class="p-5 text-center">
+                            <h4 class="font-bold text-lg">iPad 10-avlod</h4>
+                            <p class="text-2xl font-bold text-green-600 mt-2">7.49 mln</p>
+                            <span class="block mt-3 text-sm text-green-600 font-bold">Tanlash</span>
+                        </div>
+                    </div>
 
-     <div class="compare-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer border-4 border-transparent hover:border-purple-500 transition-all" 
-          data-model="iPad Air 5 (2022)" data-display="10.9&quot; Liquid Retina" data-chip="M1" data-camera="12MP" data-storage="64/256GB" data-price="10 990 000 so‘m"
-          data-img="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-air-11-select-202203?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1645567802269">
-       <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-air-11-select-202203?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1645567802269" class="w-full h-64 object-contain">
-       <div class="p-5 text-center">
-         <h4 class="font-bold text-lg">iPad Air 5</h4>
-         <p class="text-2xl font-bold text-blue-600 mt-2">10.99 mln</p>
-         <span class="block mt-3 text-sm text-green-600 font-bold">Tanlash</span>
-       </div>
-     </div>
+                    <div class="compare-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer border-4 border-transparent hover:border-purple-500 transition-all"
+                        data-model="iPad Mini 7 (2024)" data-display="8.3&quot; Liquid Retina" data-chip="A17 Pro"
+                        data-camera="12MP" data-storage="128GB dan" data-price="9 990 000 so‘m"
+                        data-img="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-mini-finish-select-202410-starlight-wifi?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1727484156716">
+                        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-mini-finish-select-202410-starlight-wifi?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1727484156716"
+                            class="w-full h-64 object-contain">
+                        <div class="p-5 text-center">
+                            <h4 class="font-bold text-lg">iPad Mini 7</h4>
+                            <p class="text-2xl font-bold text-orange-600 mt-2">9.99 mln</p>
+                            <span class="block mt-3 text-sm text-green-600 font-bold">Tanlash</span>
+                        </div>
+                    </div>
 
-     <div class="compare-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer border-4 border-transparent hover:border-purple-500 transition-all" 
-          data-model="iPad 9-avlod" data-display="10.2&quot; Retina" data-chip="A13 Bionic" data-camera="8MP" data-storage="64/256GB" data-price="5 990 000 so‘m"
-          data-img="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-10th-gen-finish-select-202212-blue-wifi?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1672259271885">
-       <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-10th-gen-finish-select-202212-blue-wifi?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1672259271885" class="w-full h-64 object-contain">
-       <div class="p-5 text-center">
-         <h4 class="font-bold text-lg">iPad 9-avlod</h4>
-         <p class="text-2xl font-bold text-green-600 mt-2">5.99 mln</p>
-         <span class="block mt-3 text-sm text-green-600 font-bold">Tanlash</span>
-       </div>
-     </div>
+                    <div class="compare-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer border-4 border-transparent hover:border-purple-500 transition-all"
+                        data-model="iPad Pro 12.9&quot; M2" data-display="12.9&quot; mini-LED" data-chip="M2"
+                        data-camera="12MP + LiDAR" data-storage="128GB dan" data-price="19 990 000 so‘m"
+                        data-img="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-202211?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1667590330821">
+                        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-202211?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1667590330821"
+                            class="w-full h-64 object-contain">
+                        <div class="p-5 text-center">
+                            <h4 class="font-bold text-lg">iPad Pro 12.9" M2</h4>
+                            <p class="text-2xl font-bold text-purple-600 mt-2">19.99 mln</p>
+                            <span class="block mt-3 text-sm text-green-600 font-bold">Tanlash</span>
+                        </div>
+                    </div>
 
-     <div class="compare-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer border-4 border-transparent hover:border-purple-500 transition-all" 
-          data-model="iPad Mini 6" data-display="8.3&quot; Liquid Retina" data-chip="A15 Bionic" data-camera="12MP" data-storage="64/256GB" data-price="8 490 000 so‘m"
-          data-img="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-mini-select-202109?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1631225353000">
-       <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-mini-select-202109?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1631225353000" class="w-full h-64 object-contain">
-       <div class="p-5 text-center">
-         <h4 class="font-bold text-lg">iPad Mini 6</h4>
-         <p class="text-2xl font-bold text-orange-600 mt-2">8.49 mln</p>
-         <span class="block mt-3 text-sm text-green-600 font-bold">Tanlash</span>
-       </div>
-     </div>
+                    <div class="compare-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer border-4 border-transparent hover:border-purple-500 transition-all"
+                        data-model="iPad Air 5 (2022)" data-display="10.9&quot; Liquid Retina" data-chip="M1"
+                        data-camera="12MP" data-storage="64/256GB" data-price="10 990 000 so‘m"
+                        data-img="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-air-11-select-202203?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1645567802269">
+                        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-air-11-select-202203?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1645567802269"
+                            class="w-full h-64 object-contain">
+                        <div class="p-5 text-center">
+                            <h4 class="font-bold text-lg">iPad Air 5</h4>
+                            <p class="text-2xl font-bold text-blue-600 mt-2">10.99 mln</p>
+                            <span class="block mt-3 text-sm text-green-600 font-bold">Tanlash</span>
+                        </div>
+                    </div>
 
-     <div class="compare-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer border-4 border-transparent hover:border-purple-500 transition-all" 
-          data-model="iPad Pro 11&quot; M2" data-display="11.0&quot; Liquid Retina" data-chip="M2" data-camera="12MP + LiDAR" data-storage="128GB dan" data-price="16 990 000 so‘m"
-          data-img="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-11-select-202211?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1667590330821">
-       <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-11-select-202211?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1667590330821" class="w-full h-64 object-contain">
-       <div class="p-5 text-center">
-         <h4 class="font-bold text-lg">iPad Pro 11" M2</h4>
-         <p class="text-2xl font-bold text-purple-600 mt-2">16.99 mln</p>
-         <span class="block mt-3 text-sm text-green-600 font-bold">Tanlash</span>
-       </div>
-     </div>
+                    <div class="compare-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer border-4 border-transparent hover:border-purple-500 transition-all"
+                        data-model="iPad 9-avlod" data-display="10.2&quot; Retina" data-chip="A13 Bionic"
+                        data-camera="8MP" data-storage="64/256GB" data-price="5 990 000 so‘m"
+                        data-img="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-10th-gen-finish-select-202212-blue-wifi?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1672259271885">
+                        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-10th-gen-finish-select-202212-blue-wifi?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1672259271885"
+                            class="w-full h-64 object-contain">
+                        <div class="p-5 text-center">
+                            <h4 class="font-bold text-lg">iPad 9-avlod</h4>
+                            <p class="text-2xl font-bold text-green-600 mt-2">5.99 mln</p>
+                            <span class="block mt-3 text-sm text-green-600 font-bold">Tanlash</span>
+                        </div>
+                    </div>
 
-     <div class="compare-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer border-4 border-transparent hover:border-purple-500 transition-all" 
-          data-model="iPad Pro 13&quot; M4 Cellular" data-display="13.0&quot; Tandem OLED" data-chip="M4" data-camera="12MP + LiDAR" data-storage="512GB" data-price="32 990 000 so‘m"
-          data-img="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-202405-cell-silver?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1713849100000">
-       <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-202405-cell-silver?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1713849100000" class="w-full h-64 object-contain">
-       <div class="p-5 text-center">
-         <h4 class="font-bold text-lg">iPad Pro 13" M4 5G</h4>
-         <p class="text-2xl font-bold text-red-600 mt-2">32.99 mln</p>
-         <span class="block mt-3 text-sm text-green-600 font-bold">Tanlash</span>
-       </div>
-     </div>
-          <!-- Qolgan 10 ta iPad (xuddi shu formatda) – joy tejash uchun faqat 1 tasi ko‘rsatilgan -->
-          <!-- Siz o‘zingiz qo‘shgan iPad kartalariga shu data-* larni qo‘shing! -->
+                    <div class="compare-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer border-4 border-transparent hover:border-purple-500 transition-all"
+                        data-model="iPad Mini 6" data-display="8.3&quot; Liquid Retina" data-chip="A15 Bionic"
+                        data-camera="12MP" data-storage="64/256GB" data-price="8 490 000 so‘m"
+                        data-img="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-mini-select-202109?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1631225353000">
+                        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-mini-select-202109?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1631225353000"
+                            class="w-full h-64 object-contain">
+                        <div class="p-5 text-center">
+                            <h4 class="font-bold text-lg">iPad Mini 6</h4>
+                            <p class="text-2xl font-bold text-orange-600 mt-2">8.49 mln</p>
+                            <span class="block mt-3 text-sm text-green-600 font-bold">Tanlash</span>
+                        </div>
+                    </div>
+
+                    <div class="compare-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer border-4 border-transparent hover:border-purple-500 transition-all"
+                        data-model="iPad Pro 11&quot; M2" data-display="11.0&quot; Liquid Retina" data-chip="M2"
+                        data-camera="12MP + LiDAR" data-storage="128GB dan" data-price="16 990 000 so‘m"
+                        data-img="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-11-select-202211?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1667590330821">
+                        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-11-select-202211?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1667590330821"
+                            class="w-full h-64 object-contain">
+                        <div class="p-5 text-center">
+                            <h4 class="font-bold text-lg">iPad Pro 11" M2</h4>
+                            <p class="text-2xl font-bold text-purple-600 mt-2">16.99 mln</p>
+                            <span class="block mt-3 text-sm text-green-600 font-bold">Tanlash</span>
+                        </div>
+                    </div>
+
+                    <div class="compare-card bg-white rounded-3xl shadow-xl overflow-hidden cursor-pointer border-4 border-transparent hover:border-purple-500 transition-all"
+                        data-model="iPad Pro 13&quot; M4 Cellular" data-display="13.0&quot; Tandem OLED" data-chip="M4"
+                        data-camera="12MP + LiDAR" data-storage="512GB" data-price="32 990 000 so‘m"
+                        data-img="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-202405-cell-silver?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1713849100000">
+                        <img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-13-select-202405-cell-silver?wid=512&hei=512&fmt=jpeg&qlt=95&.v=1713849100000"
+                            class="w-full h-64 object-contain">
+                        <div class="p-5 text-center">
+                            <h4 class="font-bold text-lg">iPad Pro 13" M4 5G</h4>
+                            <p class="text-2xl font-bold text-red-600 mt-2">32.99 mln</p>
+                            <span class="block mt-3 text-sm text-green-600 font-bold">Tanlash</span>
+                        </div>
+                    </div>
+                    <!-- Qolgan 10 ta iPad (xuddi shu formatda) – joy tejash uchun faqat 1 tasi ko‘rsatilgan -->
+                    <!-- Siz o‘zingiz qo‘shgan iPad kartalariga shu data-* larni qo‘shing! -->
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
     <!-- Portfolio bo‘limi -->
     <section id="portfolio" class="py-20 bg-gradient-to-b from-gray-50 to-white">
         <div class="container mx-auto px-6 text-center">
@@ -1579,83 +1620,83 @@
             });
         });
         const selected = [];
-  const slots = document.querySelectorAll('[id^="slot-"]');
-  const table = document.getElementById('compareTable');
-  const countEl = document.getElementById('selectedCount');
-  const clearBtn = document.getElementById('clearCompare');
+        const slots = document.querySelectorAll('[id^="slot-"]');
+        const table = document.getElementById('compareTable');
+        const countEl = document.getElementById('selectedCount');
+        const clearBtn = document.getElementById('clearCompare');
 
-  document.querySelectorAll('.compare-card').forEach(card => {
-    card.addEventListener('click', function() {
-      if (selected.length >= 4) {
-        alert('Maksimal 4 ta iPad taqqoslash mumkin!');
-        return;
-      }
-      if (this.classList.contains('selected')) return;
+        document.querySelectorAll('.compare-card').forEach(card => {
+            card.addEventListener('click', function () {
+                if (selected.length >= 4) {
+                    alert('Maksimal 4 ta iPad taqqoslash mumkin!');
+                    return;
+                }
+                if (this.classList.contains('selected')) return;
 
-      // Tanlangan qilish
-      this.classList.add('selected', 'border-purple-600', 'shadow-2xl');
-      selected.push(this.dataset);
+                // Tanlangan qilish
+                this.classList.add('selected', 'border-purple-600', 'shadow-2xl');
+                selected.push(this.dataset);
 
-      updateTable();
-    });
-  });
+                updateTable();
+            });
+        });
 
-  function updateTable() {
-    countEl.textContent = selected.length;
-    if (selected.length > 0) {
-      table.classList.remove('hidden');
-      clearBtn.classList.remove('hidden');
-    }
+        function updateTable() {
+            countEl.textContent = selected.length;
+            if (selected.length > 0) {
+                table.classList.remove('hidden');
+                clearBtn.classList.remove('hidden');
+            }
 
-    // Slotlarni to‘ldirish
-    slots.forEach((slot, i) => {
-      if (selected[i]) {
-        slot.innerHTML = `
+            // Slotlarni to‘ldirish
+            slots.forEach((slot, i) => {
+                if (selected[i]) {
+                    slot.innerHTML = `
           <img src="${selected[i].img}" class="w-48 h-48 object-contain mx-auto mb-4 rounded-2xl">
           <p class="font-bold text-purple-700">${selected[i].model}</p>
           <button class="mt-3 text-red-600 text-sm hover:underline remove-item" data-index="${i}">O‘chirish</button>
         `;
-      } else {
-        slot.innerHTML = `<i class="fa-solid fa-tablet-alt text-6xl text-gray-400 mb-4"></i><p class="text-gray-500">iPad tanlang</p>`;
-      }
-    });
+                } else {
+                    slot.innerHTML = `<i class="fa-solid fa-tablet-alt text-6xl text-gray-400 mb-4"></i><p class="text-gray-500">iPad tanlang</p>`;
+                }
+            });
 
-    // Jadval qatorlari
-    document.getElementById('models-row').innerHTML = selected.map(s => `<td class="text-center font-bold text-purple-700 py-4">${s.model}</td>`).join('');
-    document.getElementById('display-row').innerHTML = selected.map(s => `<td class="text-center">${s.display}</td>`).join('');
-    document.getElementById('chip-row').innerHTML = selected.map(s => `<td class="text-center font-bold text-blue-600">${s.chip}</td>`).join('');
-    document.getElementById('camera-row').innerHTML = selected.map(s => `<td class="text-center">${s.camera}</td>`).join('');
-    document.getElementById('storage-row').innerHTML = selected.map(s => `<td class="text-center">${s.storage}</td>`).join('');
-    document.getElementById('price-row').innerHTML = selected.map(s => `<td class="text-center text-green-600">${s.price}</td>`).join('');
-    document.getElementById('buttons-row').innerHTML = selected.map(s => `
+            // Jadval qatorlari
+            document.getElementById('models-row').innerHTML = selected.map(s => `<td class="text-center font-bold text-purple-700 py-4">${s.model}</td>`).join('');
+            document.getElementById('display-row').innerHTML = selected.map(s => `<td class="text-center">${s.display}</td>`).join('');
+            document.getElementById('chip-row').innerHTML = selected.map(s => `<td class="text-center font-bold text-blue-600">${s.chip}</td>`).join('');
+            document.getElementById('camera-row').innerHTML = selected.map(s => `<td class="text-center">${s.camera}</td>`).join('');
+            document.getElementById('storage-row').innerHTML = selected.map(s => `<td class="text-center">${s.storage}</td>`).join('');
+            document.getElementById('price-row').innerHTML = selected.map(s => `<td class="text-center text-green-600">${s.price}</td>`).join('');
+            document.getElementById('buttons-row').innerHTML = selected.map(s => `
       <td class="text-center">
         <button class="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-xl font-bold hover:scale-105 transition">
           Savatga qo‘shish
         </button>
       </td>
     `).join('');
-  }
-
-  // O‘chirish
-  document.addEventListener('click', function(e) {
-    if (e.target.classList.contains('remove-item')) {
-      const index = e.target.dataset.index;
-      document.querySelectorAll('.compare-card')[index === undefined ? selected.findIndex(s => s.model === e.target.closest('td').querySelector('p').textContent) : index];
-      selected.splice(index, 1);
-      document.querySelectorAll('.compare-card').forEach(c => {
-        if (c.querySelector('h4')?.textContent === e.target.closest('td').querySelector('p').textContent) {
-          c.classList.remove('selected', 'border-purple-600');
         }
-      });
-      updateTable();
-    }
-  });
 
-  clearBtn.addEventListener('click', () => {
-    selected.length = 0;
-    document.querySelectorAll('.compare-card').forEach(c => c.classList.remove('selected', 'border-purple-600'));
-    updateTable();
-  });
+        // O‘chirish
+        document.addEventListener('click', function (e) {
+            if (e.target.classList.contains('remove-item')) {
+                const index = e.target.dataset.index;
+                document.querySelectorAll('.compare-card')[index === undefined ? selected.findIndex(s => s.model === e.target.closest('td').querySelector('p').textContent) : index];
+                selected.splice(index, 1);
+                document.querySelectorAll('.compare-card').forEach(c => {
+                    if (c.querySelector('h4')?.textContent === e.target.closest('td').querySelector('p').textContent) {
+                        c.classList.remove('selected', 'border-purple-600');
+                    }
+                });
+                updateTable();
+            }
+        });
+
+        clearBtn.addEventListener('click', () => {
+            selected.length = 0;
+            document.querySelectorAll('.compare-card').forEach(c => c.classList.remove('selected', 'border-purple-600'));
+            updateTable();
+        });
     </script>
 </body>
 
