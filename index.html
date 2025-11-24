@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="uz" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PhoneShop - Eng yaxshi smartfonlar va aksessuarlar</title>
+    <script>
+        // Saytga kirganda tekshirish
+        window.addEventListener("DOMContentLoaded", function () {
+          const registered = localStorage.getItem("phoneShop_user_registered");
+      
+          // Agar ro'yxatdan o'tmagan bo'lsa → register.html ga yo'naltir
+          if (!registered) {
+            window.location.replace("index1.html");
+          }
+        });
+      </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.2);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-16px) scale(1.02);
+            box-shadow: 0 30px 40px -10px rgba(0, 0, 0, 0.25);
+        }
+
+        .phone-img {
+            width: 100%;
+            height: 350px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+            transition: transform 0.6s ease;
+        }
+
+        .card-hover:hover .phone-img {
+            transform: scale(1.08) rotate(2deg);
+        }
+
+        /* Tugma animatsiyasi – bosilganda pulse */
+        .add-to-cart-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .add-to-cart-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .add-to-cart-btn:active::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Aksessuar kartalariga qo‘shimcha effekt */
+        .accessory-card {
+            transition: all 0.5s ease;
+        }
+
+        .accessory-card:hover {
+            transform: translateY(-12px) rotate(1deg);
+        }
+
+        .accessory-card img {
+            transition: all 0.5s ease;
+        }
+
+        .accessory-card:hover img {
+            transform: scale(1.1) translateY(-10px);
+        }
+
+        /* Navbar scroll animatsiyasi */
+        nav {
+            transition: all 0.4s ease;
+        }
+
+        /* Bo‘limlar kirganda animatsiya */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 1s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero matn uchun animatsiya */
+        .hero-text {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInUp 1.2s ease forwards;
+        }
+
+        .hero-text:nth-child(1) {
+            animation-delay: 0.3s;
+        }
+
+        .hero-text:nth-child(2) {
+            animation-delay: 0.6s;
+        }
+
+        .hero-text:nth-child(3) {
+            animation-delay: 0.9s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Savat belgisi pulse */
+        @keyframes pulse-cart {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .cart-pulse {
+            animation: pulse-cart 0.6s ease;
+        }
+
+        /* Toast animatsiyasi */
+        @keyframes toastIn {
+            from {
+                transform: translateY(100px) scale(0.8);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .toast-animation {
+            animation: toastIn 0.6s ease forwards;
+        }
+
+        #home {
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 1. Katta yulduzlar (hero bo‘limda) */
+        .floating-stars {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            color: #fff;
+            font-size: 2rem;
+            opacity: 0;
+            animation: floatStar linear infinite;
+        }
+
+        .star:nth-child(1) {
+            top: 15%;
+            left: 10%;
+            animation: floatStar 14s infinite linear;
+            animation-delay: 0s;
+        }
+
+        .star:nth-child(2) {
+            top: 40%;
+            left: 80%;
+            animation: floatStar 18s infinite linear;
+            animation-delay: 3s;
+        }
+
+        .star:nth-child(3) {
+            top: 70%;
+            left: 20%;
+            animation: floatStar 22s infinite linear;
+            animation-delay: 7s;
+        }
+
+        .star:nth-child(4) {
+            top: 30%;
+            left: 60%;
+            animation: floatStar 16s infinite linear;
+            animation-delay: 5s;
+        }
+
+        .star:nth-child(5) {
+            top: 55%;
+            left: 90%;
+            animation: floatStar 20s infinite linear;
+            animation-delay: 10s;
+        }
+
+        @keyframes floatStar {
+            0% {
+                transform: translateY(100vh) translateX(-100px) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.8;
+            }
+
+            90% {
+                opacity: 0.4;
+            }
+
+            100% {
+                transform: translateY(-200px) translateX(100vw) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* 2. Kichik telefon va yulduzcha partikllar */
+        .particles {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            opacity: 0;
+            animation: particleFloat 15s infinite linear;
+        }
+
+        .particle:nth-child(odd) {
+            font-size: 1.5rem;
+        }
+
+        .particle:nth-child(even) {
+            font-size: 1.8rem;
+            color: #fbbf24;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 0.7;
+            }
+
+            85% {
+                opacity: 0.3;
+            }
+
+            100% {
+                transform: translateY(-150px) scale(1) translateX(200px);
+                opacity: 0;
+            }
+        }
+
+        /* ALOQA BO‘LIMI – ORQASIDA YULDUZLAR UCHIB YURSIN */
+        #contact {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-stars {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .contact-star {
+            position: absolute;
+            color: #a78bfa;
+            font-size: 1.8rem;
+            opacity: 0;
+            animation: contactStar 12s infinite linear;
+        }
+
+        .contact-star:nth-child(1) {
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .contact-star:nth-child(2) {
+            top: 30%;
+            left: 80%;
+            animation-delay: 2s;
+        }
+
+        .contact-star:nth-child(3) {
+            top: 60%;
+            left: 15%;
+            animation-delay: 4s;
+        }
+
+        .contact-star:nth-child(4) {
+            top: 80%;
+            left: 70%;
+            animation-delay: 6s;
+        }
+
+        .contact-star:nth-child(5) {
+            top: 45%;
+            left: 50%;
+            animation-delay: 8s;
+        }
+
+        .contact-star:nth-child(6) {
+            top: 20%;
+            left: 90%;
+            animation-delay: 1s;
+        }
+
+        @keyframes contactStar {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.9;
+            }
+
+            90% {
+                opacity: 0.4;
+            }
+
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Qo‘shimcha chiroyli gradient animatsiya (hero va contact uchun) */
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            animation: gradientShift 20s ease infinite;
+            background-size: 200% 200%;
+        }
+
+        @keyframes gradientShift {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        /* ALOQA BO‘LIMI UCHUN YANGI ANIMATSIYA – SIZNING KODINGIZGA QO‘SHILADI */
+        #contact {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-bg-effects {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .contact-star {
+            position: absolute;
+            color: #c084fc;
+            font-size: 2rem;
+            opacity: 0;
+            animation: contactFloat 12s infinite linear;
+        }
+
+        .contact-star:nth-child(1) {
+            top: 10%;
+            left: 8%;
+            animation-delay: 0s;
+        }
+
+        .contact-star:nth-child(2) {
+            top: 25%;
+            left: 75%;
+            animation-delay: 2.5s;
+        }
+
+        .contact-star:nth-child(3) {
+            top: 60%;
+            left: 15%;
+            animation-delay: 5s;
+        }
+
+        .contact-star:nth-child(4) {
+            top: 80%;
+            left: 65%;
+            animation-delay: 1s;
+        }
+
+        .contact-star:nth-child(5) {
+            top: 45%;
+            left: 50%;
+            animation-delay: 7s;
+        }
+
+        .contact-star:nth-child(6) {
+            top: 15%;
+            left: 90%;
+            animation-delay: 3.5s;
+        }
+
+        .contact-star:nth-child(7) {
+            top: 70%;
+            left: 30%;
+            animation-delay: 6s;
+        }
+
+        .contact-star:nth-child(8) {
+            top: 35%;
+            left: 82%;
+            animation-delay: 4s;
+        }
+
+        .contact-particle {
+            position: absolute;
+            opacity: 0;
+            animation: contactParticle 15s infinite linear;
+        }
+
+        .contact-particle:nth-child(odd) {
+            color: #60a5fa;
+            font-size: 2.3rem;
+        }
+
+        .contact-particle:nth-child(even) {
+            color: #fbbf24;
+            font-size: 1.8rem;
+        }
+
+        .contact-particle:nth-child(1) {
+            top: 20%;
+            left: 12%;
+            animation-delay: 1s;
+        }
+
+        .contact-particle:nth-child(2) {
+            top: 55%;
+            left: 80%;
+            animation-delay: 4s;
+        }
+
+        .contact-particle:nth-child(3) {
+            top: 75%;
+            left: 25%;
+            animation-delay: 8s;
+        }
+
+        .contact-particle:nth-child(4) {
+            top: 30%;
+            left: 70%;
+            animation-delay: 10s;
+        }
+
+        .contact-particle:nth-child(5) {
+            top: 85%;
+            left: 18%;
+            animation-delay: 2s;
+        }
+
+        .contact-particle:nth-child(6) {
+            top: 12%;
+            left: 88%;
+            animation-delay: 6s;
+        }
+
+        @keyframes contactFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.9;
+            }
+
+            90% {
+                opacity: 0.3;
+            }
+
+            100% {
+                transform: translateY(-200px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes contactParticle {
+            0% {
+                transform: translateY(100vh) scale(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 0.8;
+            }
+
+            85% {
+                opacity: 0.4;
+            }
+
+            100% {
+                transform: translateY(-300px) scale(1.2) rotate(360deg) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* YANGI HERO UCHUN ZAMONAVIY ANIMATSIYALAR */
+        @keyframes animate-gradient {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .animate-gradient {
+            background-size: 200% 200%;
+            animation: animate-gradient 15s ease infinite;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Partikllar animatsiyasi */
+        .particle-hero {
+            position: absolute;
+            background: linear-gradient(45deg, #00ff88, #00d4ff);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float-hero linear infinite;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.8);
+        }
+
+        @keyframes float-hero {
+            0% {
+                transform: translateY(100vh) scale(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-100px) scale(1) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+    <nav class="bg-white shadow-lg fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <i class="fa-solid fa-mobile-screen-button text-3xl text-blue-600 animate-pulse"></i>
+                <h1
+                    class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
+                    PhoneShop</h1>
+            </div>
+            <ul class="hidden md:flex items-center space-x-8 text-gray-700 font-medium">
+                <li><a href="#home" class="hover:text-blue-600 transition">Bosh sahifa</a></li>
+                <li><a href="#products" class="hover:text-blue-600 transition">Telefonlar</a></li>
+                <li><a href="#accessories" class="hover:text-blue-600 transition">Aksessuarlar</a></li>
+                <li><a href="#portfolio" class="hover:text-blue-600 transition">Portfolio</a></li>
+                <li><a href="#contact" class="hover:text-blue-600 transition">Aloqa</a></li>
+            </ul>
+            <a href="index1.html"
+                class="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full font-semibold hover:shadow-xl transform hover:scale-105 transition">Ro‘yxatdan
+                o‘tish</a>
+        </div>
+    </nav>
+
+    <!-- YANGI SUPER HERO – 2025 NEON + PARTICLES + GLASS -->
+    <section id="home" class="relative pt-24 pb-20 overflow-hidden min-h-screen flex items-center justify-center">
+
+        <!-- Kosmik gradient fon + animatsiya -->
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-900 via-blue-900 to-black animate-gradient"></div>
+
+        <!-- Partikllar (yashil-siyan ucha yuradi) -->
+        <div id="particles-hero" class="fixed inset-0 pointer-events-none z-10"></div>
+
+        <!-- Asosiy kontent -->
+        <div class="container mx-auto px-6 relative z-20">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+                <!-- Chap taraf – matn -->
+                <div class="text-center lg:text-left">
+                    <h1 class="text-6xl md:text-7xl lg:text-8xl font-black leading-tight">
+                        <span class="block text-white">Eng yangi</span>
+                        <span
+                            class="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-green-400 to-cyan-400 animate-pulse">
+                            smartfonlar
+                        </span>
+                        <span class="block text-yellow-400 text-5xl md:text-6xl mt-4 drop-shadow-2xl">
+                            eng arzon narxda
+                        </span>
+                    </h1>
+
+                    <p class="text-xl md:text-2xl text-gray-300 mt-8 max-w-2xl leading-relaxed font-light">
+                        PhoneShop — O‘zbekistondagi eng ishonchli onlayn telefon do‘koni.<br>
+                        <span class="text-cyan-300">iPhone • Samsung • Xiaomi • Realme • Vivo</span> rasmiy kafolat
+                        bilan!
+                    </p>
+
+                    <p class="text-lg text-gray-400 mt-6">
+                        Naushniklar, qobiqlar, zaryadkalar, smart soatlar — hammasi bir joyda!
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-6 mt-10 justify-center lg:justify-start">
+                        <a href="#sale" class="group">
+                            <button
+                                class="px-10 py-5 bg-gradient-to-r from-cyan-500 to-green-500 text-black font-bold text-xl rounded-full shadow-2xl hover:shadow-cyan-500/50 transform hover:scale-105 transition-all duration-300 flex items-center gap-3">
+                                Chegirmalarni ko‘rish
+                                <i class="fa-solid fa-bolt group-hover:animate-pulse"></i>
+                            </button>
+                        </a>
+                        <a href="#products">
+                            <button
+                                class="px-10 py-5 border-2 border-cyan-400 text-cyan-400 font-bold text-xl rounded-full hover:bg-cyan-400/10 backdrop-blur-lg transition-all duration-300">
+                                Katalogga o‘tish
+                            </button>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- O‘ng taraf – Hozirgi Aksiyalar (Glass kartochka) -->
+                <div class="relative">
+                    <div class="glass rounded-3xl p-8 md:p-10 backdrop-blur-xl border border-white/20 shadow-2xl">
+                        <h3 class="text-4xl font-bold text-white mb-8 flex items-center gap-4">
+                            <i class="fa-solid fa-bolt text-yellow-400 text-5xl animate-pulse"></i>
+                            Hozirgi Aksiyalar
+                        </h3>
+                        <ul class="space-y-6 text-lg">
+                            <li class="flex items-center gap-4 text-yellow-300">
+                                <span class="text-3xl">Flash</span>
+                                <strong>Flash Sale</strong> — 72 soatlik super chegirmalar!
+                            </li>
+                            <li class="flex items-center gap-4 text-green-300">
+                                <span class="text-3xl">Gift</span>
+                                <strong>Kombo to‘plam</strong> — Telefon + naushnik = -25%
+                            </li>
+                            <li class="flex items-center gap-4 text-pink-300">
+                                <span class="text-3xl">New</span>
+                                <strong>Yangi modellarga</strong> birinchi hafta maxsus narx
+                            </li>
+                            <li class="flex items-center gap-4 text-cyan-300">
+                                <span class="text-3xl">Star</span>
+                                <strong>Bonus ball</strong> — har 1.000.000 so‘mga 50.000 ball!
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-5xl font-bold text-center mb-16 text-gray-800">Telefonlar</h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+
+                <!-- 1 -->
+                <div class="bg-white rounded-3xl shadow-2xl overflow-hidden card-hover">
+                    <div class="relative bg-gradient-to-b from-gray-100 to-white">
+                        <img src="i (5).webp" class="phone-img" alt="iPhone 17 Pro Max">
+                        <div
+                            class="absolute top-4 left-4 bg-red-600 text-white px-4 py-2 rounded-full font-bold text-sm shadow-lg">
+                            YANGI 2025</div>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold">iPhone 17 Pro Max</h3>
+                        <p class="text-gray-600">A19 Pro • 48MP Fusion • Titanium</p>
+                        <span class="text-3xl font-bold text-blue-600">18 990 000 so‘m</span>
+                        <button
+                            class="mt-5 w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-4 rounded-xl font-bold text-lg">Savatga
+                            qo‘shish</button>
+                    </div>
+                </div>
+
+                <!-- 2 -->
+                <div class="bg-white rounded-3xl shadow-2xl overflow-hidden card-hover">
+                    <img src="i (7).webp" class="phone-img" alt="Samsung S25 Ultra">
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold">Samsung Galaxy S25 Ultra</h3>
+                        <p class="text-gray-600">200MP • S Pen • AI</p>
+                        <span class="text-3xl font-bold text-green-600">17 900 000 so‘m</span>
+                        <button
+                            class="mt-5 w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white py-4 rounded-xl font-bold text-lg">Savatga
+                            qo‘shish</button>
+                    </div>
+                </div>
+
+                <!-- 3 -->
+                <div class="bg-white rounded-3xl shadow-2xl overflow-hidden card-hover">
+                    <img src="i (8).webp" class="phone-img" alt="Xiaomi 15 Ultra">
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold">Xiaomi 15 Ultra</h3>
+                        <p class="text-gray-600">Leica 200MP • 120W zaryad</p>
+                        <span class="text-3xl font-bold text-orange-600">13 990 000 so‘m</span>
+                        <button
+                            class="mt-5 w-full bg-gradient-to-r from-orange-600 to-red-600 text-white py-4 rounded-xl font-bold text-lg">Savatga
+                            qo‘shish</button>
+                    </div>
+                </div>
+
+                <!-- 4 -->
+                <div class="bg-white rounded-3xl shadow-2xl overflow-hidden card-hover">
+                    <img src="i (9).webp" class="phone-img" alt="Pixel 10 Pro">
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold">Google Pixel 10 Pro</h3>
+                        <p class="text-gray-600">Tensor G5 • Eng yaxshi AI</p>
+                        <span class="text-3xl font-bold text-purple-600">15 900 000 so‘m</span>
+                        <button
+                            class="mt-5 w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-4 rounded-xl font-bold text-lg">Savatga
+                            qo‘shish</button>
+                    </div>
+                </div>
+
+                <!-- 5 -->
+                <div class="bg-white rounded-3xl shadow-2xl overflow-hidden card-hover">
+                    <img src="i (10).webp" class="phone-img" alt="OnePlus 13">
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold">OnePlus 13</h3>
+                        <p class="text-gray-600">150W zaryad • Hasselblad</p>
+                        <span class="text-3xl font-bold text-red-600">12 700 000 so‘m</span>
+                        <button
+                            class="mt-5 w-full bg-gradient-to-r from-red-600 to-pink-600 text-white py-4 rounded-xl font-bold text-lg">Savatga
+                            qo‘shish</button>
+                    </div>
+                </div>
+
+                <!-- 6 -->
+                <div class="bg-white rounded-3xl shadow-2xl overflow-hidden card-hover">
+                    <img src="i (11).webp" class="phone-img" alt="Vivo X200 Pro">
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold">Vivo X200 Pro</h3>
+                        <p class="text-gray-600">Zeiss 200MP • 6000mAh</p>
+                        <span class="text-3xl font-bold text-blue-600">14 300 000 so‘m</span>
+                        <button
+                            class="mt-5 w-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-4 rounded-xl font-bold text-lg">Savatga
+                            qo‘shish</button>
+                    </div>
+                </div>
+
+                <!-- 7 -->
+                <div class="bg-white rounded-3xl shadow-2xl overflow-hidden card-hover">
+                    <img src="i (12).webp" class="phone-img" alt="Realme GT 8 Pro">
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold">Realme GT 8 Pro</h3>
+                        <p class="text-gray-600">240W zaryad • Flagman</p>
+                        <span class="text-3xl font-bold text-yellow-600">9 990 000 so‘m</span>
+                        <button
+                            class="mt-5 w-full bg-gradient-to-r from-yellow-500 to-orange-600 text-white py-4 rounded-xl font-bold text-lg">Savatga
+                            qo‘shish</button>
+                    </div>
+                </div>
+
+                <!-- 8 -->
+                <div class="bg-white rounded-3xl shadow-2xl overflow-hidden card-hover">
+                    <img src="i (13).webp" class="phone-img" alt="Nothing Phone 3">
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold">Nothing Phone (3)</h3>
+                        <p class="text-gray-600">Glyph interfeys • Toza Android</p>
+                        <span class="text-3xl font-bold text-gray-800">8 900 000 so‘m</span>
+                        <button
+                            class="mt-5 w-full bg-gradient-to-r from-gray-700 to-black text-white py-4 rounded-xl font-bold text-lg">Savatga
+                            qo‘shish</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Aksessuarlar bo‘limi -->
+    <section id="accessories" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-5xl font-bold text-center mb-4 text-gray-800">Eng kerakli aksessuarlar</h2>
+            <p class="text-xl text-gray-600 text-center mb-16">Telefoningizni to‘liq himoya qiling va quvvatlang!</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+
+                <!-- 1. AirPods Pro 2 -->
+                <div class="bg-white rounded-3xl shadow-2xl overflow-hidden card-hover group">
+                    <div class="bg-gradient-to-b from-gray-50 to-white p-8">
+                        <img src="i (14).webp" alt="AirPods Pro 2" class="w-full h-80 object-contain">
+                        <div
+                            class="absolute top-4 left-4 bg-purple-600 text-white px-4 py-2 rounded-full font-bold text-sm">
+                            –20%</div>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold text-gray-800">Apple AirPods Pro 2</h3>
+                        <p class="text-gray-600 text-sm">ANC • Spatial Audio • USB-C</p>
+                        <div class="mt-4 flex justify-center items-center gap-3">
+                            <span class="text-3xl font-bold text-purple-600">3 290 000 so‘m</span>
+                            <span class="text-lg text-gray-400 line-through">4 100 000 so‘m</span>
+                        </div>
+                        <button
+                            class="mt-5 w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-4 rounded-xl font-bold text-lg hover:shadow-2xl transition">
+                            Savatga qo‘shish
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 2. Samsung Galaxy Buds 3 Pro -->
+                <div class="bg-white rounded-3xl shadow-2xl overflow-hidden card-hover group">
+                    <div class="bg-gradient-to-b from-gray-50 to-white p-8">
+                        <img src="i (15).webp" alt="Galaxy Buds 3 Pro" class="w-full h-80 object-contain">
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold">Samsung Galaxy Buds 3 Pro</h3>
+                        <p class="text-gray-600 text-sm">360 Audio • ANC • 2025</p>
+                        <span class="text-3xl font-bold text-green-600">3 790 000 so‘m</span>
+                        <button
+                            class="mt-5 w-full bg-gradient-to-r from-green-600 to-teal-600 text-white py-4 rounded-xl font-bold text-lg">Savatga
+                            qo‘shish</button>
+                    </div>
+                </div>
+
+                <!-- 3. 120W GaN zaryadlovchi -->
+                <div class="bg-white rounded-3xl shadow-2xl overflow-hidden card-hover group">
+                    <div class="bg-gradient-to-b from-gray-50 to-white p-8">
+                        <img src="i (16).webp" alt="120W Zaryadlovchi" class="w-full h-80 object-contain">
+                        <div
+                            class="absolute top-4 left-4 bg-orange-600 text-white px-4 py-2 rounded-full font-bold text-sm">
+                            TEZ ZARYAD</div>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold">120W GaN Zaryadlovchi</h3>
+                        <p class="text-gray-600 text-sm">Xiaomi • Samsung • iPhone</p>
+                        <span class="text-3xl font-bold text-orange-600">890 000 so‘m</span>
+                        <button
+                            class="mt-5 w-full bg-gradient-to-r from-orange-600 to-red-600 text-white py-4 rounded-xl font-bold text-lg">Savatga
+                            qo‘shish</button>
+                    </div>
+                </div>
+
+                <!-- 4. MagSafe PowerBank 10.000mAh -->
+                <div class="bg-white rounded-3xl shadow-2xl overflow-hidden card-hover group">
+                    <div class="bg-gradient-to-b from-gray-50 to-white p-8">
+                        <img src="i (17).webp" alt="MagSafe PowerBank" class="w-full h-80 object-contain">
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold">MagSafe PowerBank 10.000mAh</h3>
+                        <p class="text-gray-600 text-sm">iPhone uchun • Simsiz</p>
+                        <span class="text-3xl font-bold text-blue-600">1 290 000 so‘m</span>
+                        <button
+                            class="mt-5 w-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-4 rounded-xl font-bold text-lg">Savatga
+                            qo‘shish</button>
+                    </div>
+                </div>
+
+                <!-- 5. Apple Watch Ultra 2 -->
+                <div class="bg-white rounded-3xl shadow-2xl overflow-hidden card-hover group">
+                    <div class="bg-gradient-to-b from-gray-50 to-white p-8">
+                        <img src="i (18).webp" alt="Apple Watch Ultra 2" class="w-full h-80 object-contain">
+                        <div class="absolute top-4 left-4 bg-black text-white px-4 py-2 rounded-full font-bold text-sm">
+                            YANGI</div>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold">Apple Watch Ultra 2</h3>
+                        <p class="text-gray-600 text-sm">Titanium • 49mm • GPS</p>
+                        <span class="text-3xl font-bold text-gray-800">11 990 000 so‘m</span>
+                        <button
+                            class="mt-5 w-full bg-gradient-to-r from-gray-800 to-black text-white py-4 rounded-xl font-bold text-lg">Savatga
+                            qo‘shish</button>
+                    </div>
+                </div>
+
+                <!-- 6. Samsung Galaxy Watch 7 Ultra -->
+                <div class="bg-white rounded-3xl shadow-2xl overflow-hidden card-hover group">
+                    <div class="bg-gradient-to-b from-gray-50 to-white p-8">
+                        <img src="i (19).webp" alt="Galaxy Watch 7 Ultra" class="w-full h-80 object-contain">
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold">Galaxy Watch 7 Ultra</h3>
+                        <p class="text-gray-600 text-sm">Titanium • 47mm • AI</p>
+                        <span class="text-3xl font-bold text-green-600">7 890 000 so‘m</span>
+                        <button
+                            class="mt-5 w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white py-4 rounded-xl font-bold text-lg">Savatga
+                            qo‘shish</button>
+                    </div>
+                </div>
+
+                <!-- 7. Premium shisha qobiq (iPhone/Samsung) -->
+                <div class="bg-white rounded-3xl shadow-2xl overflow-hidden card-hover group">
+                    <div class="bg-gradient-to-b from-gray-50 to-white p-8">
+                        <img src="i (20).webp" alt="Premium qobiq" class="w-full h-80 object-contain">
+                        <div
+                            class="absolute top-4 left-4 bg-red-600 text-white px-4 py-2 rounded-full font-bold text-sm">
+                            SOVG‘A</div>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold">Premium qobiq + shisha</h3>
+                        <p class="text-gray-600 text-sm">iPhone 16/17 • Samsung S25</p>
+                        <span class="text-3xl font-bold text-red-600">490 000 so‘m</span>
+                        <button
+                            class="mt-5 w-full bg-gradient-to-r from-red-600 to-pink-600 text-white py-4 rounded-xl font-bold text-lg">Savatga
+                            qo‘shish</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio bo‘limi -->
+    <section id="portfolio" class="py-20 bg-gradient-to-b from-gray-50 to-white">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-6xl font-extrabold text-gray-800 mb-8">
+                Bizning <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Portfolio</span>
+            </h1>
+
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-12">
+                PhoneShop jamoasi tomonidan yaratilgan eng yaxshi loyihalar, veb-saytlar va mobil ilovalar bilan
+                tanishing.
+            </p>
+
+            <a href="https://httpsmyportpolionetlifyapp.netlify.app" target="_blank" rel="noopener noreferrer"
+                class="inline-block group">
+
+                <button
+                    class="relative px-12 py-6 text-xl font-bold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl shadow-2xl hover:shadow-purple-500/50 transform hover:scale-105 transition-all duration-300 overflow-hidden">
+                    <span class="relative z-10 flex items-center gap-3">
+                        Portfolio-ni ko‘rish
+                        <i class="fa-solid fa-arrow-right-long group-hover:translate-x-2 transition-transform"></i>
+                    </span>
+
+                    <div
+                        class="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-500">
+                    </div>
+                </button>
+            </a>
+
+            <p class="mt-8 text-gray-500">
+                Yangi oynada ochiladi
+                <i class="fa-solid fa-up-right-from-square text-sm"></i>
+            </p>
+        </div>
+    </section>
+
+    <!-- Aloqa bo‘limi – QORONG‘I ZAMONAVIY DIZAYN -->
+    <section id="contact"
+        class="py-24 bg-gradient-to-br from-gray-900 via-purple-900 to-black text-white min-h-screen flex items-center">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl md:text-7xl font-extrabold mb-4">
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-600">
+                            Biz bilan aloqa
+                        </span>
+                    </h2>
+                    <p class="text-xl text-gray-400">Savolingiz bo‘lsa — 24/7 javob beramiz</p>
+                </div>
+
+                <div class="backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl">
+                    <form action="https://formspree.io/f/xblrjwpk" method="POST" class="space-y-8">
+
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div>
+                                <label class="block text-gray-300 text-lg mb-3">Ism</label>
+                                <input type="text" name="name" required
+                                    class="w-full px-6 py-5 bg-white/10 border border-white/20 rounded-2xl text-white placeholder-gray-500 focus:border-cyan-500 focus:ring-4 focus:ring-cyan-500/30 outline-none transition"
+                                    placeholder="Ismingizni kiriting">
+                            </div>
+                            <div>
+                                <label class="block text-gray-300 text-lg mb-3">Email</label>
+                                <input type="email" name="email" required
+                                    class="w-full px-6 py-5 bg-white/10 border border-white/20 rounded-2xl text-white placeholder-gray-500 focus:border-purple-500 focus:ring-4 focus:ring-purple-500/30 outline-none transition"
+                                    placeholder="email@example.com">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-gray-300 text-lg mb-3">Mavzu</label>
+                            <input type="text" name="subject"
+                                class="w-full px-6 py-5 bg-white/10 border border-white/20 rounded-2xl text-white placeholder-gray-500 focus:border-pink-500 focus:ring-4 focus:ring-pink-500/30 outline-none transition"
+                                placeholder="Masalan: Buyurtma holati">
+                        </div>
+
+                        <div>
+                            <label class="block text-gray-300 text-lg mb-3">Xabar</label>
+                            <textarea name="message" rows="6" required
+                                class="w-full px-6 py-5 bg-white/10 border border-white/20 rounded-2xl text-white placeholder-gray-500 focus:border-cyan-400 focus:ring-4 focus:ring-cyan-400/30 outline-none transition resize-none"
+                                placeholder="Bu yerda xabaringizni yozing..."></textarea>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row gap-4 justify-end items-center pt-6">
+                            <button type="reset"
+                                class="px-10 py-4 bg-white/10 border border-white/30 text-white rounded-full font-semibold hover:bg-white/20 transition backdrop-blur">
+                                Tozalash
+                            </button>
+                            <button type="submit"
+                                class="px-12 py-5 bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-full font-bold text-lg shadow-2xl hover:shadow-cyan-500/50 transform hover:scale-105 transition-all duration-300 flex items-center gap-3">
+                                <span>Yuborish</span>
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="mt-12 pt-10 border-t border-white/10 text-center">
+                        <p class="text-gray-400 text-lg">
+                            Email:
+                            <a href="mailto:abduazizsherjonov357@gmail.com" class="text-cyan-400 hover:underline">
+                                abduazizsherjonov357@gmail.com
+                            </a>
+                            <span class="mx-4">•</span>
+                            Telegram:
+                            <a href="https://t.me/Sherjonov011" target="_blank" class="text-purple-400 hover:underline">
+                                @Sherjonov011
+                            </a>
+                        </p>
+                        <p class="text-sm text-gray-500 mt-4">
+                            Agar real email endpoint xohlasangiz — EmailJS yoki Formspree konfiguratsiyasini qo‘shib
+                            beraman
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- ALOQA BO‘LIMI UCHUN UCHA YURADIGAN YULDUZ VA TELEFON ANIMATSIYASI -->
+        <div class="contact-bg-effects">
+            <!-- Yulduzlar -->
+            <i class="contact-star fa-solid fa-star"></i>
+            <i class="contact-star fa-solid fa-star"></i>
+            <i class="contact-star fa-solid fa-star"></i>
+            <i class="contact-star fa-solid fa-star"></i>
+            <i class="contact-star fa-solid fa-star"></i>
+            <i class="contact-star fa-solid fa-star"></i>
+            <i class="contact-star fa-solid fa-star"></i>
+            <i class="contact-star fa-solid fa-star"></i>
+
+            <!-- Telefon va sparkle -->
+            <i class="contact-particle fa-solid fa-mobile-screen-button"></i>
+            <i class="contact-particle fa-solid fa-sparkles"></i>
+            <i class="contact-particle fa-solid fa-mobile-screen-button"></i>
+            <i class="contact-particle fa-solid fa-sparkles"></i>
+            <i class="contact-particle fa-solid fa-mobile-screen-button"></i>
+            <i class="contact-particle fa-solid fa-sparkles"></i>
+        </div>
+    </section>
+    <!-- FOOTER – SAYT OXIRIGA QO‘YING -->
+    <footer class="bg-gradient-to-t from-black via-purple-950 to-purple-900 text-white py-16">
+        <div class="container mx-auto px-6">
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
+
+                <!-- 1. Brend va qisqacha info -->
+                <div>
+                    <div class="flex items-center justify-center md:justify-start space-x-3 mb-6">
+                        <i class="fa-solid fa-mobile-screen-button text-4xl text-cyan-400 animate-pulse"></i>
+                        <h1
+                            class="text-3xl font-black bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-400">
+                            PhoneShop
+                        </h1>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed">
+                        Eng yangi smartfonlar va aksessuarlar<br>
+                        Rasmiy kafolat • Tez yetkazib berish • 24/7 aloqa
+                    </p>
+                </div>
+
+                <!-- 2. Foydali havolalar -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-cyan-400">Foydali havolalar</h3>
+                    <ul class="space-y-4 text-gray-300">
+                        <li><a href="#home" class="hover:text-white transition">Bosh sahifa</a></li>
+                        <li><a href="#products" class="hover:text-white transition">Telefonlar</a></li>
+                        <li><a href="#accessories" class="hover:text-white transition">Aksessuarlar</a></li>
+                        <li><a href="#" class="hover:text-white transition">Yetkazib berish</a></li>
+                        <li><a href="#" class="hover:text-white transition">Kafolat shartlari</a></li>
+                        <li><a href="#" class="hover:text-white transition">Mijozlar sharhlari</a></li>
+                    </ul>
+                </div>
+
+                <!-- 3. Aloqa va ijtimoiy tarmoqlar -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-cyan-400">Biz bilan bog‘laning</h3>
+                    <div class="space-y-5 text-gray-300">
+                        <p class="flex items-center justify-center md:justify-start gap-3">
+                            <i class="fa-solid fa-phone text-green-400"></i>
+                            <span>+998 99 123-45-67</span>
+                        </p>
+                        <p class="flex items-center justify-center md:justify-start gap-3">
+                            <i class="fa-solid fa-envelope text-yellow-400"></i>
+                            phoneshop.uz@gmail.com
+                        </p>
+                    </div>
+
+                    <div class="flex justify-center md:justify-start gap-4 mt-8">
+                        <a href="https://t.me/Sherjonov011" target="_blank"
+                            class="bg-blue-600 hover:bg-blue-700 w-14 h-14 rounded-full flex items-center justify-center transition transform hover:scale-110 shadow-lg">
+                            <i class="fab fa-telegram-plane text-2xl"></i>
+                        </a>
+                        <a href="https://instagram.com/sherjonov.011" target="_blank"
+                            class="bg-gradient-to-r from-purple-600 to-pink-600 hover:to-pink-700 w-14 h-14 rounded-full flex items-center justify-center transition transform hover:scale-110 shadow-lg">
+                            <i class="fab fa-instagram text-2xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mualliflik huquqi -->
+            <div class="border-t border-white/20 mt-12 pt-8 text-center">
+                <p class="text-gray-400 text-sm">
+                    © 2025 <span class="text-cyan-400 font-bold">PhoneShop.uz</span> — Barcha huquqlar himoyalangan.<br>
+                    Made with <i class="fa-solid fa-heart text-red-500"></i> in Uzbekistan
+                </p>
+            </div>
+        </div>
+    </footer>
+    <a href="https://t.me/Sherjonov011" target="_blank"
+        class="fixed bottom-12 right-6 bg-blue-500 hover:bg-blue-600 text-white p-5 rounded-full shadow-2xl z-50 transition transform hover:scale-110">
+        <i class="fab fa-telegram-plane text-3xl"></i>
+    </a>
+    <!-- PREMIUM JAVASCRIPT – YANGI QO‘SHILGAN (HTML 0% o‘zgarmadi!) -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            // Savat soni va belgisi
+            let cartCount = 0;
+            const cartBadge = document.createElement("div");
+            cartBadge.className = "fixed top-6 right-6 z-50 flex items-center gap-3";
+            cartBadge.innerHTML = `
+                <div class="relative">
+                    <i class="fa-solid fa-shopping-cart text-4xl text-white bg-red-600 w-16 h-16 rounded-full flex items-center justify-center shadow-2xl animate-pulse relative -top-4"></i>
+                    <span id="cart-count" class="absolute -top-6 -right-5 bg-yellow-400 text-black text-sm font-bold w-8 h-8 rounded-full flex items-center justify-center shadow-lg ">0</span>
+                </div>
+            `;
+            document.body.appendChild(cartBadge);
+
+            // Barcha "Savatga qo‘shish" tugmalarini topamiz (bo‘sh joy, enter, \n – hammasi hisobga olindi)
+            document.querySelectorAll("button").forEach(button => {
+                // Matnni tozalab tekshiramiz
+                const text = button.textContent.replace(/\s+/g, " ").trim();
+                if (text === "Savatga qo‘shish") {
+
+                    button.addEventListener("click", function () {
+                        if (this.classList.contains("added")) return; // ikki marta bosilmasin
+
+                        const originalHTML = this.innerHTML;
+
+                        // Tugma o‘zgaradi
+                        this.innerHTML = '<i class="fa-solid fa-check mr-2"></i>Qo‘shildi!';
+                        this.style.background = "linear-gradient(to right, #10b981, #34d399)";
+                        this.classList.add("added");
+
+                        // Savat soni oshadi
+                        cartCount++;
+                        document.getElementById("cart-count").textContent = cartCount;
+
+                        // Toast chiqadi
+                        const toast = document.createElement("div");
+                        toast.className = "fixed bottom-10 left-1/2 -translate-x-1/2 bg-gradient-to-r from-emerald-600 to-cyan-600 text-white px-10 py-6 rounded-2xl shadow-2xl z-50 flex items-center gap-4 transform translate-y-16 opacity-0 transition-all duration-500 font-bold text-lg";
+                        toast.innerHTML = `
+                            <i class="fa-solid fa-check-circle text-4xl"></i>
+                            <div>Mahsulot savatga qo‘shildi!<br>
+                                <span class="text-sm opacity-90">Jami: ${cartCount} ta</span>
+                            </div>
+                        `;
+                        document.body.appendChild(toast);
+
+                        setTimeout(() => toast.classList.remove("translate-y-16", "opacity-0"), 100);
+                        setTimeout(() => {
+                            toast.classList.add("opacity-0", "translate-y-16");
+                            setTimeout(() => toast.remove(), 600);
+                        }, 2800);
+
+                        // 2.5 soniyadan keyin tugma qaytadi
+                        setTimeout(() => {
+                            this.innerHTML = originalHTML;
+                            this.style.background = "";
+                            this.classList.remove("added");
+                        }, 2500);
+                    });
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>
