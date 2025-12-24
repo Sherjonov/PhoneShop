@@ -1,0 +1,66 @@
+{
+    "phones": [
+      {
+        "id": 1,
+        "name": "iPhone 17 Pro Max",
+        "description": "A19 Pro • 48MP Fusion • Titanium",
+        "price": 18990000,
+        "category": "phone",
+        "image": "i (5).webp",
+        "stock": 15,
+        "discount": 0,
+        "isNew": true,
+        "createdAt": "2025-01-15T10:30:00Z"
+      },
+      {
+        "id": 2,
+        "name": "Samsung Galaxy S25 Ultra",
+        "description": "200MP • S Pen • AI",
+        "price": 17900000,
+        "category": "phone",
+        "image": "i (7).webp",
+        "stock": 12,
+        "discount": 10,
+        "isNew": true,
+        "createdAt": "2025-01-10T14:20:00Z"
+      },
+      {
+        "id": 3,
+        "name": "Xiaomi 15 Ultra",
+        "description": "Leica 200MP • 120W zaryad",
+        "price": 13990000,
+        "category": "phone",
+        "image": "i (8).webp",
+        "stock": 8,
+        "discount": 5,
+        "isNew": false,
+        "createdAt": "2025-01-05T09:15:00Z"
+      }
+    ],
+    "accessories": [
+      {
+        "id": 101,
+        "name": "Apple AirPods Pro 2",
+        "description": "ANC • Spatial Audio • USB-C",
+        "price": 3290000,
+        "category": "accessory",
+        "image": "i (14).webp",
+        "stock": 25,
+        "discount": 20,
+        "isNew": false,
+        "createdAt": "2024-12-20T11:45:00Z"
+      },
+      {
+        "id": 102,
+        "name": "Samsung Galaxy Buds 3 Pro",
+        "description": "360 Audio • ANC • 2025",
+        "price": 3790000,
+        "category": "accessory",
+        "image": "i (15).webp",
+        "stock": 18,
+        "discount": 15,
+        "isNew": true,
+        "createdAt": "2025-01-12T16:30:00Z"
+      }
+    ]
+  }
