@@ -1,2152 +1,2215 @@
 <!DOCTYPE html>
-<html lang="uz" class="dark">
-
+<html lang="uz">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PhoneShop | Futuristic Smartphone Experience</title>
-
-    <!-- Advanced SEO -->
-    <meta name="description"
-        content="Experience the future of smartphones. AI-powered shopping, AR preview, crypto payments. Next-gen iPhones, Samsung, Xiaomi with official warranty.">
-    <meta name="keywords"
-        content="smartphone future, AI shopping, AR preview, crypto payments, premium phones, metaverse store">
-    <meta name="author" content="PhoneShop AI">
-    <meta property="og:image"
-        content="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=2000&auto=format&fit=crop">
-    <meta name="robots" content="index, follow">
-
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#0f172a">
-
-    <!-- Apple Touch Icon -->
-    <link rel="apple-touch-icon" sizes="180x180"
-        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23667eea'/%3E%3Ctext x='50' y='68' font-size='70' text-anchor='middle' fill='white'%3E📱%3C/text%3E%3C/svg%3E">
-
-    <!-- Critical CSS (Advanced) -->
+    <title>PhoneShop.uz | Premium Smartfonlar va Aksessuarlar</title>
+    
+    <!-- Meta tags -->
+    <meta name="description" content="iPhone 16, Samsung S25, Xiaomi 15 Ultra - 11 telefon va 8 aksessuar. Rasmiy kafolat, tez yetkazish, 24/7 qo'llab-quvvatlash.">
+    <meta name="keywords" content="telefon, iPhone, Samsung, Xiaomi, AirPods, Galaxy Watch, aksessuar, O'zbekiston">
+    <meta name="author" content="PhoneShop.uz">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="PhoneShop.uz - Premium Smartfonlar">
+    <meta property="og:description" content="11 telefon va 8 aksessuar eng yaxshi narxlarda">
+    <meta property="og:type" content="website">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <style>
-        /* CSS Variables - Future Design System */
-        :root {
-            --space-3d: 1000px;
-            --neon-glow: 0 0 30px;
-            --fluid-min: 16px;
-            --fluid-max: 24px;
-            --fluid-screen: 80rem;
-
-            /* Color System */
-            --color-primary: 102 126 234;
-            --color-secondary: 236 72 153;
-            --color-accent: 6 182 212;
-            --color-success: 34 197 94;
-            --color-warning: 234 179 8;
-            --color-danger: 239 68 68;
-            --color-surface: 15 23 42;
-            --color-surface-light: 30 41 59;
-
-            /* Gradients */
-            --gradient-primary: linear-gradient(135deg, rgb(var(--color-primary)) 0%, rgb(var(--color-secondary)) 100%);
-            --gradient-accent: linear-gradient(135deg, rgb(var(--color-accent)) 0%, rgb(var(--color-success)) 100%);
-            --gradient-neon: linear-gradient(135deg, #00ffff 0%, #ff00ff 100%);
-            --gradient-space: linear-gradient(to bottom, #000428, #004e92);
-
-            /* Effects */
-            --shadow-float: 0 50px 100px -20px rgba(0, 0, 0, 0.5);
-            --shadow-neon: 0 0 40px rgba(var(--color-primary), 0.8);
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --glass-blur: blur(20px);
-
-            /* Animations */
-            --transition-morph: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-bounce: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* Dark/Light Theme System */
-        .dark {
-            --color-bg: var(--color-surface);
-            --color-bg-secondary: var(--color-surface-light);
-            --color-text: 248 250 252;
-            --color-text-secondary: 148 163 184;
-        }
-
-        .light {
-            --color-bg: 255 255 255;
-            --color-bg-secondary: 248 250 252;
-            --color-text: 15 23 42;
-            --color-text-secondary: 100 116 139;
-        }
-
-        /* Reset & Base Styles */
-        *,
-        *::before,
-        *::after {
+        /* ===== RESET & VARIABLES ===== */
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html {
-            font-size: clamp(var(--fluid-min), 1vw + 0.5rem, var(--fluid-max));
-            scroll-behavior: smooth;
-            overflow-x: hidden;
+        :root {
+            /* Colors */
+            --primary-50: #eff6ff;
+            --primary-100: #dbeafe;
+            --primary-200: #bfdbfe;
+            --primary-300: #93c5fd;
+            --primary-400: #60a5fa;
+            --primary-500: #3b82f6;
+            --primary-600: #2563eb;
+            --primary-700: #1d4ed8;
+            --primary-800: #1e40af;
+            --primary-900: #1e3a8a;
+            
+            --secondary-50: #f5f3ff;
+            --secondary-500: #8b5cf6;
+            --secondary-600: #7c3aed;
+            
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --info: #3b82f6;
+            
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+            
+            /* Transitions */
+            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+            
+            /* Border Radius */
+            --radius-sm: 0.375rem;
+            --radius: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            --radius-2xl: 1.5rem;
+            --radius-full: 9999px;
         }
 
+        /* ===== BASE STYLES ===== */
         body {
-            font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-            background: rgb(var(--color-bg));
-            color: rgb(var(--color-text));
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--gray-900);
+            line-height: 1.6;
+            min-height: 100vh;
         }
 
-        /* Custom Scrollbar (Futuristic) */
-        ::-webkit-scrollbar {
-            width: 12px;
-            height: 12px;
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
 
-        ::-webkit-scrollbar-track {
-            background: rgb(var(--color-bg-secondary));
-            border-radius: 10px;
+        @media (max-width: 640px) {
+            .container {
+                padding: 0 1rem;
+            }
         }
 
-        ::-webkit-scrollbar-thumb {
-            background: var(--gradient-primary);
-            border-radius: 10px;
-            border: 3px solid rgb(var(--color-bg-secondary));
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            filter: brightness(1.2);
-        }
-
-        /* Selection Styling */
-        ::selection {
-            background: rgba(var(--color-primary), 0.3);
-            color: rgb(var(--color-text));
-        }
-
-        /* Fluid Typography */
-        .text-fluid {
-            font-size: clamp(1rem, 2vw + 0.5rem, 4rem);
+        /* ===== TYPOGRAPHY ===== */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
             line-height: 1.2;
         }
 
-        /* Advanced Animations */
-        @keyframes float-3d {
-
-            0%,
-            100% {
-                transform: translate3d(0, 0, 0) rotateX(0) rotateY(0);
-            }
-
-            25% {
-                transform: translate3d(10px, -20px, 50px) rotateX(5deg) rotateY(10deg);
-            }
-
-            50% {
-                transform: translate3d(-5px, -10px, 100px) rotateX(-5deg) rotateY(-10deg);
-            }
-
-            75% {
-                transform: translate3d(-10px, -30px, 50px) rotateX(10deg) rotateY(5deg);
-            }
-        }
-
-        @keyframes neon-pulse {
-
-            0%,
-            100% {
-                filter: drop-shadow(var(--neon-glow) rgba(var(--color-primary), 0.3));
-            }
-
-            50% {
-                filter: drop-shadow(var(--neon-glow) rgba(var(--color-primary), 0.8)) drop-shadow(0 0 60px rgba(var(--color-secondary), 0.5));
-            }
-        }
-
-        @keyframes particle-flow {
-            0% {
-                transform: translate3d(0, 0, 0) rotate(0deg);
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 1;
-            }
-
-            90% {
-                opacity: 1;
-            }
-
-            100% {
-                transform: translate3d(var(--tx, 100vw), var(--ty, -100vh), 0) rotate(720deg);
-                opacity: 0;
-            }
-        }
-
-        @keyframes hologram-flicker {
-
-            0%,
-            100% {
-                opacity: 0.8;
-                filter: hue-rotate(0deg);
-            }
-
-            50% {
-                opacity: 1;
-                filter: hue-rotate(90deg);
-            }
-        }
-
-        @keyframes morph-gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        @keyframes scan-line {
-            0% {
-                transform: translateY(-100%);
-            }
-
-            100% {
-                transform: translateY(100vh);
-            }
-        }
-
-        /* 3D Perspective */
-        .perspective-3d {
-            perspective: var(--space-3d);
-            transform-style: preserve-3d;
-        }
-
-        .transform-3d {
-            transform: translate3d(0, 0, 0);
-            backface-visibility: hidden;
-            will-change: transform;
-        }
-
-        /* Glass Morphism Effects */
-        .glass {
-            background: var(--glass-bg);
-            backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur);
-            border: 1px solid var(--glass-border);
-            box-shadow: var(--shadow-float);
-        }
-
-        .glass-hover:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(var(--color-primary), 0.3);
-            transform: translateY(-5px);
-        }
-
-        /* Neon Effects */
-        .neon-text {
-            color: transparent;
-            background: var(--gradient-neon);
-            background-clip: text;
-            -webkit-background-clip: text;
-            animation: neon-pulse 2s ease-in-out infinite;
-        }
-
-        .neon-border {
-            position: relative;
-            border: 2px solid transparent;
-            background: linear-gradient(rgb(var(--color-bg)), rgb(var(--color-bg))) padding-box,
-                var(--gradient-neon) border-box;
-        }
-
-        /* Particle System */
-        .particles {
-            position: fixed;
+        /* ===== HEADER ===== */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
+            z-index: 1000;
+            box-shadow: var(--shadow-lg);
         }
 
-        .particle {
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        /* Logo */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary-600), var(--secondary-600));
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-600), var(--secondary-600));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        .logo-text p {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            font-weight: 500;
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--gray-700);
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color var(--transition-fast);
+        }
+
+        .nav-link:hover {
+            color: var(--primary-600);
+        }
+
+        .nav-link::after {
+            content: '';
             position: absolute;
-            width: 2px;
+            bottom: 0;
+            left: 0;
+            width: 0;
             height: 2px;
-            background: var(--gradient-neon);
-            border-radius: 50%;
-            animation: particle-flow linear infinite;
+            background: linear-gradient(90deg, var(--primary-600), var(--secondary-600));
+            transition: width var(--transition-base);
         }
 
-        /* Hologram Effect */
-        .hologram {
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--primary-600);
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Header Actions */
+        .header-actions {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .action-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: var(--radius-full);
+            border: none;
+            background: var(--gray-100);
+            color: var(--gray-700);
+            cursor: pointer;
+            position: relative;
+            transition: all var(--transition-fast);
+            font-size: 1.1rem;
+        }
+
+        .action-btn:hover {
+            background: linear-gradient(135deg, var(--primary-600), var(--secondary-600));
+            color: white;
+            transform: scale(1.1);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 20px;
+            height: 20px;
+            background: var(--danger);
+            color: white;
+            border-radius: var(--radius-full);
+            font-size: 0.7rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+        }
+
+        .order-btn {
+            background: linear-gradient(135deg, var(--primary-600), var(--secondary-600));
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .order-btn:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding: 4rem 0;
+            color: white;
             position: relative;
             overflow: hidden;
         }
 
-        .hologram::before {
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1.5rem;
+            border-radius: var(--radius-full);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title span {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform var(--transition-base);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-2xl);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-floating-badge {
+            position: absolute;
+            bottom: -1rem;
+            left: -1rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem;
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* ===== SECTION TITLES ===== */
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin: 3rem 0 2rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title i {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .section-title span {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.25rem 1rem;
+            border-radius: var(--radius-full);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        /* ===== PRODUCTS GRID ===== */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: var(--radius-2xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: all var(--transition-base);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .product-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 2px;
-            background: var(--gradient-neon);
-            animation: scan-line 3s linear infinite;
-            z-index: 1;
-        }
-
-        .hologram::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(45deg,
-                    transparent 0%,
-                    rgba(var(--color-accent), 0.1) 50%,
-                    transparent 100%);
-            animation: hologram-flicker 3s ease-in-out infinite;
-            pointer-events: none;
-        }
-
-        /* Morphing Shapes */
-        .morph-shape {
-            background: var(--gradient-primary);
-            animation: morph-gradient 6s ease infinite;
-            background-size: 200% 200%;
-            transition: var(--transition-morph);
-        }
-
-        .morph-shape:hover {
-            border-radius: 50% 20% 70% 30% / 30% 70% 20% 50%;
-        }
-
-        /* Advanced Button Styles */
-        .btn-future {
-            position: relative;
-            overflow: hidden;
-            isolation: isolate;
-            transition: var(--transition-bounce);
-        }
-
-        .btn-future::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: var(--gradient-primary);
-            z-index: -1;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-600), var(--secondary-600));
             transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s ease;
+            transition: transform var(--transition-base);
         }
 
-        .btn-future:hover::before {
+        .product-card:hover::before {
             transform: scaleX(1);
         }
 
-        .btn-future::after {
-            content: '';
+        .product-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-badge {
             position: absolute;
-            inset: -2px;
-            background: var(--gradient-neon);
-            z-index: -2;
-            filter: blur(20px);
+            top: 1rem;
+            left: 1rem;
+            background: linear-gradient(135deg, var(--danger), #f97316);
+            color: white;
+            padding: 0.25rem 1rem;
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            font-weight: 700;
+            z-index: 1;
+            box-shadow: var(--shadow);
+        }
+
+        .product-actions {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
             opacity: 0;
-            transition: opacity 0.4s ease;
+            transform: translateX(20px);
+            transition: all var(--transition-base);
         }
 
-        .btn-future:hover::after {
+        .product-card:hover .product-actions {
             opacity: 1;
+            transform: translateX(0);
         }
 
-        /* Grid Systems */
-        .grid-auto-fluid {
+        .product-action-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: var(--radius-full);
+            border: none;
+            background: white;
+            color: var(--gray-700);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            box-shadow: var(--shadow);
+            font-size: 1rem;
+        }
+
+        .product-action-btn:hover {
+            background: linear-gradient(135deg, var(--primary-600), var(--secondary-600));
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .product-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gray-800);
+        }
+
+        .product-brand {
+            font-size: 0.8rem;
+            padding: 0.25rem 0.75rem;
+            background: var(--gray-100);
+            border-radius: var(--radius-full);
+            color: var(--gray-600);
+            font-weight: 500;
+        }
+
+        .product-desc {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .current-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-600);
+        }
+
+        .old-price {
+            font-size: 1rem;
+            color: var(--gray-400);
+            text-decoration: line-through;
+        }
+
+        .product-stock {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+            font-size: 0.9rem;
+        }
+
+        .stock-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: var(--radius-full);
+        }
+
+        .stock-indicator.high {
+            background: var(--success);
+            box-shadow: 0 0 10px var(--success);
+        }
+
+        .stock-indicator.medium {
+            background: var(--warning);
+            box-shadow: 0 0 10px var(--warning);
+        }
+
+        .stock-indicator.low {
+            background: var(--danger);
+            box-shadow: 0 0 10px var(--danger);
+        }
+
+        .stock-text.high {
+            color: var(--success);
+        }
+
+        .stock-text.medium {
+            color: var(--warning);
+        }
+
+        .stock-text.low {
+            color: var(--danger);
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 0.9rem;
+            background: linear-gradient(135deg, var(--primary-600), var(--secondary-600));
+            color: white;
+            border: none;
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .add-to-cart:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .add-to-cart:active {
+            transform: scale(0.98);
+        }
+
+        /* ===== FEATURES SECTION ===== */
+        .features {
+            padding: 3rem 0;
+        }
+
+        .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
         }
 
-        .grid-masonry {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            grid-auto-rows: 200px;
-            gap: 1rem;
-            grid-auto-flow: dense;
+        .feature-card {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-2xl);
+            color: white;
+            transition: all var(--transition-base);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        /* Loading Skeletons */
+        .feature-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-2xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            transition: transform var(--transition-base);
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1) rotate(360deg);
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-desc {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* ===== CART SIDEBAR ===== */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -450px;
+            width: 100%;
+            max-width: 450px;
+            height: 100vh;
+            background: white;
+            box-shadow: var(--shadow-2xl);
+            transition: right var(--transition-bounce);
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-sidebar.open {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .cart-title i {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary-600), var(--secondary-600));
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .cart-title h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--gray-800);
+        }
+
+        .cart-close {
+            width: 38px;
+            height: 38px;
+            border-radius: var(--radius-full);
+            border: none;
+            background: var(--gray-100);
+            color: var(--gray-600);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            font-size: 1rem;
+        }
+
+        .cart-close:hover {
+            background: var(--danger);
+            color: white;
+            transform: rotate(90deg);
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--gray-50);
+            border-radius: var(--radius-lg);
+            margin-bottom: 1rem;
+            position: relative;
+            animation: slideIn var(--transition-base);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .cart-item-image {
+            width: 70px;
+            height: 70px;
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--gray-800);
+            margin-bottom: 0.25rem;
+        }
+
+        .cart-item-price {
+            color: var(--primary-600);
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .cart-quantity {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cart-quantity-btn {
+            width: 28px;
+            height: 28px;
+            border: 1px solid var(--gray-300);
+            background: white;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            font-size: 0.8rem;
+        }
+
+        .cart-quantity-btn:hover {
+            background: var(--primary-600);
+            color: white;
+            border-color: var(--primary-600);
+        }
+
+        .cart-quantity-btn:active {
+            transform: scale(0.9);
+        }
+
+        .cart-remove {
+            color: var(--danger);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            font-size: 1rem;
+        }
+
+        .cart-remove:hover {
+            transform: scale(1.2);
+        }
+
+        .cart-footer {
+            padding: 1.5rem;
+            border-top: 1px solid var(--gray-200);
+            background: white;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .cart-total span:last-child {
+            color: var(--primary-600);
+        }
+
+        .cart-checkout-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary-600), var(--secondary-600));
+            color: white;
+            border: none;
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+
+        .cart-checkout-btn:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .cart-checkout-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* ===== BACKDROP ===== */
+        .backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-base);
+        }
+
+        .backdrop.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ===== FLOATING BUTTONS ===== */
+        .floating-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-full);
+            background: linear-gradient(135deg, var(--primary-600), var(--secondary-600));
+            color: white;
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow-2xl);
+            transition: all var(--transition-base);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.1) rotate(360deg);
+        }
+
+        .floating-btn .badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 24px;
+            height: 24px;
+            background: var(--danger);
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+        }
+
+        .scroll-top {
+            bottom: 7rem;
+            background: var(--gray-800);
+        }
+
+        /* ===== TOAST NOTIFICATION ===== */
+        .toast {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            max-width: 350px;
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-2xl);
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transform: translateX(400px);
+            transition: transform var(--transition-bounce);
+            z-index: 1002;
+            border-left: 4px solid var(--success);
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast.success {
+            border-left-color: var(--success);
+        }
+
+        .toast.error {
+            border-left-color: var(--danger);
+        }
+
+        .toast.warning {
+            border-left-color: var(--warning);
+        }
+
+        .toast.info {
+            border-left-color: var(--info);
+        }
+
+        .toast-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .toast.success .toast-icon {
+            background: var(--success);
+            color: white;
+        }
+
+        .toast.error .toast-icon {
+            background: var(--danger);
+            color: white;
+        }
+
+        .toast.warning .toast-icon {
+            background: var(--warning);
+            color: white;
+        }
+
+        .toast.info .toast-icon {
+            background: var(--info);
+            color: white;
+        }
+
+        .toast-content {
+            flex: 1;
+        }
+
+        .toast-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--gray-800);
+            margin-bottom: 0.25rem;
+        }
+
+        .toast-message {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+
+        .toast-close {
+            color: var(--gray-400);
+            cursor: pointer;
+            transition: color var(--transition-fast);
+            font-size: 0.9rem;
+        }
+
+        .toast-close:hover {
+            color: var(--gray-600);
+        }
+
+        .toast-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: var(--success);
+            border-radius: 0 0 0 var(--radius-lg);
+            transition: width 5s linear;
+        }
+
+        /* ===== MODAL ===== */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1003;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-base);
+        }
+
+        .modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            max-width: 450px;
+            width: 90%;
+            background: white;
+            border-radius: var(--radius-2xl);
+            padding: 2.5rem;
+            text-align: center;
+            transform: scale(0.9);
+            transition: transform var(--transition-bounce);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .modal.show .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-icon {
+            width: 90px;
+            height: 90px;
+            background: var(--success);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 3rem;
+            color: white;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--gray-800);
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-text {
+            color: var(--gray-600);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .modal-order {
+            background: var(--gray-50);
+            padding: 1rem;
+            border-radius: var(--radius-lg);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-600);
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 0.9rem;
+            border: none;
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            font-size: 0.95rem;
+        }
+
+        .modal-btn-primary {
+            background: linear-gradient(135deg, var(--primary-600), var(--secondary-600));
+            color: white;
+        }
+
+        .modal-btn-secondary {
+            background: var(--gray-100);
+            color: var(--gray-700);
+        }
+
+        .modal-btn:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .modal-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--gray-900);
+            color: white;
+            padding: 4rem 0 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-600), var(--secondary-600));
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .footer-logo h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .footer-text {
+            color: var(--gray-400);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .social-link {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all var(--transition-fast);
+            font-size: 1rem;
+        }
+
+        .social-link:hover {
+            background: var(--primary-600);
+            transform: translateY(-3px);
+        }
+
+        .footer-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all var(--transition-fast);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 0.5rem;
+        }
+
+        .footer-contact {
+            list-style: none;
+        }
+
+        .footer-contact li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--gray-400);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-contact i {
+            width: 20px;
+            color: var(--primary-500);
+            font-size: 1rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--gray-800);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--gray-500);
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom i {
+            color: var(--danger);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .nav {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+
+            .cart-sidebar {
+                max-width: 100%;
+            }
+
+            .modal-content {
+                padding: 1.5rem;
+            }
+
+            .modal-buttons {
+                flex-direction: column;
+            }
+
+            .hero-floating-badge {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .order-btn span {
+                display: none;
+            }
+
+            .order-btn i {
+                margin: 0;
+            }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .scale-in {
+            animation: scaleIn 0.3s ease-out;
+        }
+
+        /* ===== LOADING STATES ===== */
         .skeleton {
-            background: linear-gradient(90deg,
-                    rgb(var(--color-bg-secondary)) 25%,
-                    rgb(var(--color-bg)) 50%,
-                    rgb(var(--color-bg-secondary)) 75%);
+            background: linear-gradient(90deg, var(--gray-200) 25%, var(--gray-100) 50%, var(--gray-200) 75%);
             background-size: 200% 100%;
-            animation: shimmer 2s infinite;
+            animation: shimmer 1.5s infinite;
         }
 
         @keyframes shimmer {
             0% {
-                background-position: -200% 0;
-            }
-
-            100% {
                 background-position: 200% 0;
             }
+            100% {
+                background-position: -200% 0;
+            }
         }
 
-        /* Custom Cursor */
-        .cursor-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--gradient-neon);
-            border-radius: 50%;
-            position: fixed;
+        /* ===== UTILITY CLASSES ===== */
+        .text-center {
+            text-align: center;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .loading {
+            opacity: 0.7;
             pointer-events: none;
-            z-index: 9999;
-            mix-blend-mode: difference;
-        }
-
-        .cursor-ring {
-            width: 40px;
-            height: 40px;
-            border: 2px solid rgba(var(--color-primary), 0.5);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9998;
-            mix-blend-mode: difference;
-            transition: transform 0.1s ease;
-        }
-
-        /* Parallax Layers */
-        .parallax-layer {
-            position: absolute;
-            will-change: transform;
-        }
-
-        .layer-1 {
-            transform: translateZ(-100px) scale(2);
-        }
-
-        .layer-2 {
-            transform: translateZ(-50px) scale(1.5);
-        }
-
-        .layer-3 {
-            transform: translateZ(0) scale(1);
-        }
-
-        .layer-4 {
-            transform: translateZ(50px) scale(0.75);
-        }
-
-        .layer-5 {
-            transform: translateZ(100px) scale(0.5);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            :root {
-                --space-3d: 500px;
-                --glass-blur: blur(10px);
-            }
-
-            .mobile-only {
-                display: block;
-            }
-
-            .desktop-only {
-                display: none;
-            }
-
-            .grid-masonry {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-                grid-auto-rows: 150px;
-            }
-        }
-
-        @media (min-width: 769px) {
-            .mobile-only {
-                display: none;
-            }
-
-            .desktop-only {
-                display: block;
-            }
-        }
-
-        /* Print Styles */
-        @media print {
-            .no-print {
-                display: none;
-            }
-
-            body {
-                background: white;
-                color: black;
-            }
-        }
-
-        /* Reduced Motion */
-        @media (prefers-reduced-motion: reduce) {
-
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-
-        /* High Contrast Mode */
-        @media (prefers-contrast: high) {
-            :root {
-                --color-text: 0 0 0;
-                --color-bg: 255 255 255;
-            }
-        }
-
-        /* Dark Mode Auto */
-        @media (prefers-color-scheme: dark) {
-            :root:not(.light) {
-                --color-bg: var(--color-surface);
-                --color-bg-secondary: var(--color-surface-light);
-                --color-text: 248 250 252;
-                --color-text-secondary: 148 163 184;
-            }
         }
     </style>
 </head>
-
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor-dot"></div>
-    <div class="cursor-ring"></div>
-
-    <!-- Particle System -->
-    <div class="particles" id="particles"></div>
-
-    <!-- Loading Screen -->
-    <div id="loadingScreen"
-        class="fixed inset-0 bg-black z-[100] flex items-center justify-center transition-opacity duration-1000">
-        <div class="text-center">
-            <div class="relative w-32 h-32 mx-auto mb-8">
-                <!-- Morphing Logo -->
-                <div class="absolute inset-0 morph-shape rounded-[40%]"></div>
-                <div class="absolute inset-4 morph-shape rounded-[30%] animation-delay-1000"></div>
-                <div class="absolute inset-8 morph-shape rounded-[20%] animation-delay-2000"></div>
-
-                <!-- Scanning Effect -->
-                <div class="absolute inset-0 hologram rounded-[40%]"></div>
-            </div>
-
-            <div class="text-2xl font-bold neon-text mb-4">PhoneShop</div>
-            <div class="text-gray-400">Loading Future Experience...</div>
-
-            <!-- Progress Bar -->
-            <div class="w-64 h-1 bg-gray-800 rounded-full mt-8 mx-auto overflow-hidden">
-                <div id="loadingProgress"
-                    class="h-full bg-gradient-to-r from-cyan-500 to-blue-500 w-0 transition-all duration-300"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 glass py-4 px-6">
-        <div class="container mx-auto flex items-center justify-between">
-            <!-- Logo -->
-            <div class="flex items-center space-x-3">
-                <div class="w-12 h-12 morph-shape rounded-2xl flex items-center justify-center">
-                    <span class="text-2xl">📱</span>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-mobile-alt"></i>
                 </div>
-                <div>
-                    <h1 class="text-2xl font-bold neon-text">PhoneShop</h1>
-                    <p class="text-xs text-gray-400">Next-Gen Smartphones</p>
+                <div class="logo-text">
+                    <h1>PhoneShop.uz</h1>
+                    <p>Premium smartfonlar va aksessuarlar</p>
                 </div>
-            </div>
+            </a>
 
-            <!-- Desktop Navigation -->
-            <div class="hidden lg:flex items-center space-x-8">
-                <a href="#hero" class="relative group">
-                    <span class="text-gray-300 group-hover:text-white transition-colors">Home</span>
-                    <span
-                        class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-500 to-blue-500 group-hover:w-full transition-all duration-300"></span>
-                </a>
-                <a href="#products" class="relative group">
-                    <span class="text-gray-300 group-hover:text-white transition-colors">Products</span>
-                    <span
-                        class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-500 to-blue-500 group-hover:w-full transition-all duration-300"></span>
-                </a>
-                <a href="#ar" class="relative group">
-                    <span class="text-gray-300 group-hover:text-white transition-colors">AR Preview</span>
-                    <span
-                        class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-500 to-blue-500 group-hover:w-full transition-all duration-300"></span>
-                </a>
-                <a href="#ai" class="relative group">
-                    <span class="text-gray-300 group-hover:text-white transition-colors">AI Assistant</span>
-                    <span
-                        class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-cyan-500 to-blue-500 group-hover:w-full transition-all duration-300"></span>
-                </a>
-            </div>
+            <nav class="nav">
+                <a href="#home" class="nav-link active">Bosh sahifa</a>
+                <a href="#phones" class="nav-link">Telefonlar <span style="color: var(--primary-600);">(11)</span></a>
+                <a href="#accessories" class="nav-link">Aksessuarlar <span style="color: var(--primary-600);">(8)</span></a>
+                <a href="#features" class="nav-link">Afzalliklar</a>
+                <a href="#contact" class="nav-link">Aloqa</a>
+            </nav>
 
-            <!-- Action Buttons -->
-            <div class="flex items-center space-x-4">
-                <button id="themeToggle"
-                    class="w-10 h-10 glass rounded-full flex items-center justify-center hover:scale-110 transition-transform">
-                    <span class="text-xl">🌓</span>
+            <div class="header-actions">
+                <button class="action-btn" id="searchBtn" aria-label="Qidirish">
+                    <i class="fas fa-search"></i>
                 </button>
-
-                <button onclick="cart.openCart()"
-                    class="relative w-10 h-10 glass rounded-full flex items-center justify-center hover:scale-110 transition-transform">
-                    <span class="text-xl">🛒</span>
-                    <span id="cartCount"
-                        class="absolute -top-1 -right-1 w-5 h-5 bg-gradient-to-r from-red-500 to-pink-500 text-white text-xs rounded-full flex items-center justify-center">0</span>
+                <button class="action-btn" id="cartBtn" aria-label="Savat">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
                 </button>
-
-                <button id="menuToggle" class="lg:hidden w-10 h-10 glass rounded-full flex items-center justify-center">
-                    <span class="text-xl">☰</span>
+                <button class="mobile-menu-btn action-btn" id="menuBtn" aria-label="Menyu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <button class="order-btn" id="orderBtn">
+                    <i class="fas fa-bolt"></i>
+                    <span>Buyurtma berish</span>
                 </button>
             </div>
         </div>
-    </nav>
+    </header>
 
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="fixed inset-0 bg-black/90 backdrop-blur-xl z-40 hidden lg:hidden">
-        <div class="container mx-auto px-6 py-20">
-            <div class="space-y-8">
-                <a href="#hero" class="block text-3xl font-bold neon-text">Home</a>
-                <a href="#products" class="block text-3xl font-bold neon-text">Products</a>
-                <a href="#ar" class="block text-3xl font-bold neon-text">AR Preview</a>
-                <a href="#ai" class="block text-3xl font-bold neon-text">AI Assistant</a>
-                <a href="#metaverse" class="block text-3xl font-bold neon-text">Metaverse Store</a>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <div class="fade-in">
+                <div class="hero-badge">
+                    <i class="fas fa-fire" style="color: #fbbf24;"></i>
+                    <span>Chegirmalar 50% gacha!</span>
+                </div>
+                <h1 class="hero-title">
+                    Eng so'nggi <br>
+                    <span>smartfonlar</span> <br>
+                    faqat bizda!
+                </h1>
+                <p class="hero-text">
+                    iPhone 16, Samsung S25, Xiaomi 15 Ultra va boshqa 8 ta model. 
+                    Barcha aksessuarlar bilan. Rasmiy kafolat va tez yetkazish.
+                </p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">11</div>
+                        <div class="stat-label">Telefonlar</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">8</div>
+                        <div class="stat-label">Aksessuarlar</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Yordam</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">1 yil</div>
+                        <div class="stat-label">Kafolat</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800" alt="PhoneShop Premium">
+                <div class="hero-floating-badge">
+                    <i class="fas fa-check-circle" style="color: #10b981; font-size: 2rem;"></i>
+                    <div>
+                        <strong>Rasmiy diler</strong>
+                        <p style="font-size: 0.85rem; opacity: 0.9;">Barcha brendlar</p>
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
+
+    <div class="container">
+        <!-- Telefonlar (11) -->
+        <h2 class="section-title" id="phones">
+            <i class="fas fa-mobile-alt"></i>
+            Premium Smartfonlar <span>11 ta model</span>
+        </h2>
+        <div class="products-grid" id="phonesGrid"></div>
+
+        <!-- Aksessuarlar (8) -->
+        <h2 class="section-title" id="accessories">
+            <i class="fas fa-headphones"></i>
+            Original Aksessuarlar <span>8 ta model</span>
+        </h2>
+        <div class="products-grid" id="accessoriesGrid"></div>
+
+        <!-- Features -->
+        <section class="features" id="features">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Rasmiy kafolat</h3>
+                    <p class="feature-desc">1 yil rasmiy kafolat. Nostandart holatlarda yangisi bilan almashtirish</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3 class="feature-title">Tez yetkazish</h3>
+                    <p class="feature-desc">Toshkent bo'yicha 2 soat, viloyatlarga 24 soat ichida yetkazish</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="feature-title">24/7 Qo'llab-quvvatlash</h3>
+                    <p class="feature-desc">Har qanday savol va muammolar uchun doimiy texnik yordam</p>
+                </div>
+            </div>
+        </section>
     </div>
-
-    <!-- Main Content -->
-    <main>
-        <!-- Hero Section with 3D Parallax -->
-        <section id="hero" class="min-h-screen relative overflow-hidden">
-            <!-- Parallax Background -->
-            <div class="absolute inset-0 perspective-3d">
-                <div class="parallax-layer layer-1">
-                    <div class="absolute inset-0 bg-gradient-to-br from-black via-purple-900/20 to-black"></div>
-                </div>
-                <div class="parallax-layer layer-2">
-                    <!-- Floating 3D Elements -->
-                    <div
-                        class="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-full blur-3xl">
-                    </div>
-                    <div
-                        class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full blur-3xl">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Content -->
-            <div class="container mx-auto px-6 py-32 relative z-10">
-                <div class="grid lg:grid-cols-2 gap-16 items-center">
-                    <div class="text-center lg:text-left">
-                        <div class="inline-block mb-6 px-4 py-2 glass rounded-full">
-                            <span class="text-sm text-cyan-400">🚀 Future is Here</span>
-                        </div>
-
-                        <h1 class="text-fluid font-black mb-6">
-                            <span class="block neon-text">Experience</span>
-                            <span class="block">The Future of</span>
-                            <span
-                                class="block bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
-                                Smartphones
-                            </span>
-                        </h1>
-
-                        <p class="text-xl text-gray-400 mb-10 max-w-2xl">
-                            Step into tomorrow with AI-powered shopping, AR previews,
-                            and crypto payments. The next generation of smartphones awaits.
-                        </p>
-
-                        <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
-                            <button onclick="window.location.href='#products'"
-                                class="px-8 py-4 btn-future rounded-2xl font-bold text-white group">
-                                <span class="relative z-10">Explore Products</span>
-                                <span class="absolute right-4 group-hover:translate-x-2 transition-transform">→</span>
-                            </button>
-
-                            <button onclick="startAR()"
-                                class="px-8 py-4 glass rounded-2xl font-bold hover:scale-105 transition-transform">
-                                <span class="flex items-center gap-2">
-                                    <span>👁️</span>
-                                    AR Preview
-                                </span>
-                            </button>
-                        </div>
-
-                        <!-- Stats -->
-                        <div class="grid grid-cols-3 gap-6 mt-16">
-                            <div class="text-center p-6 glass rounded-2xl hover:scale-105 transition-transform">
-                                <div class="text-3xl font-bold neon-text">50+</div>
-                                <div class="text-sm text-gray-400 mt-2">AI Models</div>
-                            </div>
-                            <div class="text-center p-6 glass rounded-2xl hover:scale-105 transition-transform">
-                                <div class="text-3xl font-bold neon-text">24/7</div>
-                                <div class="text-sm text-gray-400 mt-2">AI Support</div>
-                            </div>
-                            <div class="text-center p-6 glass rounded-2xl hover:scale-105 transition-transform">
-                                <div class="text-3xl font-bold neon-text">AR</div>
-                                <div class="text-sm text-gray-400 mt-2">Live Preview</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 3D Phone Model -->
-                    <div class="relative hidden lg:block">
-                        <div class="relative w-full h-[600px]">
-                            <!-- 3D Container -->
-                            <div class="absolute inset-0 perspective-3d">
-                                <div class="transform-3d animate-float-3d">
-                                    <!-- Phone Model -->
-                                    <div class="relative w-full h-full">
-                                        <div
-                                            class="absolute inset-0 bg-gradient-to-br from-gray-900 via-purple-900/30 to-black rounded-[40px] p-8">
-                                            <div
-                                                class="w-full h-full bg-gradient-to-br from-gray-900 to-black rounded-[32px] p-6 border border-gray-800">
-                                                <!-- Screen -->
-                                                <div
-                                                    class="w-full h-full bg-gradient-to-br from-cyan-500/20 via-purple-500/20 to-pink-500/20 rounded-2xl flex items-center justify-center">
-                                                    <div class="text-center">
-                                                        <div class="text-6xl mb-4 animate-pulse">✨</div>
-                                                        <div class="text-2xl font-bold neon-text">PhoneShop</div>
-                                                        <div class="text-sm text-gray-400 mt-2">Future is Loading...
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Floating Elements -->
-                            <div
-                                class="absolute -top-10 -left-10 w-40 h-40 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-3xl rotate-12 animate-float-3d animation-delay-1000">
-                            </div>
-                            <div
-                                class="absolute -bottom-10 -right-10 w-48 h-48 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-3xl -rotate-12 animate-float-3d animation-delay-2000">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Scroll Indicator -->
-            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-                <div class="animate-bounce">
-                    <div class="w-6 h-10 border-2 border-gray-400 rounded-full flex items-start justify-center p-1">
-                        <div class="w-1 h-3 bg-gradient-to-b from-cyan-400 to-blue-400 rounded-full animate-pulse">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- AR Preview Section -->
-        <section id="ar" class="py-20 relative overflow-hidden">
-            <!-- Hologram Grid -->
-            <div class="absolute inset-0 grid grid-cols-6 grid-rows-6 opacity-10">
-                <div class="border border-gray-800"></div>
-                <div class="border border-gray-800"></div>
-                <!-- Repeat grid cells -->
-            </div>
-
-            <div class="container mx-auto px-6 relative z-10">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                        <span class="neon-text">AR Experience</span>
-                    </h2>
-                    <p class="text-xl text-gray-400 max-w-3xl mx-auto">
-                        Preview phones in your space using augmented reality.
-                        See how they look in real life before buying.
-                    </p>
-                </div>
-
-                <!-- AR Preview Area -->
-                <div class="glass rounded-3xl p-8 max-w-4xl mx-auto">
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div>
-                            <h3 class="text-2xl font-bold mb-6">Try It Now</h3>
-                            <div class="space-y-4 mb-8">
-                                <button onclick="startAR('iphone')"
-                                    class="w-full p-4 glass rounded-xl text-left hover:glass-hover transition-all group">
-                                    <div class="flex items-center gap-4">
-                                        <div
-                                            class="w-12 h-12 bg-gradient-to-r from-gray-800 to-gray-900 rounded-lg flex items-center justify-center">
-                                            🍎
-                                        </div>
-                                        <div>
-                                            <div class="font-bold">iPhone 17 Pro Max</div>
-                                            <div class="text-sm text-gray-400">AR Preview Available</div>
-                                        </div>
-                                    </div>
-                                </button>
-
-                                <button onclick="startAR('samsung')"
-                                    class="w-full p-4 glass rounded-xl text-left hover:glass-hover transition-all group">
-                                    <div class="flex items-center gap-4">
-                                        <div
-                                            class="w-12 h-12 bg-gradient-to-r from-blue-800 to-blue-900 rounded-lg flex items-center justify-center">
-                                            📱
-                                        </div>
-                                        <div>
-                                            <div class="font-bold">Samsung S25 Ultra</div>
-                                            <div class="text-sm text-gray-400">AR Preview Available</div>
-                                        </div>
-                                    </div>
-                                </button>
-                            </div>
-
-                            <div class="text-sm text-gray-400">
-                                <p class="mb-2">📱 Point your camera at a flat surface</p>
-                                <p>👆 Tap to place the phone in your space</p>
-                            </div>
-                        </div>
-
-                        <!-- AR Viewport -->
-                        <div class="relative h-96 rounded-2xl overflow-hidden">
-                            <div id="arViewport"
-                                class="absolute inset-0 bg-gradient-to-br from-gray-900 to-black flex items-center justify-center">
-                                <div class="text-center">
-                                    <div class="text-6xl mb-4">👁️</div>
-                                    <h4 class="text-xl font-bold mb-2">AR Preview</h4>
-                                    <p class="text-gray-400">Select a phone to preview</p>
-                                </div>
-                            </div>
-
-                            <!-- AR Controls -->
-                            <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-4">
-                                <button
-                                    class="w-12 h-12 glass rounded-full flex items-center justify-center hover:scale-110">
-                                    🔄
-                                </button>
-                                <button
-                                    class="w-12 h-12 glass rounded-full flex items-center justify-center hover:scale-110">
-                                    ⬜
-                                </button>
-                                <button
-                                    class="w-12 h-12 glass rounded-full flex items-center justify-center hover:scale-110">
-                                    📸
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- AI Assistant Section -->
-        <section id="ai" class="py-20 bg-gradient-to-b from-transparent to-gray-900/30">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                        <span class="neon-text">AI Personal Assistant</span>
-                    </h2>
-                    <p class="text-xl text-gray-400 max-w-3xl mx-auto">
-                        Our AI will find the perfect phone for your needs.
-                        Just tell us what matters most to you.
-                    </p>
-                </div>
-
-                <!-- AI Chat Interface -->
-                <div class="glass rounded-3xl p-8 max-w-4xl mx-auto">
-                    <div class="grid md:grid-cols-3 gap-8">
-                        <!-- AI Avatar -->
-                        <div class="text-center">
-                            <div class="relative w-48 h-48 mx-auto mb-6">
-                                <div class="absolute inset-0 morph-shape rounded-full"></div>
-                                <div class="absolute inset-6 morph-shape rounded-full animation-delay-1000"></div>
-                                <div class="absolute inset-12 morph-shape rounded-full animation-delay-2000"></div>
-                                <div class="absolute inset-0 flex items-center justify-center">
-                                    <div class="text-6xl">🤖</div>
-                                </div>
-                            </div>
-                            <h3 class="text-2xl font-bold mb-2">AI Assistant</h3>
-                            <p class="text-gray-400">Ready to help you choose</p>
-                        </div>
-
-                        <!-- Chat Interface -->
-                        <div class="md:col-span-2">
-                            <div class="h-96 overflow-y-auto mb-6 space-y-4">
-                                <!-- AI Message -->
-                                <div class="flex gap-4">
-                                    <div
-                                        class="w-8 h-8 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center">
-                                        AI
-                                    </div>
-                                    <div class="flex-1">
-                                        <div class="glass rounded-2xl rounded-tl-none p-4">
-                                            <p>Hi! I'm your AI assistant. What's most important to you in a smartphone?
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Quick Questions -->
-                                <div class="grid grid-cols-2 gap-3 mt-4">
-                                    <button onclick="aiSelect('camera')"
-                                        class="p-3 glass rounded-xl text-left hover:glass-hover transition-all">
-                                        📸 Camera Quality
-                                    </button>
-                                    <button onclick="aiSelect('gaming')"
-                                        class="p-3 glass rounded-xl text-left hover:glass-hover transition-all">
-                                        🎮 Gaming Performance
-                                    </button>
-                                    <button onclick="aiSelect('battery')"
-                                        class="p-3 glass rounded-xl text-left hover:glass-hover transition-all">
-                                        🔋 Battery Life
-                                    </button>
-                                    <button onclick="aiSelect('design')"
-                                        class="p-3 glass rounded-xl text-left hover:glass-hover transition-all">
-                                        ✨ Premium Design
-                                    </button>
-                                </div>
-                            </div>
-
-                            <!-- Chat Input -->
-                            <div class="flex gap-4">
-                                <input type="text" placeholder="Type your needs here..."
-                                    
-                                class="flex-1 px-6 py-3 glass rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500">
-                                <button class="px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl font-bold hover:scale-105 transition-transform">
-                                    Send
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- AI Recommendations -->
-                    <div id="aiRecommendations" class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 hidden">
-                        <div class="p-6 glass rounded-2xl hover:scale-105 transition-transform">
-                            <div class="text-center mb-4">
-                                <div class="text-4xl mb-2">📱</div>
-                                <h4 class="font-bold">iPhone 17 Pro Max</h4>
-                                <p class="text-sm text-gray-400">For Photography Enthusiasts</p>
-                            </div>
-                            <div class="space-y-2">
-                                <div class="flex justify-between text-sm">
-                                    <span class="text-gray-400">Camera:</span>
-                                    <span class="font-bold">48MP Pro</span>
-                                </div>
-                                <div class="flex justify-between text-sm">
-                                    <span class="text-gray-400">Battery:</span>
-                                    <span class="font-bold">5000mAh</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="p-6 glass rounded-2xl hover:scale-105 transition-transform">
-                            <div class="text-center mb-4">
-                                <div class="text-4xl mb-2">🎮</div>
-                                <h4 class="font-bold">ASUS ROG Phone 8</h4>
-                                <p class="text-sm text-gray-400">For Hardcore Gamers</p>
-                            </div>
-                            <div class="space-y-2">
-                                <div class="flex justify-between text-sm">
-                                    <span class="text-gray-400">Refresh Rate:</span>
-                                    <span class="font-bold">165Hz</span>
-                                </div>
-                                <div class="flex justify-between text-sm">
-                                    <span class="text-gray-400">Cooling:</span>
-                                    <span class="font-bold">AeroActive</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="p-6 glass rounded-2xl hover:scale-105 transition-transform">
-                            <div class="text-center mb-4">
-                                <div class="text-4xl mb-2">🔋</div>
-                                <h4 class="font-bold">Samsung S25 Ultra</h4>
-                                <p class="text-sm text-gray-400">For Long Battery Life</p>
-                            </div>
-                            <div class="space-y-2">
-                                <div class="flex justify-between text-sm">
-                                    <span class="text-gray-400">Battery:</span>
-                                    <span class="font-bold">6000mAh</span>
-                                </div>
-                                <div class="flex justify-between text-sm">
-                                    <span class="text-gray-400">Charging:</span>
-                                    <span class="font-bold">45W Fast</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Products Section -->
-        <section id="products" class="py-20 relative">
-            <!-- Animated Background -->
-            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/20 to-transparent"></div>
-            
-            <div class="container mx-auto px-6 relative z-10">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                        <span class="neon-text">Future Collection</span>
-                    </h2>
-                    <p class="text-xl text-gray-400">Next-generation smartphones with cutting-edge technology</p>
-                </div>
-                
-                <!-- Advanced Filters -->
-                <div class="glass rounded-2xl p-6 mb-8 grid grid-cols-1 md:grid-cols-5 gap-4">
-                    <select class="p-3 glass rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500">
-                        <option>All Brands</option>
-                        <option>Apple</option>
-                        <option>Samsung</option>
-                        <option>Xiaomi</option>
-                        <option>Google</option>
-                        <option>ASUS</option>
-                    </select>
-                    
-                    <select class="p-3 glass rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500">
-                        <option>Sort By</option>
-                        <option>Price: Low to High</option>
-                        <option>Price: High to Low</option>
-                        <option>Newest First</option>
-                        <option>Best Selling</option>
-                    </select>
-                    
-                    <select class="p-3 glass rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500">
-                        <option>Storage</option>
-                        <option>128GB</option>
-                        <option>256GB</option>
-                        <option>512GB</option>
-                        <option>1TB</option>
-                    </select>
-                    
-                    <select class="p-3 glass rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500">
-                        <option>Features</option>
-                        <option>5G</option>
-                        <option>Foldable</option>
-                        <option>Waterproof</option>
-                        <option>Wireless Charging</option>
-                    </select>
-                    
-                    <button class="p-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl font-bold hover:scale-105 transition-transform">
-                        Apply Filters
-                    </button>
-                </div>
-                
-                <!-- Products Grid -->
-                <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                    <!-- Products will be loaded here -->
-                </div>
-                
-                <!-- Loading Animation -->
-                <div id="loading" class="text-center py-12">
-                    <div class="relative w-20 h-20 mx-auto mb-4">
-                        <div class="absolute inset-0 border-4 border-gray-800 rounded-full"></div>
-                        <div class="absolute inset-2 border-4 border-transparent border-t-cyan-500 rounded-full animate-spin"></div>
-                    </div>
-                    <p class="text-gray-400">Loading future products...</p>
-                </div>
-                
-                <!-- Load More -->
-                <div class="text-center mt-12">
-                    <button id="loadMore" onclick="loadMoreProducts()"
-                            class="px-8 py-4 glass rounded-2xl font-bold hover:scale-105 transition-transform hidden">
-                        Load More Products
-                        <span class="ml-2">↓</span>
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Metaverse Store Section -->
-        <section id="metaverse" class="py-20 relative overflow-hidden">
-            <!-- Metaverse Background -->
-            <div class="absolute inset-0 bg-gradient-to-br from-purple-900/10 via-transparent to-cyan-900/10"></div>
-            
-            <div class="container mx-auto px-6 relative z-10">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-6">
-                        <span class="neon-text">Metaverse Store</span>
-                    </h2>
-                    <p class="text-xl text-gray-400 max-w-3xl mx-auto">
-                        Step into our virtual store. Explore products in 3D space and 
-                        experience shopping like never before.
-                    </p>
-                </div>
-                
-                <!-- Metaverse Interface -->
-                <div class="glass rounded-3xl p-8 max-w-6xl mx-auto">
-                    <div class="grid lg:grid-cols-3 gap-8">
-                        <!-- 3D View -->
-                        <div class="lg:col-span-2 relative h-96 rounded-2xl overflow-hidden">
-                            <div class="absolute inset-0 bg-gradient-to-br from-gray-900 to-black flex items-center justify-center">
-                                <div class="text-center">
-                                    <div class="text-6xl mb-4">🕶️</div>
-                                    <h3 class="text-2xl font-bold mb-2">Enter Metaverse</h3>
-                                    <p class="text-gray-400">Put on your VR headset to explore</p>
-                                </div>
-                            </div>
-                            
-                            <!-- 3D Controls -->
-                            <div class="absolute bottom-4 left-4 flex gap-3">
-                                <button class="w-10 h-10 glass rounded-full flex items-center justify-center">
-                                    ↕
-                                </button>
-                                <button class="w-10 h-10 glass rounded-full flex items-center justify-center">
-                                    ↕
-                                </button>
-                                <button class="w-10 h-10 glass rounded-full flex items-center justify-center">
-                                    ○
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Metaverse Info -->
-                        <div>
-                            <h3 class="text-2xl font-bold mb-6">Virtual Experience</h3>
-                            <div class="space-y-4 mb-8">
-                                <div class="flex items-center gap-4 p-4 glass rounded-xl">
-                                    <div class="w-12 h-12 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-lg flex items-center justify-center">
-                                        🕶️
-                                    </div>
-                                    <div>
-                                        <div class="font-bold">VR Compatible</div>
-                                        <div class="text-sm text-gray-400">Works with all major headsets</div>
-                                    </div>
-                                </div>
-                                
-                                <div class="flex items-center gap-4 p-4 glass rounded-xl">
-                                    <div class="w-12 h-12 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-lg flex items-center justify-center">
-                                        👥
-                                    </div>
-                                    <div>
-                                        <div class="font-bold">Social Shopping</div>
-                                        <div class="text-sm text-gray-400">Shop with friends virtually</div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <button onclick="enterMetaverse()"
-                                    class="w-full py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl font-bold hover:scale-105 transition-transform">
-                                Enter Metaverse
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Crypto Payment Section -->
-        <section id="crypto" class="py-20">
-            <div class="container mx-auto px-6">
-                <div class="glass rounded-3xl p-12 text-center max-w-4xl mx-auto">
-                    <h2 class="text-4xl font-bold mb-6">Crypto Payments Accepted</h2>
-                    <p class="text-xl text-gray-400 mb-8">Pay with Bitcoin, Ethereum, and other cryptocurrencies</p>
-                    
-                    <!-- Crypto Logos -->
-                    <div class="flex flex-wrap justify-center gap-6 mb-12">
-                        <div class="w-16 h-16 glass rounded-2xl flex items-center justify-center hover:scale-110 transition-transform">
-                            ₿
-                        </div>
-                        <div class="w-16 h-16 glass rounded-2xl flex items-center justify-center hover:scale-110 transition-transform">
-                            Ξ
-                        </div>
-                        <div class="w-16 h-16 glass rounded-2xl flex items-center justify-center hover:scale-110 transition-transform">
-                            🔷
-                        </div>
-                        <div class="w-16 h-16 glass rounded-2xl flex items-center justify-center hover:scale-110 transition-transform">
-                            💎
-                        </div>
-                    </div>
-                    
-                    <div class="inline-flex items-center gap-4 px-6 py-3 glass rounded-full">
-                        <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                        <span class="text-sm">Live crypto rates updated in real-time</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Cart Modal -->
-    <div id="cartModal" class="fixed inset-0 z-50 hidden">
-        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="cart.close()"></div>
-        <div class="absolute right-0 top-0 h-full w-full md:w-[500px] glass transform translate-x-full transition-transform duration-500">
-            <!-- Cart content -->
-        </div>
-    </div>
-
-    <!-- Notification System -->
-    <div id="notificationCenter" class="fixed top-6 right-6 space-y-4 z-40"></div>
 
     <!-- Footer -->
-    <footer class="bg-gray-900/50 border-t border-white/10 py-12">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
                 <div>
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-10 h-10 morph-shape rounded-xl flex items-center justify-center">
-                            📱
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon">
+                            <i class="fas fa-mobile-alt"></i>
                         </div>
-                        <h2 class="text-2xl font-bold neon-text">PhoneShop</h2>
+                        <h3>PhoneShop.uz</h3>
                     </div>
-                    <p class="text-gray-400">
-                        Redefining smartphone shopping with AI, AR, and metaverse technologies.
+                    <p class="footer-text">
+                        O'zbekistonning 1-sonli premium onlayn telefon do'koni. 
+                        11 telefon va 8 aksessuar. 10,000+ mijozlar ishonchi.
                     </p>
-                </div>
-                
-                <div>
-                    <h3 class="text-lg font-bold mb-6">Quick Links</h3>
-                    <ul class="space-y-3">
-                        <li><a href="#hero" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
-                        <li><a href="#products" class="text-gray-400 hover:text-white transition-colors">Products</a></li>
-                        <li><a href="#ar" class="text-gray-400 hover:text-white transition-colors">AR Preview</a></li>
-                        <li><a href="#ai" class="text-gray-400 hover:text-white transition-colors">AI Assistant</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="text-lg font-bold mb-6">Technologies</h3>
-                    <ul class="space-y-3">
-                        <li class="text-gray-400 hover:text-cyan-400 transition-colors cursor-pointer">AI Shopping</li>
-                        <li class="text-gray-400 hover:text-cyan-400 transition-colors cursor-pointer">AR Preview</li>
-                        <li class="text-gray-400 hover:text-cyan-400 transition-colors cursor-pointer">Metaverse Store</li>
-                        <li class="text-gray-400 hover:text-cyan-400 transition-colors cursor-pointer">Crypto Payments</li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="text-lg font-bold mb-6">Newsletter</h3>
-                    <div class="space-y-4">
-                        <p class="text-gray-400">Get updates on future tech</p>
-                        <div class="flex gap-2">
-                            <input type="email" placeholder="Your email" 
-                                   class="flex-1 px-4 py-2 glass rounded-lg focus:outline-none">
-                            <button class="px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg font-bold">
-                                →
-                            </button>
-                        </div>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
                     </div>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Telefonlar</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">iPhone 16 Series (4)</a></li>
+                        <li><a href="#">Samsung S25 Series (4)</a></li>
+                        <li><a href="#">Xiaomi 15 Series (3)</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Aksessuarlar</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Apple Aksessuarlar (3)</a></li>
+                        <li><a href="#">Samsung Aksessuarlar (3)</a></li>
+                        <li><a href="#">Xiaomi Aksessuarlar (2)</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Aloqa</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-phone"></i> +998 90 123 45 67</li>
+                        <li><i class="fas fa-envelope"></i> info@phoneshop.uz</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Toshkent, Magic City</li>
+                        <li><i class="fas fa-clock"></i> Dushanba - Yakshanba: 9:00 - 21:00</li>
+                    </ul>
                 </div>
             </div>
-            
-            <div class="border-t border-white/10 pt-8 text-center">
-                <p class="text-gray-400">
-                    © 2024 PhoneShop. All rights reserved. Welcome to the future.
-                </p>
-                <p class="text-sm text-gray-500 mt-2">
-                    Made with <span class="neon-text">❤️</span> for the next generation
-                </p>
+
+            <div class="footer-bottom">
+                <p>© 2025 PhoneShop.uz - Barcha huquqlar himoyalangan</p>
+                <p>11 telefon + 8 aksessuar <i class="fas fa-heart"></i> Made in Uzbekistan</p>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/js/all.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@google/model-viewer/dist/model-viewer.min.js"></script>
-    
-    <!-- Main JavaScript -->
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <div class="cart-title">
+                <i class="fas fa-shopping-cart"></i>
+                <div>
+                    <h3>Savat</h3>
+                    <p style="font-size: 0.85rem; color: var(--gray-500);" id="cartItemCount">0 ta mahsulot</p>
+                </div>
+            </div>
+            <button class="cart-close" id="closeCartBtn" aria-label="Yopish">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer" id="cartFooter" style="display: none;">
+            <div class="cart-total">
+                <span>Jami:</span>
+                <span id="cartTotal">0 so'm</span>
+            </div>
+            <button class="cart-checkout-btn" id="cartCheckoutBtn">
+                <i class="fas fa-credit-card"></i>
+                Buyurtma berish
+            </button>
+        </div>
+    </div>
+
+    <!-- Backdrop -->
+    <div class="backdrop" id="backdrop"></div>
+
+    <!-- Floating Buttons -->
+    <button class="floating-btn" id="floatingCartBtn" aria-label="Savat">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="badge" id="floatingCartCount">0</span>
+    </button>
+
+    <button class="floating-btn scroll-top" id="scrollTopBtn" aria-label="Yuqoriga">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-icon" id="toastIcon">
+            <i class="fas fa-check"></i>
+        </div>
+        <div class="toast-content">
+            <div class="toast-title" id="toastTitle"></div>
+            <div class="toast-message" id="toastMessage"></div>
+        </div>
+        <button class="toast-close" id="toastClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="toast-progress" id="toastProgress"></div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h3 class="modal-title">Tabriklaymiz!</h3>
+            <p class="modal-text">Buyurtmangiz muvaffaqiyatli qabul qilindi</p>
+            <div class="modal-order" id="orderNumber">PS12345678</div>
+            <div class="modal-buttons">
+                <button class="modal-btn modal-btn-primary" id="modalHomeBtn">
+                    <i class="fas fa-home"></i>
+                    Bosh sahifa
+                </button>
+                <button class="modal-btn modal-btn-secondary" id="modalPrintBtn">
+                    <i class="fas fa-print"></i>
+                    Chekni chop etish
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Tailwind Configuration
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    animation: {
-                        'float-3d': 'float-3d 20s ease-in-out infinite',
-                        'neon-pulse': 'neon-pulse 2s ease-in-out infinite',
-                        'shimmer': 'shimmer 2s infinite linear',
-                        'hologram-flicker': 'hologram-flicker 3s ease-in-out infinite',
-                        'morph-gradient': 'morph-gradient 6s ease infinite',
-                        'scan-line': 'scan-line 3s linear infinite',
-                        'particle-flow': 'particle-flow linear infinite'
-                    },
-                    backdropBlur: {
-                        xs: '2px',
-                        sm: '4px',
-                        DEFAULT: '8px',
-                        md: '12px',
-                        lg: '16px',
-                        xl: '24px',
-                        '2xl': '40px',
-                        '3xl': '64px',
-                    }
-                }
-            }
-        }
-
-        // Custom Cursor
-        const cursorDot = document.querySelector('.cursor-dot');
-        const cursorRing = document.querySelector('.cursor-ring');
-        
-        document.addEventListener('mousemove', (e) => {
-            cursorDot.style.left = e.clientX + 'px';
-            cursorDot.style.top = e.clientY + 'px';
+        // ==================== DATA ====================
+        const PHONES = [
+            // iPhone (4)
+            { id: 1, name: "iPhone 16 Pro Max", desc: "6.9-inch • A18 Pro • 1TB • Titanium", price: 24990000, discount: 0, brand: "Apple", image: "https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=400", stock: 15 },
+            { id: 2, name: "iPhone 16 Pro", desc: "6.3-inch • A18 Pro • 512GB • Titanium", price: 19990000, discount: 5, brand: "Apple", image: "https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=400", stock: 12 },
+            { id: 3, name: "iPhone 16", desc: "6.1-inch • A18 • 256GB", price: 16990000, discount: 0, brand: "Apple", image: "https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=400", stock: 20 },
+            { id: 4, name: "iPhone 15 Pro Max", desc: "6.7-inch • A17 Pro • 512GB", price: 18990000, discount: 15, brand: "Apple", image: "https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=400", stock: 8 },
             
-            setTimeout(() => {
-                cursorRing.style.left = e.clientX + 'px';
-                cursorRing.style.top = e.clientY + 'px';
-            }, 100);
-        });
-        
-        // Hover effects for cursor
-        document.querySelectorAll('button, a, .hover-effect').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursorRing.style.transform = 'scale(1.5)';
-                cursorRing.style.borderColor = '#00ffff';
-            });
-            el.addEventListener('mouseleave', () => {
-                cursorRing.style.transform = 'scale(1)';
-                cursorRing.style.borderColor = 'rgba(102, 126, 234, 0.5)';
-            });
-        });
-
-        // Particle System
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 100;
+            // Samsung (4)
+            { id: 5, name: "Samsung Galaxy S25 Ultra", desc: "6.9-inch • 200MP • S Pen • 1TB", price: 22990000, discount: 10, brand: "Samsung", image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=400", stock: 10 },
+            { id: 6, name: "Samsung Galaxy S25+", desc: "6.7-inch • 50MP • 512GB", price: 16990000, discount: 8, brand: "Samsung", image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=400", stock: 15 },
+            { id: 7, name: "Samsung Galaxy Z Fold 6", desc: "7.6-inch • Foldable • 256GB", price: 24990000, discount: 5, brand: "Samsung", image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=400", stock: 5 },
+            { id: 8, name: "Samsung Galaxy Z Flip 6", desc: "6.7-inch • Foldable • 256GB", price: 14990000, discount: 7, brand: "Samsung", image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=400", stock: 7 },
             
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                
-                // Random properties
-                const size = Math.random() * 3 + 1;
-                const tx = Math.random() * 200 - 100;
-                const ty = Math.random() * 200 - 100;
-                const duration = Math.random() * 10 + 10;
-                const delay = Math.random() * 20;
-                
-                particle.style.cssText = `
-                    width: ${size}px;
-                    height: ${size}px;
-                    left: ${Math.random() * 100}%;
-                    top: ${Math.random() * 100}%;
-                    opacity: ${Math.random() * 0.5 + 0.1};
-                    --tx: ${tx}vw;
-                    --ty: ${ty}vh;
-                    animation-duration: ${duration}s;
-                    animation-delay: ${delay}s;
-                `;
-                
-                particlesContainer.appendChild(particle);
-            }
-        }
-
-        // Loading Screen
-        window.addEventListener('load', () => {
-            const loadingScreen = document.getElementById('loadingScreen');
-            const loadingProgress = document.getElementById('loadingProgress');
-            
-            // Simulate loading progress
-            let progress = 0;
-            const interval = setInterval(() => {
-                progress += Math.random() * 20;
-                if (progress > 100) {
-                    progress = 100;
-                    clearInterval(interval);
-                    
-                    // Hide loading screen
-                    setTimeout(() => {
-                        loadingScreen.style.opacity = '0';
-                        setTimeout(() => {
-                            loadingScreen.style.display = 'none';
-                            createParticles();
-                            initProducts();
-                        }, 1000);
-                    }, 500);
-                }
-                loadingProgress.style.width = progress + '%';
-            }, 100);
-        });
-
-        // Theme Toggle
-        const themeToggle = document.getElementById('themeToggle');
-        themeToggle.addEventListener('click', () => {
-            document.documentElement.classList.toggle('dark');
-            document.documentElement.classList.toggle('light');
-            localStorage.setItem('theme', 
-                document.documentElement.classList.contains('dark') ? 'dark' : 'light'
-            );
-        });
-
-        // Mobile Menu
-        const menuToggle = document.getElementById('menuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-        
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            document.body.style.overflow = mobileMenu.classList.contains('hidden') ? '' : 'hidden';
-        });
-
-        // AR Preview System
-        function startAR(model = 'iphone') {
-            const viewport = document.getElementById('arViewport');
-            viewport.innerHTML = `
-                <div class="text-center p-8">
-                    <div class="text-6xl mb-4 animate-pulse">📱</div>
-                    <h4 class="text-2xl font-bold mb-2">Loading AR Preview</h4>
-                    <p class="text-gray-400 mb-4">Allow camera access to continue</p>
-                    <button class="px-6 py-3 glass rounded-xl hover:scale-105 transition-transform">
-                        Allow Camera
-                    </button>
-                </div>
-            `;
-            
-            // Simulate AR loading
-            setTimeout(() => {
-                viewport.innerHTML = `
-                    <div class="relative w-full h-full">
-                        <!-- AR Model Placeholder -->
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <div class="relative">
-                                <div class="w-48 h-96 bg-gradient-to-b from-gray-800 to-black rounded-[40px] p-6">
-                                    <div class="w-full h-full bg-gradient-to-br from-cyan-500/10 to-blue-500/10 rounded-2xl"></div>
-                                </div>
-                                <div class="absolute -top-4 -right-4 w-8 h-8 bg-red-500 rounded-full animate-pulse"></div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                
-                showNotification('AR Preview', `${model.toUpperCase()} loaded in AR mode`);
-            }, 2000);
-        }
-
-        // AI Assistant
-        function aiSelect(type) {
-            const recommendations = document.getElementById('aiRecommendations');
-            recommendations.classList.remove('hidden');
-            
-            // Add typing effect
-            const chatWindow = document.querySelector('.h-96');
-            const message = document.createElement('div');
-            message.className = 'flex gap-4';
-            message.innerHTML = `
-                <div class="w-8 h-8 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full flex items-center justify-center">
-                    AI
-                </div>
-                <div class="flex-1">
-                    <div class="glass rounded-2xl rounded-tl-none p-4">
-                        <p>Based on your preference for <strong>${type}</strong>, here are my recommendations:</p>
-                    </div>
-                </div>
-            `;
-            
-            chatWindow.appendChild(message);
-            chatWindow.scrollTop = chatWindow.scrollHeight;
-            
-            showNotification('AI Assistant', `Recommendations for ${type} loaded`);
-        }
-
-        // Metaverse Experience
-        function enterMetaverse() {
-            const body = document.body;
-            body.innerHTML = `
-                <div class="fixed inset-0 bg-black flex items-center justify-center">
-                    <div class="text-center">
-                        <div class="text-6xl mb-6 animate-pulse">🕶️</div>
-                        <h2 class="text-4xl font-bold mb-4 neon-text">Entering Metaverse</h2>
-                        <p class="text-gray-400 mb-8">Please put on your VR headset</p>
-                        <div class="w-64 h-1 bg-gray-800 rounded-full mx-auto overflow-hidden">
-                            <div class="h-full bg-gradient-to-r from-cyan-500 to-blue-500 animate-shimmer"></div>
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            setTimeout(() => {
-                location.reload();
-            }, 5000);
-        }
-
-        // Notification System
-        function showNotification(title, message, type = 'info') {
-            const notificationCenter = document.getElementById('notificationCenter');
-            const notification = document.createElement('div');
-            
-            const icons = {
-                info: 'ℹ️',
-                success: '✅',
-                warning: '⚠️',
-                error: '❌'
-            };
-            
-            notification.className = 'glass rounded-2xl p-4 max-w-sm transform translate-x-full animate-slide-in-right';
-            notification.innerHTML = `
-                <div class="flex items-start gap-3">
-                    <div class="text-xl">${icons[type]}</div>
-                    <div class="flex-1">
-                        <div class="font-bold">${title}</div>
-                        <div class="text-sm text-gray-400">${message}</div>
-                    </div>
-                    <button onclick="this.parentElement.parentElement.remove()" 
-                            class="text-gray-400 hover:text-white">
-                        ✕
-                    </button>
-                </div>
-            `;
-            
-            notificationCenter.appendChild(notification);
-            
-            // Auto remove
-            setTimeout(() => {
-                if (notification.parentElement) {
-                    notification.classList.add('opacity-0', 'translate-x-full');
-                    setTimeout(() => notification.remove(), 300);
-                }
-            }, 5000);
-        }
-
-        // Shopping Cart System
-        class FutureCart {
-            constructor() {
-                this.items = JSON.parse(localStorage.getItem('future_cart')) || [];
-                this.init();
-            }
-            
-            init() {
-                this.updateUI();
-            }
-            
-            add(product) {
-                const existing = this.items.find(item => item.id === product.id);
-                
-                if (existing) {
-                    existing.quantity += 1;
-                } else {
-                    this.items.push({
-                        ...product,
-                        quantity: 1,
-                        addedAt: new Date().toISOString()
-                    });
-                }
-                
-                this.save();
-                this.updateUI();
-                this.showAddAnimation(product);
-            }
-            
-            showAddAnimation(product) {
-                // Create floating animation
-                const animation = document.createElement('div');
-                animation.className = 'fixed z-[60] animate-float-3d';
-                animation.innerHTML = `
-                    <div class="w-16 h-16 glass rounded-2xl flex items-center justify-center">
-                        📱
-                    </div>
-                `;
-                
-                animation.style.left = '50%';
-                animation.style.top = '50%';
-                document.body.appendChild(animation);
-                
-                setTimeout(() => {
-                    animation.remove();
-                    showNotification('Added to Cart', `${product.name} added successfully`, 'success');
-                }, 1000);
-            }
-            
-            updateUI() {
-                const totalItems = this.items.reduce((sum, item) => sum + item.quantity, 0);
-                document.getElementById('cartCount').textContent = totalItems;
-            }
-            
-            save() {
-                localStorage.setItem('future_cart', JSON.stringify(this.items));
-            }
-            
-            open() {
-                document.getElementById('cartModal').classList.remove('hidden');
-                setTimeout(() => {
-                    document.querySelector('#cartModal .glass').classList.remove('translate-x-full');
-                }, 10);
-            }
-            
-            close() {
-                document.querySelector('#cartModal .glass').classList.add('translate-x-full');
-                setTimeout(() => {
-                    document.getElementById('cartModal').classList.add('hidden');
-                }, 500);
-            }
-        }
-
-        const cart = new FutureCart();
-
-        // Products System
-        const futureProducts = [
-            {
-                id: 1,
-                name: "iPhone 17 Quantum",
-                description: "A19 Pro • Quantum AI • Holographic Display",
-                price: 24990000,
-                image: "https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=400&auto=format&fit=crop",
-                discount: 15,
-                category: "iphone",
-                features: ["Quantum AI", "Holographic Display", "Neural Engine", "LiDAR 2.0"],
-                color: "Titanium Black"
-            },
-            {
-                id: 2,
-                name: "Samsung Galaxy Z Infinity",
-                description: "Rollable Display • 300MP • Galaxy AI",
-                price: 22900000,
-                image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=400&auto=format&fit=crop",
-                discount: 20,
-                category: "samsung",
-                features: ["Rollable Display", "300MP Camera", "Galaxy AI", "S Pen Pro"],
-                color: "Phantom Silver"
-            },
-            {
-                id: 3,
-                name: "Xiaomi CyberPhone",
-                description: "Transparent Body • 200W Charging • Cyber AI",
-                price: 18900000,
-                image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=400&auto=format&fit=crop",
-                discount: 25,
-                category: "xiaomi",
-                features: ["Transparent Design", "200W HyperCharge", "Cyber AI", "Cooling 4.0"],
-                color: "Cyber Transparent"
-            },
-            {
-                id: 4,
-                name: "Google Pixel X",
-                description: "Quantum Tensor • AR Core • Pure Android",
-                price: 17900000,
-                image: "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=400&auto=format&fit=crop",
-                discount: 10,
-                category: "google",
-                features: ["Quantum Tensor", "AR Core", "Android 15", "Titan M3"],
-                color: "Stormy Black"
-            }
+            // Xiaomi (3)
+            { id: 9, name: "Xiaomi 15 Ultra", desc: "6.8-inch • Leica • 1TB", price: 15990000, discount: 12, brand: "Xiaomi", image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=400", stock: 18 },
+            { id: 10, name: "Xiaomi 15 Pro", desc: "6.7-inch • Leica • 512GB", price: 12990000, discount: 10, brand: "Xiaomi", image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=400", stock: 22 },
+            { id: 11, name: "Xiaomi 14T Pro", desc: "6.6-inch • 256GB", price: 9990000, discount: 15, brand: "Xiaomi", image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=400", stock: 25 }
         ];
 
-        function initProducts() {
-            const container = document.getElementById('productsGrid');
-            const loading = document.getElementById('loading');
+        const ACCESSORIES = [
+            // Apple (3)
+            { id: 101, name: "AirPods Pro (2nd Gen)", desc: "Active Noise Cancellation • USB-C", price: 3290000, discount: 10, brand: "Apple", image: "https://images.unsplash.com/photo-1599660640476-9c9f2feb8a94?w=400", stock: 45 },
+            { id: 102, name: "Apple Watch Ultra 2", desc: "49mm • Titanium • Cellular", price: 8290000, discount: 5, brand: "Apple", image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400", stock: 12 },
+            { id: 103, name: "MagSafe Charger", desc: "15W Wireless Fast Charging", price: 790000, discount: 0, brand: "Apple", image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400", stock: 60 },
             
-            container.innerHTML = futureProducts.map(product => `
-                <div class="group relative perspective-3d">
-                    <div class="relative glass rounded-3xl overflow-hidden border border-white/10 
-                                hover:border-cyan-500/50 transition-all duration-500 
-                                group-hover:scale-[1.02]">
-                        <!-- Hologram Effect -->
-                        <div class="absolute inset-0 hologram opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                        
-                        <!-- Product Image -->
-                        <div class="relative h-64 overflow-hidden">
-                            <img src="${product.image}" 
-                                 alt="${product.name}"
-                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                            
-                            <!-- Discount Badge -->
-                            ${product.discount ? `
-                                <div class="absolute top-4 left-4">
-                                    <div class="px-3 py-1 bg-gradient-to-r from-red-500 to-pink-500 
-                                                text-white rounded-full text-sm font-bold neon-border">
-                                        -${product.discount}%
-                                    </div>
-                                </div>
-                            ` : ''}
-                            
-                            <!-- AR Badge -->
-                            <div class="absolute top-4 right-4">
-                                <div class="w-10 h-10 glass rounded-full flex items-center justify-center 
-                                            hover:scale-110 transition-transform cursor-pointer"
-                                     onclick="startAR('${product.category}')">
-                                    👁️
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Product Info -->
-                        <div class="p-6">
-                            <div class="mb-4">
-                                <h3 class="font-bold text-lg mb-1">${product.name}</h3>
-                                <p class="text-gray-400 text-sm">${product.description}</p>
-                            </div>
-                            
-                            <!-- Price -->
-                            <div class="flex items-center justify-between mb-6">
-                                <div>
-                                    ${product.discount ? `
-                                        <div class="flex items-baseline gap-2">
-                                            <span class="text-2xl font-bold neon-text">
-                                                ${formatPrice(product.price * (1 - product.discount/100))}
-                                            </span>
-                                            <span class="text-sm text-gray-400 line-through">
-                                                ${formatPrice(product.price)}
-                                            </span>
-                                        </div>
-                                    ` : `
-                                        <span class="text-2xl font-bold neon-text">
-                                            ${formatPrice(product.price)}
-                                        </span>
-                                    `}
-                                    <div class="text-xs text-gray-400 mt-1">so'm</div>
-                                </div>
-                                
-                                <!-- Color Indicator -->
-                                <div class="w-6 h-6 rounded-full border-2 border-white/20" 
-                                     style="background: ${getColorHex(product.color)}"></div>
-                            </div>
-                            
-                            <!-- Actions -->
-                            <div class="flex gap-3">
-                                <button onclick="cart.add(${JSON.stringify(product).replace(/"/g, '&quot;')})" 
-                                        class="flex-1 py-3 btn-future rounded-xl font-bold text-white">
-                                    Add to Cart
-                                </button>
-                                
-                                <button onclick="quickView(${product.id})" 
-                                        class="w-12 glass rounded-xl flex items-center justify-center 
-                                               hover:scale-105 transition-transform">
-                                    👁️
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Floating Features -->
-                    <div class="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 
-                                transition-opacity duration-500">
-                        <div class="absolute -top-3 -right-3">
-                            <div class="px-3 py-1 glass rounded-full text-xs">
-                                ${product.features[0]}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
+            // Samsung (3)
+            { id: 104, name: "Galaxy Watch7", desc: "44mm • Bluetooth • Health Tracking", price: 4290000, discount: 12, brand: "Samsung", image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400", stock: 25 },
+            { id: 105, name: "Galaxy Buds3 Pro", desc: "Intelligent ANC • 360 Audio", price: 2290000, discount: 8, brand: "Samsung", image: "https://images.unsplash.com/photo-1599660640476-9c9f2feb8a94?w=400", stock: 35 },
+            { id: 106, name: "45W Super Fast Charger", desc: "USB-C • GaN Technology", price: 490000, discount: 0, brand: "Samsung", image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400", stock: 50 },
             
-            loading.classList.add('hidden');
-            document.getElementById('loadMore').classList.remove('hidden');
+            // Xiaomi (2)
+            { id: 107, name: "Mi Smart Band 9 Pro", desc: "1.74-inch AMOLED • 14 Days Battery", price: 1290000, discount: 15, brand: "Xiaomi", image: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=400", stock: 75 },
+            { id: 108, name: "Mi True Wireless 3", desc: "Active Noise Cancellation • 40h Battery", price: 690000, discount: 10, brand: "Xiaomi", image: "https://images.unsplash.com/photo-1599660640476-9c9f2feb8a94?w=400", stock: 80 }
+        ];
+
+        // ==================== STATE ====================
+        let cart = [];
+        let toastTimeout = null;
+        let progressInterval = null;
+
+        // ==================== INITIALIZATION ====================
+        document.addEventListener('DOMContentLoaded', () => {
+            renderPhones();
+            renderAccessories();
+            loadCart();
+            setupEventListeners();
+            checkScroll();
+        });
+
+        // ==================== RENDER FUNCTIONS ====================
+        function renderPhones() {
+            const grid = document.getElementById('phonesGrid');
+            if (!grid) return;
+            grid.innerHTML = PHONES.map(item => createProductCard(item)).join('');
         }
 
-        function formatPrice(price) {
-            return new Intl.NumberFormat('uz-UZ').format(Math.round(price));
+        function renderAccessories() {
+            const grid = document.getElementById('accessoriesGrid');
+            if (!grid) return;
+            grid.innerHTML = ACCESSORIES.map(item => createProductCard(item)).join('');
         }
 
-        function getColorHex(colorName) {
-            const colors = {
-                'Titanium Black': '#1a1a1a',
-                'Phantom Silver': '#c0c0c0',
-                'Cyber Transparent': 'rgba(0, 255, 255, 0.1)',
-                'Stormy Black': '#2d3748'
-            };
-            return colors[colorName] || '#667eea';
-        }
+        function createProductCard(item) {
+            const price = item.discount > 0 ? Math.round(item.price * (1 - item.discount / 100)) : item.price;
+            
+            let stockClass = 'high';
+            let stockText = 'Mavjud';
+            
+            if (item.stock <= 5) {
+                stockClass = 'low';
+                stockText = 'Juda kam';
+            } else if (item.stock <= 10) {
+                stockClass = 'medium';
+                stockText = 'Cheklangan';
+            }
 
-        function quickView(productId) {
-            const product = futureProducts.find(p => p.id === productId);
-            if (!product) return;
-
-            const modal = document.createElement('div');
-            modal.className = 'fixed inset-0 bg-black/80 backdrop-blur-xl z-50 flex items-center justify-center p-4';
-            modal.innerHTML = `
-                <div class="glass rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-                    <div class="p-8">
-                        <div class="flex justify-between items-start mb-8">
-                            <div>
-                                <h3 class="text-3xl font-bold mb-2">${product.name}</h3>
-                                <p class="text-gray-400">${product.description}</p>
-                            </div>
-                            <button onclick="this.closest('.fixed').remove()" 
-                                    class="w-10 h-10 glass rounded-full flex items-center justify-center 
-                                           hover:scale-110 transition-transform">
-                                ✕
+            return `
+                <div class="product-card" data-id="${item.id}">
+                    <div class="product-image">
+                        <img src="${item.image}" alt="${item.name}" loading="lazy">
+                        ${item.discount > 0 ? `<div class="product-badge">-${item.discount}%</div>` : ''}
+                        <div class="product-actions">
+                            <button class="product-action-btn" onclick="quickView(${item.id})" aria-label="Tez ko'rish">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="product-action-btn" onclick="addToWishlist(${item.id})" aria-label="Sevimlilarga qo'shish">
+                                <i class="fas fa-heart"></i>
                             </button>
                         </div>
-                        
-                        <div class="grid md:grid-cols-2 gap-12">
-                            <!-- 3D Model View -->
-                            <div class="relative">
-                                <div class="relative h-96 rounded-2xl overflow-hidden">
-                                    <div class="absolute inset-0 bg-gradient-to-br from-gray-900 to-black 
-                                                flex items-center justify-center">
-                                        <!-- 3D Model Placeholder -->
-                                        <div class="relative w-48 h-96">
-                                            <div class="absolute inset-0 bg-gradient-to-b from-gray-800 to-black 
-                                                        rounded-[40px] p-6">
-                                                <div class="w-full h-full bg-gradient-to-br 
-                                                            from-${product.category === 'iphone' ? 'cyan' : 'purple'}-500/10 
-                                                                                                                        to-${product.category === 'samsung' ? 'blue' : 'pink'}-500/10 
-                                                            rounded-2xl"></div>
-                                            </div>
-                                            <div class="absolute -top-4 -right-4 w-8 h-8 
-                                                        bg-gradient-to-r from-cyan-500 to-blue-500 
-                                                        rounded-full animate-pulse"></div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- 3D Controls -->
-                                    <div class="absolute bottom-4 left-4 flex gap-3">
-                                        <button class="w-10 h-10 glass rounded-full flex items-center justify-center 
-                                                    hover:scale-110 transition-transform">
-                                            🔄
-                                        </button>
-                                        <button class="w-10 h-10 glass rounded-full flex items-center justify-center 
-                                                    hover:scale-110 transition-transform">
-                                            🔍
-                                        </button>
-                                        <button class="w-10 h-10 glass rounded-full flex items-center justify-center 
-                                                    hover:scale-110 transition-transform">
-                                            📸
-                                        </button>
-                                    </div>
-                                </div>
-                                
-                                <!-- Color Options -->
-                                <div class="flex gap-3 mt-6">
-                                    <div class="w-10 h-10 glass rounded-lg flex items-center justify-center 
-                                                border-2 border-cyan-500">
-                                        <div class="w-6 h-6 rounded-full" 
-                                             style="background: ${getColorHex(product.color)}"></div>
-                                    </div>
-                                    <div class="w-10 h-10 glass rounded-lg flex items-center justify-center 
-                                                hover:scale-110 transition-transform">
-                                        <div class="w-6 h-6 rounded-full bg-gray-400"></div>
-                                    </div>
-                                    <div class="w-10 h-10 glass rounded-lg flex items-center justify-center 
-                                                hover:scale-110 transition-transform">
-                                        <div class="w-6 h-6 rounded-full bg-blue-400"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Product Details -->
-                            <div>
-                                <!-- Specifications -->
-                                <div class="mb-8">
-                                    <h4 class="text-xl font-bold mb-4">Specifications</h4>
-                                    <div class="space-y-3">
-                                        ${product.features.map(feature => `
-                                            <div class="flex items-center gap-3 p-3 glass rounded-xl">
-                                                <div class="w-8 h-8 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 
-                                                            rounded-lg flex items-center justify-center">
-                                                    ✓
-                                                </div>
-                                                <span>${feature}</span>
-                                            </div>
-                                        `).join('')}
-                                    </div>
-                                </div>
-                                
-                                <!-- Price & Actions -->
-                                <div>
-                                    <div class="mb-6">
-                                        ${product.discount ? `
-                                            <div class="mb-4">
-                                                <div class="text-4xl font-bold neon-text mb-1">
-                                                    ${formatPrice(product.price * (1 - product.discount/100))} so'm
-                                                </div>
-                                                <div class="flex items-center gap-4">
-                                                    <span class="text-xl text-gray-400 line-through">
-                                                        ${formatPrice(product.price)} so'm
-                                                    </span>
-                                                    <span class="px-3 py-1 bg-gradient-to-r from-red-500 to-pink-500 
-                                                                rounded-full text-sm font-bold">
-                                                        Save ${product.discount}%
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        ` : `
-                                            <div class="text-4xl font-bold neon-text">
-                                                ${formatPrice(product.price)} so'm
-                                            </div>
-                                        `}
-                                    </div>
-                                    
-                                    <div class="space-y-4">
-                                        <button onclick="cart.add(${JSON.stringify(product).replace(/"/g, '&quot;')}); 
-                                                        this.closest('.fixed').remove()" 
-                                                class="w-full py-4 bg-gradient-to-r from-cyan-500 to-blue-500 
-                                                       rounded-2xl font-bold hover:scale-105 transition-transform">
-                                            Add to Cart
-                                        </button>
-                                        
-                                        <button onclick="cart.add(${JSON.stringify(product).replace(/"/g, '&quot;')}); 
-                                                        cart.open(); this.closest('.fixed').remove()" 
-                                                class="w-full py-4 glass rounded-2xl font-bold 
-                                                       hover:scale-105 transition-transform">
-                                            Buy Now
-                                        </button>
-                                        
-                                        <button onclick="startAR('${product.category}'); 
-                                                        this.closest('.fixed').remove()" 
-                                                class="w-full py-3 glass rounded-xl text-sm font-bold 
-                                                       hover:scale-105 transition-transform">
-                                            👁️ View in AR
-                                        </button>
-                                    </div>
-                                    
-                                    <!-- Delivery Info -->
-                                    <div class="mt-6 p-4 glass rounded-xl">
-                                        <div class="flex items-center gap-3 mb-2">
-                                            <div class="w-8 h-8 bg-gradient-to-r from-green-500/20 to-emerald-500/20 
-                                                        rounded-lg flex items-center justify-center">
-                                                🚀
-                                            </div>
-                                            <div>
-                                                <div class="font-bold">Same Day Delivery</div>
-                                                <div class="text-sm text-gray-400">Available in major cities</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-header">
+                            <h3 class="product-name">${item.name}</h3>
+                            <span class="product-brand">${item.brand}</span>
                         </div>
-                        
-                        <!-- Tech Specs Table -->
-                        <div class="mt-12">
-                            <h4 class="text-xl font-bold mb-6">Technical Specifications</h4>
-                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                <div class="p-4 glass rounded-xl text-center">
-                                    <div class="text-2xl mb-2">⚡</div>
-                                    <div class="font-bold">Snapdragon 8 Gen 4</div>
-                                    <div class="text-sm text-gray-400">Processor</div>
-                                </div>
-                                <div class="p-4 glass rounded-xl text-center">
-                                    <div class="text-2xl mb-2">💾</div>
-                                    <div class="font-bold">16GB RAM</div>
-                                    <div class="text-sm text-gray-400">Memory</div>
-                                </div>
-                                <div class="p-4 glass rounded-xl text-center">
-                                    <div class="text-2xl mb-2">📷</div>
-                                    <div class="font-bold">200MP</div>
-                                    <div class="text-sm text-gray-400">Main Camera</div>
-                                </div>
-                                <div class="p-4 glass rounded-xl text-center">
-                                    <div class="text-2xl mb-2">🔋</div>
-                                    <div class="font-bold">5000mAh</div>
-                                    <div class="text-sm text-gray-400">Battery</div>
-                                </div>
-                            </div>
+                        <p class="product-desc">${item.desc}</p>
+                        <div class="product-price">
+                            <span class="current-price">${formatPrice(price)} so'm</span>
+                            ${item.discount > 0 ? `<span class="old-price">${formatPrice(item.price)} so'm</span>` : ''}
                         </div>
+                        <div class="product-stock">
+                            <span class="stock-indicator ${stockClass}"></span>
+                            <span class="stock-text ${stockClass}">${stockText} (${item.stock} dona)</span>
+                        </div>
+                        <button class="add-to-cart" onclick="addToCart(${item.id})" aria-label="Savatga qo'shish">
+                            <i class="fas fa-cart-plus"></i>
+                            Savatga qo'shish
+                        </button>
                     </div>
                 </div>
             `;
-            
-            document.body.appendChild(modal);
         }
 
-        // Load More Products
-        function loadMoreProducts() {
-            const loadMoreBtn = document.getElementById('loadMore');
-            const container = document.getElementById('productsGrid');
+        // ==================== CART FUNCTIONS ====================
+        function addToCart(id) {
+            const allItems = [...PHONES, ...ACCESSORIES];
+            const item = allItems.find(i => i.id === id);
             
-            loadMoreBtn.innerHTML = `
-                <div class="flex items-center justify-center gap-3">
-                    <div class="w-5 h-5 border-2 border-white/20 border-t-white rounded-full animate-spin"></div>
-                    Loading...
-                </div>
-            `;
+            if (!item) return;
+
+            const existingItem = cart.find(i => i.id === id);
             
-            // Simulate loading more products
-            setTimeout(() => {
-                const moreProducts = [
-                    {
-                        id: 5,
-                        name: "ASUS ROG Phone X",
-                        description: "200Hz • Dual Cooling • Gaming AI",
-                        price: 19900000,
-                        image: "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=400&auto=format&fit=crop",
-                        discount: 18,
-                        category: "gaming",
-                        features: ["200Hz AMOLED", "Dual Cooling", "Gaming AI", "6000mAh"],
-                        color: "Matte Black"
-                    },
-                    {
-                        id: 6,
-                        name: "OnePlus 13 Pro",
-                        description: "Hyper Charge • Hasselblad • OxygenOS",
-                        price: 16900000,
-                        image: "https://images.unsplash.com/photo-1598327105854-c8674faddf74?w=400&auto=format&fit=crop",
-                        discount: 12,
-                        category: "oneplus",
-                        features: ["150W Charging", "Hasselblad", "OxygenOS", "Alert Slider"],
-                        color: "Emerald Green"
-                    }
-                ];
-                
-                // Add to existing products
-                futureProducts.push(...moreProducts);
-                
-                // Add to display
-                moreProducts.forEach(product => {
-                    const productElement = document.createElement('div');
-                    productElement.className = 'group relative perspective-3d';
-                    productElement.innerHTML = `
-                        <div class="relative glass rounded-3xl overflow-hidden border border-white/10 
-                                    hover:border-cyan-500/50 transition-all duration-500 
-                                    group-hover:scale-[1.02]">
-                            <!-- Product content similar to above -->
-                            <div class="relative h-64 overflow-hidden">
-                                <img src="${product.image}" 
-                                     alt="${product.name}"
-                                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                                ${product.discount ? `
-                                    <div class="absolute top-4 left-4 px-3 py-1 bg-gradient-to-r from-red-500 to-pink-500 
-                                                text-white rounded-full text-sm font-bold">
-                                        -${product.discount}%
-                                    </div>
-                                ` : ''}
-                            </div>
-                            <div class="p-6">
-                                <h3 class="font-bold text-lg mb-1">${product.name}</h3>
-                                <p class="text-gray-400 text-sm mb-4">${product.description}</p>
-                                <div class="flex items-center justify-between mb-6">
-                                    <div>
-                                        <div class="text-2xl font-bold neon-text">
-                                            ${formatPrice(product.price * (1 - (product.discount || 0)/100))}
-                                        </div>
-                                        <div class="text-xs text-gray-400">so'm</div>
-                                    </div>
+            if (existingItem) {
+                if (existingItem.quantity >= item.stock) {
+                    showToast('Diqqat', 'Maksimal miqdorga yetdingiz', 'warning');
+                    return;
+                }
+                existingItem.quantity++;
+            } else {
+                cart.push({
+                    id: item.id,
+                    name: item.name,
+                    price: item.price,
+                    discount: item.discount,
+                    image: item.image,
+                    quantity: 1,
+                    stock: item.stock
+                });
+            }
+
+            saveCart();
+            animateCart();
+            showToast('Muvaffaqiyatli', `${item.name} savatga qo'shildi`, 'success');
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            saveCart();
+            showToast('Muvaffaqiyatli', 'Mahsulot savatdan olib tashlandi', 'success');
+        }
+
+        function updateQuantity(id, newQuantity) {
+            const item = cart.find(i => i.id === id);
+            if (!item) return;
+
+            if (newQuantity < 1) {
+                removeFromCart(id);
+                return;
+            }
+
+            if (newQuantity > item.stock) {
+                showToast('Diqqat', `Maksimal ${item.stock} dona olish mumkin`, 'warning');
+                return;
+            }
+
+            item.quantity = newQuantity;
+            saveCart();
+        }
+
+        function clearCart() {
+            if (cart.length === 0) {
+                showToast('Ma\'lumot', 'Savat bo\'sh', 'info');
+                return;
+            }
+
+            if (confirm('Savatni tozalashni istaysizmi?')) {
+                cart = [];
+                saveCart();
+                showToast('Muvaffaqiyatli', 'Savat tozalandi', 'success');
+            }
+        }
+
+        function saveCart() {
+            localStorage.setItem('phoneShop_cart', JSON.stringify(cart));
+            updateCartUI();
+        }
+
+        function loadCart() {
+            const saved = localStorage.getItem('phoneShop_cart');
+            if (saved) {
+                try {
+                    cart = JSON.parse(saved);
+                } catch {
+                    cart = [];
+                }
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            
+            // Update cart counts
+            document.getElementById('cartCount').textContent = totalItems;
+            document.getElementById('floatingCartCount').textContent = totalItems;
+            document.getElementById('cartItemCount').textContent = `${totalItems} ta mahsulot`;
+
+            // Update cart sidebar
+            updateCartSidebar();
+        }
+
+        function updateCartSidebar() {
+            const cartItems = document.getElementById('cartItems');
+            const cartFooter = document.getElementById('cartFooter');
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = `
+                    <div style="text-align: center; padding: 3rem 1rem;">
+                        <i class="fas fa-shopping-cart" style="font-size: 4rem; color: var(--gray-300); margin-bottom: 1rem;"></i>
+                        <h4 style="font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--gray-600);">Savat bo'sh</h4>
+                        <p style="color: var(--gray-500); margin-bottom: 1.5rem;">Hozircha hech qanday mahsulot yo'q</p>
+                        <button onclick="closeCart()" style="padding: 0.75rem 2rem; background: linear-gradient(135deg, var(--primary-600), var(--secondary-600)); color: white; border: none; border-radius: var(--radius); font-weight: 600; cursor: pointer;">
+                            Mahsulotlarni ko'rish
+                        </button>
+                    </div>
+                `;
+                cartFooter.style.display = 'none';
+                return;
+            }
+
+            cartFooter.style.display = 'block';
+            
+            let subtotal = 0;
+            let discount = 0;
+
+            cartItems.innerHTML = cart.map(item => {
+                const price = item.discount > 0 ? Math.round(item.price * (1 - item.discount / 100)) : item.price;
+                subtotal += item.price * item.quantity;
+                discount += (item.price - price) * item.quantity;
+
+                return `
+                    <div class="cart-item">
+                        <div class="cart-item-image">
+                            <img src="${item.image}" alt="${item.name}">
+                        </div>
+                        <div class="cart-item-info">
+                            <h4 class="cart-item-name">${item.name}</h4>
+                            <div class="cart-item-price">${formatPrice(price)} so'm</div>
+                            <div class="cart-item-actions">
+                                <div class="cart-quantity">
+                                    <button class="cart-quantity-btn" onclick="updateQuantity(${item.id}, ${item.quantity - 1})" aria-label="Kamaytirish">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <span style="font-weight: 600; min-width: 2rem; text-align: center;">${item.quantity}</span>
+                                    <button class="cart-quantity-btn" onclick="updateQuantity(${item.id}, ${item.quantity + 1})" aria-label="Ko'paytirish">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
                                 </div>
-                                <button onclick="cart.add(${JSON.stringify(product).replace(/"/g, '&quot;')})" 
-                                        class="w-full py-3 btn-future rounded-xl font-bold">
-                                    Add to Cart
+                                <button class="cart-remove" onclick="removeFromCart(${item.id})" aria-label="O'chirish">
+                                    <i class="fas fa-trash-alt"></i>
                                 </button>
                             </div>
                         </div>
-                    `;
-                    
-                    container.appendChild(productElement);
-                });
-                
-                // Hide load more button if we have enough products
-                if (futureProducts.length >= 6) {
-                    loadMoreBtn.classList.add('hidden');
-                } else {
-                    loadMoreBtn.innerHTML = `
-                        Load More Products
-                        <span class="ml-2">↓</span>
-                    `;
-                }
-                
-                showNotification('New Products', 'More futuristic phones loaded!', 'success');
-            }, 1500);
+                    </div>
+                `;
+            }).join('');
+
+            const total = subtotal - discount;
+            document.getElementById('cartTotal').textContent = formatPrice(total) + ' so\'m';
         }
 
-        // Initialize everything when page loads
-        window.addEventListener('DOMContentLoaded', () => {
-            // Load theme preference
-            const savedTheme = localStorage.getItem('theme') || 'dark';
-            document.documentElement.classList.add(savedTheme);
-            
-            // Add CSS animation classes
-            const style = document.createElement('style');
-            style.textContent = `
-                .animation-delay-1000 { animation-delay: 1s; }
-                .animation-delay-2000 { animation-delay: 2s; }
-                .animate-slide-in-right {
-                    animation: slideInRight 0.3s ease-out forwards;
-                }
-                @keyframes slideInRight {
-                    from {
-                        opacity: 0;
-                        transform: translateX(100%);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateX(0);
-                    }
-                }
-                /* Ripple effect for buttons */
-                .ripple {
-                    position: absolute;
-                    border-radius: 50%;
-                    background: rgba(255, 255, 255, 0.6);
-                    transform: scale(0);
-                    animation: ripple-animation 0.6s linear;
-                }
-                @keyframes ripple-animation {
-                    to {
-                        transform: scale(4);
-                        opacity: 0;
-                    }
-                }
-            `;
-            document.head.appendChild(style);
-            
-            // Add ripple effect to all buttons
-            document.addEventListener('click', function(e) {
-                if (e.target.tagName === 'BUTTON' || e.target.closest('button')) {
-                    const button = e.target.tagName === 'BUTTON' ? e.target : e.target.closest('button');
-                    const rect = button.getBoundingClientRect();
-                    const size = Math.max(rect.width, rect.height);
-                    const x = e.clientX - rect.left - size / 2;
-                    const y = e.clientY - rect.top - size / 2;
-                    
-                    const ripple = document.createElement('span');
-                    ripple.classList.add('ripple');
-                    ripple.style.cssText = `
-                        width: ${size}px;
-                        height: ${size}px;
-                        left: ${x}px;
-                        top: ${y}px;
-                    `;
-                    
-                    button.appendChild(ripple);
-                    setTimeout(() => ripple.remove(), 600);
-                }
-            });
-            
-            // Parallax scrolling effect
-            window.addEventListener('scroll', () => {
-                const scrolled = window.pageYOffset;
-                const parallaxElements = document.querySelectorAll('.parallax-layer');
-                
-                parallaxElements.forEach((element, index) => {
-                    const speed = 0.5 * (index + 1);
-                    element.style.transform = `translateY(${scrolled * speed * 0.1}px)`;
-                });
-            });
-            
-            // Initialize products
-            initProducts();
-            
-            // Show welcome notification
-            setTimeout(() => {
-                showNotification('Welcome to PhoneShop', 'Experience the future of smartphone shopping', 'info');
-            }, 2000);
-        });
+        // ==================== CART SIDEBAR ====================
+        function openCart() {
+            document.getElementById('cartSidebar').classList.add('open');
+            document.getElementById('backdrop').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    mobileMenu.classList.add('hidden');
-                    document.body.style.overflow = '';
+        function closeCart() {
+            document.getElementById('cartSidebar').classList.remove('open');
+            document.getElementById('backdrop').classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
+        function animateCart() {
+            const btn = document.getElementById('floatingCartBtn');
+            btn.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                btn.style.transform = 'scale(1)';
+            }, 200);
+        }
+
+        // ==================== TOAST ====================
+        function showToast(title, message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const icon = document.getElementById('toastIcon');
+            const progress = document.getElementById('toastProgress');
+
+            // Clear existing timeout
+            if (toastTimeout) {
+                clearTimeout(toastTimeout);
+            }
+            if (progressInterval) {
+                clearInterval(progressInterval);
+            }
+
+            // Set toast type
+            toast.className = `toast ${type}`;
+            
+            // Set icon
+            let iconHtml = '';
+            switch(type) {
+                case 'success':
+                    iconHtml = '<i class="fas fa-check"></i>';
+                    break;
+                case 'error':
+                    iconHtml = '<i class="fas fa-times"></i>';
+                    break;
+                case 'warning':
+                    iconHtml = '<i class="fas fa-exclamation"></i>';
+                    break;
+                case 'info':
+                    iconHtml = '<i class="fas fa-info"></i>';
+                    break;
+            }
+            icon.innerHTML = iconHtml;
+
+            // Set content
+            document.getElementById('toastTitle').textContent = title;
+            document.getElementById('toastMessage').textContent = message;
+
+            // Show toast
+            toast.classList.add('show');
+
+            // Progress bar
+            progress.style.width = '100%';
+            progress.style.transition = 'width 5s linear';
+            
+            setTimeout(() => {
+                progress.style.width = '0%';
+            }, 10);
+
+            // Auto hide
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 5000);
+        }
+
+        function hideToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.remove('show');
+            if (toastTimeout) {
+                clearTimeout(toastTimeout);
+            }
+        }
+
+        // ==================== UTILITIES ====================
+        function formatPrice(price) {
+            return new Intl.NumberFormat('uz-UZ').format(price);
+        }
+
+        function quickView(id) {
+            const allItems = [...PHONES, ...ACCESSORIES];
+            const item = allItems.find(i => i.id === id);
+            if (!item) return;
+
+            showToast('Tez ko\'rish', item.name, 'info');
+        }
+
+        function addToWishlist(id) {
+            showToast('Muvaffaqiyatli', 'Sevimlilarga qo\'shildi', 'success');
+        }
+
+        function checkScroll() {
+            const scrollBtn = document.getElementById('scrollTopBtn');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    scrollBtn.style.display = 'flex';
+                } else {
+                    scrollBtn.style.display = 'none';
                 }
             });
-        });
+        }
+
+        // ==================== EVENT LISTENERS ====================
+        function setupEventListeners() {
+            // Cart buttons
+            document.getElementById('cartBtn')?.addEventListener('click', openCart);
+            document.getElementById('floatingCartBtn')?.addEventListener('click', openCart);
+            document.getElementById('closeCartBtn')?.addEventListener('click', closeCart);
+            document.getElementById('backdrop')?.addEventListener('click', closeCart);
+
+            // Toast close
+            document.getElementById('toastClose')?.addEventListener('click', hideToast);
+
+            // Scroll to top
+            document.getElementById('scrollTopBtn')?.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Order button
+            document.getElementById('orderBtn')?.addEventListener('click', () => {
+                showToast('Ma\'lumot', 'Buyurtma berish bo\'limi', 'info');
+            });
+
+            // Cart checkout
+            document.getElementById('cartCheckoutBtn')?.addEventListener('click', () => {
+                closeCart();
+                showToast('Muvaffaqiyatli', 'Buyurtma berish bo\'limiga o\'tildi', 'success');
+            });
+
+            // Modal buttons
+            document.getElementById('modalHomeBtn')?.addEventListener('click', () => {
+                document.getElementById('successModal').classList.remove('show');
+                document.body.style.overflow = '';
+            });
+
+            document.getElementById('modalPrintBtn')?.addEventListener('click', () => {
+                window.print();
+            });
+
+            // Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeCart();
+                    document.getElementById('successModal')?.classList.remove('show');
+                }
+            });
+        }
+
+        // ==================== EXPOSE GLOBALLY ====================
+        window.addToCart = addToCart;
+        window.removeFromCart = removeFromCart;
+        window.updateQuantity = updateQuantity;
+        window.clearCart = clearCart;
+        window.openCart = openCart;
+        window.closeCart = closeCart;
+        window.quickView = quickView;
+        window.addToWishlist = addToWishlist;
+        window.showToast = showToast;
+        window.hideToast = hideToast;
     </script>
 </body>
 </html>
